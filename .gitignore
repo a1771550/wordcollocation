@@ -18,3 +18,9 @@ BLL/bin/
 DAL/bin/
 THResources/obj/
 THResources/bin/
+UI/*.html
+UI/*.txt
+UI/*.config
+UI/*.aspx
+UI/*.aspx.cs
+UI/*.aspx.designer.cs
