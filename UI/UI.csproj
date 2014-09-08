@@ -454,11 +454,11 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BLL_wc\BLL.csproj">
+    <ProjectReference Include="..\BLL\BLL.csproj">
       <Project>{0a221490-bbfb-4536-8d6b-70e966f796e4}</Project>
       <Name>BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DAL_wc\DAL.csproj">
+    <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{fee9b7b1-381c-4964-867d-e34abd796668}</Project>
       <Name>DAL</Name>
     </ProjectReference>
