@@ -37,6 +37,4 @@
 											FROM            ColWords AS ColWords_1
 											WHERE        (colWordId = Collocations.colWordId)) AS ColWordEntryJap, CollocationPattern, RowVersion
 											FROM            Collocations
-											ORDER BY WordEntry
-											--add a comment for demo
-										
+											ORDER BY WordEntry						
