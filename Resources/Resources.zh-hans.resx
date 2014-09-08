@@ -1,0 +1,522 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountInformation" xml:space="preserve">
+    <value>帐号资讯</value>
+  </data>
+  <data name="AllFieldsRequired" xml:space="preserve">
+    <value>以下各项为必填</value>
+  </data>
+  <data name="AllRightsReserved" xml:space="preserve">
+    <value>版权所有</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="Captcha" xml:space="preserve">
+    <value>验证码</value>
+  </data>
+  <data name="CaptchaAbove" xml:space="preserve">
+    <value>上图的验证码</value>
+  </data>
+  <data name="CaptchaError" xml:space="preserve">
+    <value>验证码错误</value>
+  </data>
+  <data name="ChangeCaptcha" xml:space="preserve">
+    <value>换另一张图</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>变更密码</value>
+  </data>
+  <data name="ChangePasswordSuccess" xml:space="preserve">
+    <value>变更密码成功</value>
+  </data>
+  <data name="CommandButtonText" xml:space="preserve">
+    <value>确定</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>确认</value>
+  </data>
+  <data name="ConfirmNewPassword" xml:space="preserve">
+    <value>确认新密码</value>
+  </data>
+  <data name="ConfirmNewPasswordError" xml:space="preserve">
+    <value>* 请确认新密码</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>确认密码</value>
+  </data>
+  <data name="ConfirmPasswordError" xml:space="preserve">
+    <value>确认密码错误，请再次确认密码。</value>
+  </data>
+  <data name="ConfirmPasswordRequired" xml:space="preserve">
+    <value>请确认密码</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>联络站长</value>
+  </data>
+  <data name="ContextualPhrase" xml:space="preserve">
+    <value>情景片语</value>
+  </data>
+  <data name="CreateNewAccount" xml:space="preserve">
+    <value>注册新帐号</value>
+  </data>
+  <data name="CreateProfile" xml:space="preserve">
+    <value>建立个人档案</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>旧密码</value>
+  </data>
+  <data name="CurrentPasswordError" xml:space="preserve">
+    <value>* 请输入旧密码</value>
+  </data>
+  <data name="CurrentPasswordNotMatch" xml:space="preserve">
+    <value>*旧密码错误，请再次输入旧密码。</value>
+  </data>
+  <data name="DuplicatedEmail" xml:space="preserve">
+    <value>这电邮帐户已有人使用，请输入另一个电邮帐户。</value>
+  </data>
+  <data name="DuplicatedUserName" xml:space="preserve">
+    <value>这名称已有人使用，请输入另一个名称。</value>
+  </data>
+  <data name="EditProfile" xml:space="preserve">
+    <value>修改个人资料</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>电邮</value>
+  </data>
+  <data name="EmailFormatError" xml:space="preserve">
+    <value>请输入正确电邮格式</value>
+  </data>
+  <data name="EmailRequired" xml:space="preserve">
+    <value>请输入电邮</value>
+  </data>
+  <data name="EnterCaptchaAbove" xml:space="preserve">
+    <value>请输入上图的验证码</value>
+  </data>
+  <data name="EnterCaptchaBelow" xml:space="preserve">
+    <value>请输入以下的验证码</value>
+  </data>
+  <data name="EnterKeyword" xml:space="preserve">
+    <value>请输入关键字</value>
+  </data>
+  <data name="EnterUsernamePassword" xml:space="preserve">
+    <value>请输入名称及密码</value>
+  </data>
+  <data name="ForgetPassword" xml:space="preserve">
+    <value>忘记密码</value>
+  </data>
+  <data name="HereIsYourPassword" xml:space="preserve">
+    <value>您好，以下是您的密码，请小心储存，谢谢！</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>首页</value>
+  </data>
+  <data name="HopeEnjoyOurService" xml:space="preserve">
+    <value>希望您满意本站所提供的服务！</value>
+  </data>
+  <data name="IfNoAccount" xml:space="preserve">
+    <value>如果没有帐号，请前往</value>
+  </data>
+  <data name="KeepMeLoggedIn" xml:space="preserve">
+    <value>记住登入状态</value>
+  </data>
+  <data name="LoginText" xml:space="preserve">
+    <value>登入</value>
+  </data>
+  <data name="LogoutText" xml:space="preserve">
+    <value>登出</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>新密码</value>
+  </data>
+  <data name="NewPasswordCompareError" xml:space="preserve">
+    <value>* 确认新密码，请再次确认新密码。</value>
+  </data>
+  <data name="NewPasswordError" xml:space="preserve">
+    <value>* 请输入新密码</value>
+  </data>
+  <data name="NoDataAvailable" xml:space="preserve">
+    <value>无可用数据</value>
+  </data>
+  <data name="NoUserFound" xml:space="preserve">
+    <value>该使用者不存在</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="PasswordFormat" xml:space="preserve">
+    <value>密码必须是 6 个至 20 个任何字元</value>
+  </data>
+  <data name="PasswordRecovery" xml:space="preserve">
+    <value>取回密码</value>
+  </data>
+  <data name="PasswordRecoverySuccessText" xml:space="preserve">
+    <value>密码已寄出，请妥善保存。</value>
+  </data>
+  <data name="PasswordRequired" xml:space="preserve">
+    <value>请输入密碼</value>
+  </data>
+  <data name="PleaseSelectCountry" xml:space="preserve">
+    <value>请选择国家</value>
+  </data>
+  <data name="PreviousPage" xml:space="preserve">
+    <value>上一页</value>
+  </data>
+  <data name="Regards" xml:space="preserve">
+    <value>敬上</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>注册</value>
+  </data>
+  <data name="RegisterConfirmEmailSent" xml:space="preserve">
+    <value>注册确认电邮已寄出至您的电邮帐户。</value>
+  </data>
+  <data name="RegisterSuccess" xml:space="preserve">
+    <value>注册成功</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>搜寻</value>
+  </data>
+  <data name="SearchColWordText" xml:space="preserve">
+    <value>请输入搭配上方单字的单字：</value>
+  </data>
+  <data name="SearchColPosText" xml:space="preserve">
+    <value>请选择搭配该单字的词类：</value>
+  </data>
+  <data name="SearchWordText" xml:space="preserve">
+    <value>请输入被搭配的单字：</value>
+  </data>
+  <data name="SiteSearch" xml:space="preserve">
+    <value>站内搜寻</value>
+  </data>
+  <data name="SiteTitle" xml:space="preserve">
+    <value>字词搭配</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>用户名称</value>
+  </data>
+  <data name="UserNameEmailNotMatch" xml:space="preserve">
+    <value>名称与电邮互不相符</value>
+  </data>
+  <data name="UserNamePasswordNotMatch" xml:space="preserve">
+    <value>名称与密码互不相符</value>
+  </data>
+  <data name="UserNameRequired" xml:space="preserve">
+    <value>请输入名称</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>， 欢迎！</value>
+  </data>
+  <data name="WordCollocation" xml:space="preserve">
+    <value>字词搭配</value>
+  </data>
+  <data name="LogOff" xml:space="preserve">
+    <value>登出</value>
+  </data>
+  <data name="LogOn" xml:space="preserve">
+    <value>登入</value>
+  </data>
+  <data name="CopyRight" xml:space="preserve">
+    <value>版权所有不得转载</value>
+  </data>
+  <data name="ChooseLanguage" xml:space="preserve">
+    <value>选择语言</value>
+  </data>
+  <data name="Connect" xml:space="preserve">
+    <value>连结</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>分享</value>
+  </data>
+  <data name="ShareTo" xml:space="preserve">
+    <value>分享至</value>
+  </data>
+  <data name="Share_Facebook" xml:space="preserve">
+    <value>分享至Facebook</value>
+  </data>
+  <data name="Share_Google" xml:space="preserve">
+    <value>分享至Google+</value>
+  </data>
+  <data name="Share_LinkedIn" xml:space="preserve">
+    <value>分享至LinkedIn</value>
+  </data>
+  <data name="Share_Twitter" xml:space="preserve">
+    <value>分享至Twitter</value>
+  </data>
+  <data name="ContactParagraph" xml:space="preserve">
+    <value>若您对本站有任何疑问或建议，欢迎与站长联络。</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>留言</value>
+  </data>
+  <data name="MessageRequired" xml:space="preserve">
+    <value>請輸入留言</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>送出</value>
+  </data>
+  <data name="ContactCompleted" xml:space="preserve">
+    <value>留言已发送</value>
+  </data>
+  <data name="ContactCompletedParagraph" xml:space="preserve">
+    <value>感谢您的宝贵意见。</value>
+  </data>
+  <data name="ConfirmAccountByLink" xml:space="preserve">
+    <value>请点击这连结以确认新帐户</value>
+  </data>
+  <data name="ConfirmYourAccount" xml:space="preserve">
+    <value>确认您的新帐户</value>
+  </data>
+  <data name="EmailTaken" xml:space="preserve">
+    <value>这电邮已经注册</value>
+  </data>
+  <data name="MaxPasswordLengthError" xml:space="preserve">
+    <value>密码最多不能超过20个字元</value>
+  </data>
+  <data name="MinPasswordLengthError" xml:space="preserve">
+    <value>密码最少要有6个字元</value>
+  </data>
+  <data name="PasswordLengthError" xml:space="preserve">
+    <value>密码字数必须在 6 至 20 个之内</value>
+  </data>
+  <data name="RegisterAsNewUser" xml:space="preserve">
+    <value>注册新帐号</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>保持登入状态</value>
+  </data>
+  <data name="ThanksForConfirmAccount" xml:space="preserve">
+    <value>感谢确认。您现在可以进行登录。</value>
+  </data>
+  <data name="UserNameEmailforLogin" xml:space="preserve">
+    <value>用户名称或电子邮件</value>
+  </data>
+  <data name="UserNameTaken" xml:space="preserve">
+    <value>这用户名称已经注册</value>
+  </data>
+  <data name="UnderConstruction" xml:space="preserve">
+    <value>网站维修中，不日复工，谢谢。</value>
+  </data>
+  <data name="PleaseLogIn" xml:space="preserve">
+    <value>请进行登录。</value>
+  </data>
+  <data name="FunctionBeingImplemented" xml:space="preserve">
+    <value>该功能正在实施中。谢谢。</value>
+  </data>
+  <data name="SearchResult" xml:space="preserve">
+    <value>搜寻結果</value>
+  </data>
+  <data name="ConfirmDelete" xml:space="preserve">
+    <value>您确定要删除这个项目吗？</value>
+  </data>
+  <data name="ColPos" xml:space="preserve">
+    <value>搭配词类</value>
+  </data>
+  <data name="PleaseSelect" xml:space="preserve">
+    <value>请选择</value>
+  </data>
+  <data name="ColPosRequired" xml:space="preserve">
+    <value>请选择搭配词类</value>
+  </data>
+  <data name="WordRequired" xml:space="preserve">
+    <value>请输入被搭配单字</value>
+  </data>
+  <data name="CH" xml:space="preserve">
+    <value>当代英语搭配辞典</value>
+  </data>
+  <data name="Oxford" xml:space="preserve">
+    <value>牛津英语搭配词典</value>
+  </data>
+  <data name="Definition" xml:space="preserve">
+    <value>定义</value>
+  </data>
+  <data name="SeeDefinition" xml:space="preserve">
+    <value>查看详细定义</value>
+  </data>
+  <data name="UserNameEmailRequired" xml:space="preserve">
+    <value>请输入用户名称或电邮</value>
+  </data>
+  <data name="ConfirmAccount" xml:space="preserve">
+    <value>确认帐号</value>
+  </data>
+  <data name="DearNewUser" xml:space="preserve">
+    <value>新用戶您好</value>
+  </data>
+  <data name="ThanksForRegister" xml:space="preserve">
+    <value>感谢注册本站。</value>
+  </data>
+  <data name="Example" xml:space="preserve">
+    <value>例句</value>
+  </data>
+  <data name="ExampleSourceText" xml:space="preserve">
+    <value>例句來源一覧：</value>
+  </data>
+  <data name="ExampleText" xml:space="preserve">
+    <value>例句：</value>
+  </data>
+  <data name="EmailNotConfirmed" xml:space="preserve">
+    <value>电邮尚未确认</value>
+  </data>
+  <data name="EmailNotConfirmedHeading" xml:space="preserve">
+    <value>对不起，您的电邮尚未确认，无法登录。</value>
+  </data>
+  <data name="EmailNotConfirmedParagraph" xml:space="preserve">
+    <value>對不起，您的電郵尚未確認，無法登錄。</value>
+  </data>
+  <data name="InvalidLoginAttempt" xml:space="preserve">
+    <value>登录失败</value>
+  </data>
+  <data name="RequestAnotherConfirmEmailLink" xml:space="preserve">
+    <value>补发确认电邮连结</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>找不到用户登录资料</value>
+  </data>
+  <data name="Pos" xml:space="preserve">
+    <value>词类</value>
+  </data>
+  <data name="CollocationPatternRequired" xml:space="preserve">
+    <value>请输入搭配模式</value>
+  </data>
+  <data name="Word" xml:space="preserve">
+    <value>单字</value>
+  </data>
+  <data name="PatternDropDownListSelect" xml:space="preserve">
+    <value>- Select -</value>
+  </data>
+  <data name="DuplicatedEntry" xml:space="preserve">
+    <value>重覆輸入項目</value>
+  </data>
+  <data name="Remark" xml:space="preserve">
+    <value>备注</value>
+  </data>
+  <data name="NeedRemark" xml:space="preserve">
+    <value>需要注解</value>
+  </data>
+  <data name="EntryZhtRequired" xml:space="preserve">
+    <value>请输入繁中条目</value>
+  </data>
+  <data name="EntryJapRequired" xml:space="preserve">
+    <value>请输入日文条目</value>
+  </data>
+  <data name="EntryZhsRequired" xml:space="preserve">
+    <value>请输入简中条目</value>
+  </data>
+</root>
