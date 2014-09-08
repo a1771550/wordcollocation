@@ -64,6 +64,7 @@
     <EmbeddedResource Include="Resources.resx">
       <Generator>ResXResourceReader</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources.zh-hans.resx">
       <Generator>ResXResourceReader</Generator>

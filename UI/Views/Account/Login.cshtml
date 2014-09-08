@@ -5,12 +5,6 @@
 	ViewBag.Title = Resources.LogOn;
 }
 
-<style>
-	/*#login-form .input {
-		width: 60%;
-	}*/
-</style>
-
 <div class="span4">
 	<h3>@ViewBag.Title</h3>
 	<hr />
@@ -28,7 +22,7 @@
 	}
 
 	<section id="loginForm">
-		<div id="modelStateErrors">
+		@*<div id="modelStateErrors">
 			@if (ViewData.ModelState.Values.Any())
 			{
 				foreach (ModelError error in ViewData.ModelState.Values.SelectMany(modelState => modelState.Errors))
@@ -36,7 +30,7 @@
 					@Html.Raw(string.Format("<span>Model Errors: {0}</span><br/>", error));
 				}
 			}
-		</div>
+		</div>*@
 
 		@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login-form", role = "form", id = "login-form" }))
 		{

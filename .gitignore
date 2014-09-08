@@ -25,3 +25,4 @@ UI/*.aspx
 UI/*.aspx.cs
 UI/*.aspx.designer.cs
 BLL/*.csproj
+UI/*.csproj.*
