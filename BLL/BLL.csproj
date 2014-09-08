@@ -78,13 +78,13 @@
     <Compile Include="WordRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DAL_wc\DAL.csproj">
+    <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{fee9b7b1-381c-4964-867d-e34abd796668}</Project>
       <Name>DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Resources_wc\WcResources.csproj">
-      <Project>{9b149786-0d0c-49d6-ab32-15fcef677e70}</Project>
-      <Name>WcResources</Name>
+    <ProjectReference Include="..\THResources\THResources.csproj">
+      <Project>{682862dc-1d93-4ff9-a389-fa6953504dc9}</Project>
+      <Name>THResources</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -176,13 +176,6 @@
     <Compile Include="CollocationWithExamples.aspx.designer.cs">
       <DependentUpon>CollocationWithExamples.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DbConnectionDetails.aspx.cs">
-      <DependentUpon>DbConnectionDetails.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DbConnectionDetails.aspx.designer.cs">
-      <DependentUpon>DbConnectionDetails.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\Abstract\ControllerBase.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
@@ -202,13 +195,6 @@
     </Compile>
     <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="CheckEmail.aspx.cs">
-      <DependentUpon>CheckEmail.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CheckEmail.aspx.designer.cs">
-      <DependentUpon>CheckEmail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -247,7 +233,6 @@
     <Content Include="CheckBoxJquery.html" />
     <Content Include="ChinaCities.xml" />
     <Content Include="CollocationWithExamples.aspx" />
-    <Content Include="DbConnectionDetails.aspx" />
     <Content Include="CountryList.txt" />
     <Content Include="css\adminLinks.css" />
     <Content Include="css\img\glyphicons\glyphicons%402x.png" />
@@ -287,7 +272,6 @@
     <Content Include="css\wisewords\template.css" />
     <Content Include="default.aspx" />
     <Content Include="EducationList.txt" />
-    <Content Include="CheckEmail.aspx" />
     <Content Include="img\accessories_dictionary.png" />
     <Content Include="img\bookpenglasses.ico" />
     <Content Include="img\favicon.gif" />
@@ -316,7 +300,12 @@
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\html5shiv-printshiv.js" />
     <Content Include="js\html5shiv.js" />
-    <Content Include="OnKeyUp.html" />
+    <Content Include="js\jquery.maskedinput.js" />
+    <Content Include="js\jquery.maskedinput.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
     <Content Include="WebServices\WcServices.asmx" />
     <None Include="js\jquery-1.9.1.intellisense.js" />
     <Content Include="js\jquery-1.9.1.js" />
@@ -462,9 +451,9 @@
       <Project>{fee9b7b1-381c-4964-867d-e34abd796668}</Project>
       <Name>DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Resources_wc\WcResources.csproj">
-      <Project>{9B149786-0D0C-49D6-AB32-15FCEF677E70}</Project>
-      <Name>WcResources</Name>
+    <ProjectReference Include="..\THResources\THResources.csproj">
+      <Project>{682862dc-1d93-4ff9-a389-fa6953504dc9}</Project>
+      <Name>THResources</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

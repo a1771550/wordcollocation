@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 using BLL;
+using THResources;
 using UI.Controllers.Abstract;
 using UI.Models;
-using WcResources;
 
 namespace UI.Controllers
 {

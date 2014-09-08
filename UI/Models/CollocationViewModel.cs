@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web.Mvc;
 using BLL;
 using BLL.Abstract;
+using THResources;
 using UI.Models.Abstract;
-using WcResources;
 
 namespace UI.Models
 {

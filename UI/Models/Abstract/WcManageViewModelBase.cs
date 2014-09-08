@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using WcResources;
+using THResources;
 
 namespace UI.Models.Abstract
 {

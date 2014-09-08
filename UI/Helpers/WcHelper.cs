@@ -9,8 +9,8 @@ using System.Web.Caching;
 using BLL;
 using BLL.Helpers;
 using Microsoft.VisualBasic;
+using THResources;
 using UI.Models;
-using WcResources;
 using Verb = BLL.Verb;
 
 namespace UI.Helpers

@@ -1,0 +1,45 @@
+﻿@using UI.Helpers
+@using UI.Models.Abstract
+@model UI.Models.CommonWordViewModel
+
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewDataDictionary dict = new ViewDataDictionary();
+	dict.Add("Entity", Model.Entity);
+	string action = User.IsInRole("Admin") ? "IndexForAdmin" : "IndexForEditor";
+}
+
+<h2>@Model.Entity</h2>
+
+<p>
+	@Html.ActionLink("Create New", "Edit", Model.Entity.ToString(), new { id = "0" }, null)
+</p>
+<table class="table">
+	<tr>
+		<th>
+			Entry
+		</th>
+		<th>
+			EntryZht
+		</th>
+		<th>EntryZhs</th>
+		<th>
+			EntryJap
+		</th>
+		<th></th>
+	</tr>
+
+	@switch (Model.Entity)
+	{
+		case WcEntity.Word:
+			@Html.Partial("_CommonWordListItemsPartial", Model.WordList, dict)
+			break;
+		case WcEntity.ColWord:
+		@Html.Partial("_CommonWordListItemsPartial", Model.ColWordList, dict)
+			break;
+	}
+</table>
+<div class="pagination">
+	@Html.PageLinks(Model.PagingInfo, x => Url.Action(action, Model.Entity.ToString(), new { page = x }))
+</div>

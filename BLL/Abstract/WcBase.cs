@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using WcResources;
+using THResources;
 
 namespace BLL.Abstract
 {

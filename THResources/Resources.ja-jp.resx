@@ -127,16 +127,10 @@
     <value>以下各項為必填</value>
   </data>
   <data name="AllRightsReserved" xml:space="preserve">
-    <value>版權所有</value>
-  </data>
-  <data name="Apr" xml:space="preserve">
-    <value>四月</value>
-  </data>
-  <data name="Aug" xml:space="preserve">
-    <value>八月</value>
+    <value>無断複写·転載を禁じます</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>取消</value>
+    <value>取り消す</value>
   </data>
   <data name="Captcha" xml:space="preserve">
     <value>驗證碼</value>
@@ -148,43 +142,70 @@
     <value>驗證碼錯誤</value>
   </data>
   <data name="CH" xml:space="preserve">
-    <value>當代英語搭配辭典</value>
+    <value>と現代英語の辞書</value>
   </data>
   <data name="ChangeCaptcha" xml:space="preserve">
     <value>換另一張圖</value>
   </data>
   <data name="ChangePassword" xml:space="preserve">
-    <value>變更密碼</value>
+    <value>パスワードの変更</value>
   </data>
   <data name="ChangePasswordSuccess" xml:space="preserve">
     <value>變更密碼成功</value>
   </data>
+  <data name="ChooseLanguage" xml:space="preserve">
+    <value>言語を選択してください</value>
+  </data>
   <data name="Close" xml:space="preserve">
     <value>關閉帖子</value>
   </data>
-  <data name="CloseButtonText" xml:space="preserve">
-    <value>關閉</value>
-  </data>
   <data name="CloseConfirmText" xml:space="preserve">
+    <value>你確定要關閉這帖子？</value>
+  </data>
+  <data name="CloseConfirmText1" xml:space="preserve">
     <value>你確定要關閉這帖子？</value>
   </data>
   <data name="Collocate" xml:space="preserve">
     <value>搭配</value>
   </data>
+  <data name="Collocate1" xml:space="preserve">
+    <value>搭配</value>
+  </data>
   <data name="CollocatingPOS" xml:space="preserve">
-    <value>搭配詞類</value>
+    <value>コロケーションのためである品詞:</value>
   </data>
   <data name="CollocationPattern" xml:space="preserve">
-    <value>搭配型態</value>
+    <value>単語のコロケーションのパターン: </value>
+  </data>
+  <data name="CollocationPattern1" xml:space="preserve">
+    <value>単語のコロケーションのパターン: </value>
+  </data>
+  <data name="CollocationPatternRequired" xml:space="preserve">
+    <value>コロケーション·パターンを入力してください</value>
+  </data>
+  <data name="ColPos" xml:space="preserve">
+    <value>品詞と</value>
+  </data>
+  <data name="ColPosRequired" xml:space="preserve">
+    <value>品詞を選択してください。</value>
   </data>
   <data name="ColWord" xml:space="preserve">
-    <value>搭配單字</value>
+    <value>搭配的單字</value>
   </data>
   <data name="CommandButtonText" xml:space="preserve">
-    <value>確定</value>
+    <value>提出する</value>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>確認</value>
+    <value>送信する</value>
+  </data>
+  <data name="ConfirmAccount" xml:space="preserve">
+    <value>アカウントを確認するために、</value>
+  </data>
+  <data name="ConfirmAccountByLink" xml:space="preserve">
+    <value>新しいアカウントを確認するには、このリンクをクリックしてください。</value>
+  </data>
+  <data name="ConfirmDelete" xml:space="preserve">
+    <value>あなたはこの項目を削除してもよろしいですか？</value>
   </data>
   <data name="ConfirmNewPassword" xml:space="preserve">
     <value>確認新密碼</value>
@@ -193,28 +214,46 @@
     <value>* 請確認新密碼</value>
   </data>
   <data name="ConfirmPassword" xml:space="preserve">
-    <value>確認密碼</value>
+    <value>パスワードの確認</value>
   </data>
   <data name="ConfirmPasswordError" xml:space="preserve">
-    <value>確認密碼錯誤，請再次確認密碼。</value>
+    <value>パスワードが間違っているを確認し、もう一度パスワードを確認してください。</value>
   </data>
   <data name="ConfirmPasswordRequired" xml:space="preserve">
-    <value>請確認密碼</value>
+    <value>あなたのパスワードを確認してください</value>
+  </data>
+  <data name="ConfirmYourAccount" xml:space="preserve">
+    <value>新しいアカウントを確認する</value>
+  </data>
+  <data name="Connect" xml:space="preserve">
+    <value>コネクト</value>
   </data>
   <data name="Contact" xml:space="preserve">
-    <value>聯絡站長</value>
+    <value>連絡</value>
+  </data>
+  <data name="ContactCompleted" xml:space="preserve">
+    <value>メッセージが送信されました</value>
+  </data>
+  <data name="ContactCompletedParagraph" xml:space="preserve">
+    <value>あなたの貴重な意見をいただきありがとうございます。</value>
+  </data>
+  <data name="ContactParagraph" xml:space="preserve">
+    <value>あなたが質問や提案のウェブサイトをお持ちの場合、局と歓迎の接触を表示する。</value>
   </data>
   <data name="ContactText" xml:space="preserve">
     <value>如果你想更多的細節，請與網站管理員&lt;a href='contact.aspx'&gt;聯繫&lt;/a&gt;報告此問題。</value>
   </data>
   <data name="ContextualPhrase" xml:space="preserve">
-    <value>情景片語</value>
+    <value>コンテキストフレーズ</value>
+  </data>
+  <data name="CopyRight" xml:space="preserve">
+    <value>著作権を保有</value>
   </data>
   <data name="CreateNewAccount" xml:space="preserve">
-    <value>註冊新帳號</value>
+    <value>新しいアカウントを作成する</value>
   </data>
   <data name="CreateProfile" xml:space="preserve">
-    <value>建立個人檔案</value>
+    <value>個人プロフィールを作成</value>
   </data>
   <data name="CurrentPassword" xml:space="preserve">
     <value>舊密碼</value>
@@ -225,38 +264,50 @@
   <data name="CurrentPasswordNotMatch" xml:space="preserve">
     <value>* 舊密碼錯誤，請再次輸入舊密碼。</value>
   </data>
-  <data name="Day" xml:space="preserve">
-    <value>日</value>
+  <data name="DearNewUser" xml:space="preserve">
+    <value>親愛なる新規ユーザ、</value>
   </data>
-  <data name="Dec" xml:space="preserve">
-    <value>十二月</value>
+  <data name="Definition" xml:space="preserve">
+    <value>定義</value>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value>刪除帖子</value>
-  </data>
-  <data name="Delete1" xml:space="preserve">
     <value>刪除帖子</value>
   </data>
   <data name="DeleteConfirmText" xml:space="preserve">
     <value>你確定要刪除這帖子？</value>
   </data>
   <data name="DuplicatedEmail" xml:space="preserve">
-    <value>這電郵帳戶已有人使用，請輸入另一個電郵帳戶。</value>
+    <value>既に使用されている。この電子メールアカウントは、別のメールアカウントを入力してください。</value>
+  </data>
+  <data name="DuplicatedEntry" xml:space="preserve">
+    <value>重複したエントリ</value>
   </data>
   <data name="DuplicatedUserName" xml:space="preserve">
     <value>這名稱已有人使用，請輸入另一個名稱。</value>
   </data>
   <data name="EditProfile" xml:space="preserve">
-    <value>修改個人資料</value>
+    <value>個人プロフィールを編集</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value>電郵</value>
+    <value>メール</value>
   </data>
   <data name="EmailFormatError" xml:space="preserve">
-    <value>請輸入正確電郵格式</value>
+    <value>有効な電子メール形式を入力してください</value>
+  </data>
+  <data name="EmailNotConfirmed" xml:space="preserve">
+    <value>電子メールはまだ確認されている</value>
+  </data>
+  <data name="EmailNotConfirmedHeading" xml:space="preserve">
+    <value>電郵尚未確認</value>
+  </data>
+  <data name="EmailNotConfirmedParagraph" xml:space="preserve">
+    <value>申し訳ありませんが、お使いのメールが確認されていない、あなたはログオンすることはできません。</value>
   </data>
   <data name="EmailRequired" xml:space="preserve">
     <value>請輸入電郵</value>
+  </data>
+  <data name="EmailTaken" xml:space="preserve">
+    <value>電子メールが登録されている</value>
   </data>
   <data name="EnterCaptchaAbove" xml:space="preserve">
     <value>請輸入上圖的驗證碼</value>
@@ -265,13 +316,19 @@
     <value>請輸入以下的驗證碼</value>
   </data>
   <data name="EnterKeyword" xml:space="preserve">
-    <value>請輸入關鍵字</value>
+    <value>キーワード</value>
   </data>
   <data name="EnterUsernamePassword" xml:space="preserve">
     <value>請輸入名稱及密碼</value>
   </data>
-  <data name="ErrorInSendingMail" xml:space="preserve">
-    <value>在發送郵件時出錯。</value>
+  <data name="EntryJapRequired" xml:space="preserve">
+    <value>日本のエントリを入力してください</value>
+  </data>
+  <data name="EntryZhsRequired" xml:space="preserve">
+    <value>エントリジェーンを入力してください</value>
+  </data>
+  <data name="EntryZhtRequired" xml:space="preserve">
+    <value>エントリーのファンを入力してください</value>
   </data>
   <data name="Example" xml:space="preserve">
     <value>例句</value>
@@ -280,58 +337,61 @@
     <value>例句(中文)</value>
   </data>
   <data name="ExampleSourceText" xml:space="preserve">
-    <value>例句來源一覧：</value>
+    <value>例示的なソースのリスト：</value>
   </data>
   <data name="ExampleText" xml:space="preserve">
-    <value>例句：</value>
-  </data>
-  <data name="Feb" xml:space="preserve">
-    <value>二月</value>
+    <value>例：</value>
   </data>
   <data name="ForgetPassword" xml:space="preserve">
-    <value>忘記密碼</value>
+    <value>パスワードを忘れた方</value>
   </data>
   <data name="Forum" xml:space="preserve">
     <value>討論區</value>
+  </data>
+  <data name="FunctionBeingImplemented" xml:space="preserve">
+    <value>その機能が実装されている。ありがとう。</value>
   </data>
   <data name="HereIsYourPassword" xml:space="preserve">
     <value>您好，以下是您的密碼，請小心儲存，謝謝!!</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>首頁</value>
+    <value>ホームページ</value>
   </data>
   <data name="HopeEnjoyOurService" xml:space="preserve">
     <value>希望您滿意本站所提供的服務!</value>
   </data>
-  <data name="IfNoAccount" xml:space="preserve">
-    <value>如果沒有帳號，請前往</value>
-  </data>
   <data name="ImgCollocate" xml:space="preserve">
     <value>collocate.jpg</value>
   </data>
-  <data name="Jan" xml:space="preserve">
-    <value>一月</value>
-  </data>
-  <data name="Jul" xml:space="preserve">
-    <value>七月</value>
-  </data>
-  <data name="Jun" xml:space="preserve">
-    <value>六月</value>
+  <data name="InvalidLoginAttempt" xml:space="preserve">
+    <value>ログインに失敗しました</value>
   </data>
   <data name="LoginText" xml:space="preserve">
-    <value>登入</value>
+    <value>ログイン</value>
+  </data>
+  <data name="LogOff" xml:space="preserve">
+    <value>ログアウト</value>
+  </data>
+  <data name="LogOn" xml:space="preserve">
+    <value>ログイン</value>
   </data>
   <data name="LogoutText" xml:space="preserve">
-    <value>登出</value>
+    <value>ログアウト</value>
   </data>
-  <data name="Mar" xml:space="preserve">
-    <value>三月</value>
+  <data name="MaxPasswordLengthError" xml:space="preserve">
+    <value>パスワードは最大20文字を超えることはできません</value>
   </data>
-  <data name="May" xml:space="preserve">
-    <value>五月</value>
+  <data name="Message" xml:space="preserve">
+    <value>メッセージ</value>
   </data>
-  <data name="Month" xml:space="preserve">
-    <value>月</value>
+  <data name="MessageRequired" xml:space="preserve">
+    <value>あなたのメッセージを入力してください。</value>
+  </data>
+  <data name="MinPasswordLengthError" xml:space="preserve">
+    <value>パスワードは6文字以上でなければなりません</value>
+  </data>
+  <data name="NeedRemark" xml:space="preserve">
+    <value>備考</value>
   </data>
   <data name="NewPassword" xml:space="preserve">
     <value>新密碼</value>
@@ -343,25 +403,22 @@
     <value>* 請輸入新密碼</value>
   </data>
   <data name="NextPage" xml:space="preserve">
-    <value>下一頁</value>
-  </data>
-  <data name="No" xml:space="preserve">
-    <value>非</value>
+    <value>次のページ</value>
   </data>
   <data name="NoAccessRights" xml:space="preserve">
     <value>沒有存取權限</value>
   </data>
   <data name="NoDataAvailable" xml:space="preserve">
-    <value>沒有可用數據</value>
+    <value>利用できるデータはありません</value>
   </data>
   <data name="NoSearchResult" xml:space="preserve">
     <value>對不起，目前詞庫沒有您要找的搭配資料。</value>
   </data>
   <data name="NoSearchResult_WordOnly" xml:space="preserve">
-    <value>對不起，目前沒有 &lt;span class='word'&gt;{0}&lt;/span&gt; 的搭配資料。 </value>
+    <value>申し訳ありませんが、&lt;span class='word'&gt;{0}&lt;/span&gt;のミックスには情報がありません。 </value>
   </data>
   <data name="NoSearchResult_WordPOS" xml:space="preserve">
-    <value>對不起，目前沒有搭配 &lt;span class='word'&gt;{0}&lt;/span&gt; 的 &lt;span class='colword'&gt;{1}&lt;/span&gt; 資料。</value>
+    <value>申し訳ありませんが、&lt;span class='word'&gt;{0}&lt;/span&gt;、&lt;span class='colword'&gt;{1}&lt;/span&gt;とのデータがありません。</value>
   </data>
   <data name="noun" xml:space="preserve">
     <value>名詞</value>
@@ -369,32 +426,29 @@
   <data name="NoUserFound" xml:space="preserve">
     <value>該使用者不存在</value>
   </data>
-  <data name="Nov" xml:space="preserve">
-    <value>十一月</value>
-  </data>
-  <data name="Oct" xml:space="preserve">
-    <value>十月</value>
-  </data>
   <data name="Others" xml:space="preserve">
-    <value>其他</value>
+    <value>他の情報源</value>
   </data>
   <data name="Oxford" xml:space="preserve">
-    <value>牛津英語搭配詞典</value>
+    <value>オックスフォード英語大辞典</value>
   </data>
   <data name="PageNotFound" xml:space="preserve">
     <value>所請求的頁面或資源沒有被發現。</value>
   </data>
   <data name="PageTitle" xml:space="preserve">
-    <value>首頁</value>
+    <value>ホームページ</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>密碼</value>
   </data>
   <data name="PasswordFormat" xml:space="preserve">
-    <value>密碼必須是 6 個至 20 個任何字元</value>
+    <value>密碼必須是 {0} 個至 {1} 個任何字元</value>
+  </data>
+  <data name="PasswordLengthError" xml:space="preserve">
+    <value>コードワードは、6から20の範囲内でなければなりません</value>
   </data>
   <data name="PasswordRecovery" xml:space="preserve">
-    <value>取回密碼</value>
+    <value>パスワードの復元</value>
   </data>
   <data name="PasswordRecoverySuccessText" xml:space="preserve">
     <value>密碼已寄出，請妥善保存。</value>
@@ -402,8 +456,17 @@
   <data name="PasswordRequired" xml:space="preserve">
     <value>請輸入密碼</value>
   </data>
+  <data name="PatternDropDownListSelect" xml:space="preserve">
+    <value>- 選び出す -</value>
+  </data>
+  <data name="PleaseLogIn" xml:space="preserve">
+    <value>ログインしてお進みください。</value>
+  </data>
+  <data name="PleaseSelect" xml:space="preserve">
+    <value>選択してください</value>
+  </data>
   <data name="PleaseSelectCountry" xml:space="preserve">
-    <value>請選擇國家</value>
+    <value>国を選択してください</value>
   </data>
   <data name="Pos" xml:space="preserve">
     <value>詞類</value>
@@ -412,13 +475,16 @@
     <value>發帖</value>
   </data>
   <data name="PreviousPage" xml:space="preserve">
-    <value>上一頁</value>
+    <value>前のページ</value>
   </data>
   <data name="Regards" xml:space="preserve">
     <value>敬上</value>
   </data>
   <data name="Register" xml:space="preserve">
-    <value>註冊</value>
+    <value>登録</value>
+  </data>
+  <data name="RegisterAsNewUser" xml:space="preserve">
+    <value>新規アカウントの作成</value>
   </data>
   <data name="RegisterConfirmEmailSent" xml:space="preserve">
     <value>註冊確認電郵已寄出至您的電郵帳戶。</value>
@@ -426,107 +492,47 @@
   <data name="RegisterSuccess" xml:space="preserve">
     <value>註冊成功</value>
   </data>
+  <data name="Remark" xml:space="preserve">
+    <value>備考</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>ログイン私を保つ</value>
+  </data>
+  <data name="RequestAnotherConfirmEmailLink" xml:space="preserve">
+    <value>交換用の確認メールのリンク</value>
+  </data>
   <data name="RequestTimeOut" xml:space="preserve">
     <value>請求超時。這可能是由於過高的流量。請稍後再試一次。</value>
   </data>
   <data name="Search" xml:space="preserve">
-    <value>搜尋</value>
-  </data>
-  <data name="SearchColWordText" xml:space="preserve">
-    <value>請輸入搭配上方單字的單字：</value>
+    <value>検索</value>
   </data>
   <data name="SearchColPosText" xml:space="preserve">
-    <value>請選擇搭配該單字的詞類：</value>
+    <value>単語と品詞を選択してください：</value>
+  </data>
+  <data name="SearchColWordText" xml:space="preserve">
+    <value>上記の単語を連結することで単語を入力してください：</value>
+  </data>
+  <data name="SearchResult" xml:space="preserve">
+    <value>検索結果</value>
   </data>
   <data name="SearchWordText" xml:space="preserve">
-    <value>請輸入被搭配的單字：</value>
+    <value>併置単語を入力してください。</value>
   </data>
-  <data name="Sep" xml:space="preserve">
-    <value>九月</value>
+  <data name="SeeDefinition" xml:space="preserve">
+    <value>詳細な定義を参照してください。</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>送り出す</value>
   </data>
   <data name="ServerError" xml:space="preserve">
     <value>服務器遇到了意外情況，防止它履行的要求。請稍後再試一次。</value>
   </data>
-  <data name="SiteSearch" xml:space="preserve">
-    <value>站內搜尋</value>
-  </data>
-  <data name="SiteTitle" xml:space="preserve">
-    <value>用詞搭配</value>
-  </data>
-  <data name="Source" xml:space="preserve">
-    <value>來源</value>
-  </data>
-  <data name="SourceText" xml:space="preserve">
-    <value>來源：</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>網頁錯誤</value>
-  </data>
-  <data name="ToLogin" xml:space="preserve">
-    <value>登入</value>
-  </data>
-  <data name="UnknownError" xml:space="preserve">
-    <value>未知的錯誤。</value>
-  </data>
-  <data name="UnknownErrorOccurred" xml:space="preserve">
-    <value>發生不明錯誤</value>
-  </data>
-  <data name="UseOtherServicesLogin" xml:space="preserve">
-    <value>使用其他帳號登入。</value>
-  </data>
-  <data name="UserName" xml:space="preserve">
-    <value>用戶名稱</value>
-  </data>
-  <data name="UserNameEmailNotMatch" xml:space="preserve">
-    <value>名稱與電郵互不相符</value>
-  </data>
-  <data name="UserNamePasswordNotMatch" xml:space="preserve">
-    <value>名稱與密碼互不相符</value>
-  </data>
-  <data name="UserNameRequired" xml:space="preserve">
-    <value>請輸入用戶名稱</value>
-  </data>
-  <data name="UsingAccountToLogin" xml:space="preserve">
-    <value>使用{0}帳號來登入</value>
-  </data>
-  <data name="verb" xml:space="preserve">
-    <value>動詞</value>
-  </data>
-  <data name="Web" xml:space="preserve">
-    <value>網路</value>
-  </data>
-  <data name="Welcome" xml:space="preserve">
-    <value>， 歡迎！</value>
-  </data>
-  <data name="Word" xml:space="preserve">
-    <value>單字</value>
-  </data>
-  <data name="WordCollocation" xml:space="preserve">
-    <value>用詞搭配</value>
-  </data>
-  <data name="Year" xml:space="preserve">
-    <value>年</value>
-  </data>
-  <data name="Yes" xml:space="preserve">
-    <value>是</value>
-  </data>
-  <data name="LogOff" xml:space="preserve">
-    <value>登出</value>
-  </data>
-  <data name="LogOn" xml:space="preserve">
-    <value>登入</value>
-  </data>
-  <data name="CopyRight" xml:space="preserve">
-    <value>版權所有不得轉載</value>
-  </data>
-  <data name="ChooseLanguage" xml:space="preserve">
-    <value>選擇語言</value>
-  </data>
-  <data name="Connect" xml:space="preserve">
-    <value>連結</value>
-  </data>
   <data name="Share" xml:space="preserve">
-    <value>分享</value>
+    <value>シェア</value>
+  </data>
+  <data name="ShareTo" xml:space="preserve">
+    <value>分享至</value>
   </data>
   <data name="Share_Facebook" xml:space="preserve">
     <value>分享至Facebook</value>
@@ -540,145 +546,85 @@
   <data name="Share_Twitter" xml:space="preserve">
     <value>分享至Twitter</value>
   </data>
-  <data name="ContactParagraph" xml:space="preserve">
-    <value>若您對本站有任何疑問或建議，歡迎與站長聯絡。</value>
+  <data name="SiteSearch" xml:space="preserve">
+    <value>サイト内を検索</value>
   </data>
-  <data name="Message" xml:space="preserve">
-    <value>留言</value>
+  <data name="SiteTitle" xml:space="preserve">
+    <value>単語のコロケーション</value>
   </data>
-  <data name="MessageRequired" xml:space="preserve">
-    <value>請輸入留言</value>
+  <data name="Source" xml:space="preserve">
+    <value>ソース</value>
   </data>
-  <data name="Send" xml:space="preserve">
-    <value>送出</value>
-  </data>
-  <data name="ContactCompleted" xml:space="preserve">
-    <value>留言已送出</value>
-  </data>
-  <data name="ContactCompletedParagraph" xml:space="preserve">
-    <value>謝謝您寶貴的意見。</value>
-  </data>
-  <data name="CheckConfirmEmail" xml:space="preserve">
-    <value>請檢查您的電郵以進行確認</value>
-  </data>
-  <data name="ConfirmAccountByLink" xml:space="preserve">
-    <value>請點擊這連結以確認新帳戶</value>
-  </data>
-  <data name="ConfirmYourAccount" xml:space="preserve">
-    <value>確認您的新帳戶</value>
-  </data>
-  <data name="EmailTaken" xml:space="preserve">
-    <value>這電郵已經註冊</value>
-  </data>
-  <data name="MaxPasswordLengthError" xml:space="preserve">
-    <value>密碼最多不能超過20個字元</value>
-  </data>
-  <data name="MinPasswordLengthError" xml:space="preserve">
-    <value>密碼最少要有6個字元</value>
-  </data>
-  <data name="PasswordLengthError" xml:space="preserve">
-    <value>密碼字數必須在 6 至 20 個之內</value>
-  </data>
-  <data name="RegisterAsNewUser" xml:space="preserve">
-    <value>註冊新帳號</value>
-  </data>
-  <data name="RememberMe" xml:space="preserve">
-    <value>保持登入狀態</value>
+  <data name="SourceText" xml:space="preserve">
+    <value>ソース：</value>
   </data>
   <data name="ThanksForConfirmAccount" xml:space="preserve">
-    <value>感謝確認。您現在可以進行登錄。</value>
-  </data>
-  <data name="UserNameEmailforLogin" xml:space="preserve">
-    <value>用戶名稱或電郵</value>
-  </data>
-  <data name="UserNameTaken" xml:space="preserve">
-    <value>這用戶名稱已經註冊</value>
-  </data>
-  <data name="UnderConstruction" xml:space="preserve">
-    <value>網站維修中，不日復工，謝謝。</value>
-  </data>
-  <data name="PleaseLogIn" xml:space="preserve">
-    <value>請進行登錄</value>
-  </data>
-  <data name="FunctionBeingImplemented" xml:space="preserve">
-    <value>該方法正在撰寫中，謝謝。</value>
-  </data>
-  <data name="SearchResult" xml:space="preserve">
-    <value>搜尋結果</value>
-  </data>
-  <data name="ConfirmDelete" xml:space="preserve">
-    <value>您確定要刪除這個項目嗎？</value>
-  </data>
-  <data name="ColPos" xml:space="preserve">
-    <value>搭配詞類</value>
-  </data>
-  <data name="PleaseSelect" xml:space="preserve">
-    <value>請選擇</value>
-  </data>
-  <data name="ColPosRequired" xml:space="preserve">
-    <value>請選擇搭配詞類</value>
-  </data>
-  <data name="WordRequired" xml:space="preserve">
-    <value>請輸入被搭配單字</value>
-  </data>
-  <data name="Definition" xml:space="preserve">
-    <value>定義</value>
-  </data>
-  <data name="SeeDefinition" xml:space="preserve">
-    <value>查看詳細定義</value>
-  </data>
-  <data name="UserNameEmailRequired" xml:space="preserve">
-    <value>請輸入用戶名稱或電郵</value>
-  </data>
-  <data name="ConfirmAccount" xml:space="preserve">
-    <value>確認帳號</value>
-  </data>
-  <data name="DearNewUser" xml:space="preserve">
-    <value>新用戶您好</value>
+    <value>確認に感謝します。これで、ログインすることができます。</value>
   </data>
   <data name="ThanksForRegister" xml:space="preserve">
-    <value>感謝註冊本站。</value>
+    <value>登録サイトに感謝します。</value>
   </data>
-  <data name="EmailNotConfirmed" xml:space="preserve">
-    <value>電郵尚未確認</value>
+  <data name="Title" xml:space="preserve">
+    <value>網頁錯誤</value>
   </data>
-  <data name="EmailNotConfirmedHeading" xml:space="preserve">
-    <value>電郵尚未確認</value>
+  <data name="ToLogin" xml:space="preserve">
+    <value>登入</value>
   </data>
-  <data name="EmailNotConfirmedParagraph" xml:space="preserve">
-    <value>對不起，您的電郵尚未確認，無法登錄。</value>
+  <data name="UnderConstruction" xml:space="preserve">
+    <value>ウェブサイトは建設中であり、まもなく再開されます。ありがとう。</value>
   </data>
-  <data name="InvalidLoginAttempt" xml:space="preserve">
-    <value>登錄失敗</value>
+  <data name="UnknownError" xml:space="preserve">
+    <value>未知的錯誤。</value>
   </data>
-  <data name="RequestAnotherConfirmEmailLink" xml:space="preserve">
-    <value>補發確認電郵連結</value>
+  <data name="UnknownErrorOccurred" xml:space="preserve">
+    <value>不明なエラーが発生しました</value>
+  </data>
+  <data name="UseOtherServicesLogin" xml:space="preserve">
+    <value>使用其他帳號登入。</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>ユーザー名</value>
+  </data>
+  <data name="UserNameEmailforLogin" xml:space="preserve">
+    <value>ユーザー名または電子メール</value>
+  </data>
+  <data name="UserNameEmailNotMatch" xml:space="preserve">
+    <value>名稱與電郵互不相符</value>
+  </data>
+  <data name="UserNameEmailRequired" xml:space="preserve">
+    <value>ユーザー名または電子メールを入力してください</value>
+  </data>
+  <data name="UserNamePasswordNotMatch" xml:space="preserve">
+    <value>名稱與密碼互不相符</value>
+  </data>
+  <data name="UserNameRequired" xml:space="preserve">
+    <value>請輸入名稱</value>
+  </data>
+  <data name="UserNameTaken" xml:space="preserve">
+    <value>ユーザ名が既に登録されてい</value>
   </data>
   <data name="UserNotFound" xml:space="preserve">
-    <value>找不到用戶登錄資料</value>
+    <value>は、ユーザーのログイン情報なし</value>
   </data>
-  <data name="CollocationPatternRequired" xml:space="preserve">
-    <value>請輸入搭配型態</value>
+  <data name="UsingAccountToLogin" xml:space="preserve">
+    <value>使用{0}帳號來登入</value>
   </data>
-  <data name="PatternDropDownListSelect" xml:space="preserve">
-    <value>- Select -</value>
+  <data name="verb" xml:space="preserve">
+    <value>動詞</value>
   </data>
-  <data name="DuplicatedEntry" xml:space="preserve">
-    <value>重覆輸入項目</value>
+  <data name="Web" xml:space="preserve">
+    <value>インターネット</value>
   </data>
-  <data name="Remark" xml:space="preserve">
-    <value>註解</value>
+  <data name="Welcome" xml:space="preserve">
+    <value>， ようこそ！</value>
   </data>
-  <data name="NeedRemark" xml:space="preserve">
-    <value>需要註解</value>
+  <data name="Word" xml:space="preserve">
+    <value>併置言葉</value>
   </data>
-  <data name="EntryZhtRequired" xml:space="preserve">
-    <value>請輸入繁中條目</value>
+  <data name="WordCollocation" xml:space="preserve">
+    <value>単語のコロケーション</value>
   </data>
-  <data name="EntryJapRequired" xml:space="preserve">
-    <value>請輸入日文條目</value>
-  </data>
-  <data name="EntryZhsRequired" xml:space="preserve">
-    <value>請輸入簡中條目</value>
+  <data name="WordRequired" xml:space="preserve">
+    <value>単語を入力してくださいとあった</value>
   </data>
 </root>

@@ -7,10 +7,10 @@ using BLL.Abstract;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using THResources;
 using UI.Controllers.Abstract;
 using UI.Helpers;
 using UI.Models;
-using WcResources;
 
 namespace UI.Controllers
 {

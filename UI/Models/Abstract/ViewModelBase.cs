@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using BLL;
 using BLL.Abstract;
-using WcResources;
+using THResources;
 
 namespace UI.Models.Abstract
 {
