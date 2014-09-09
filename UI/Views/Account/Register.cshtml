@@ -4,55 +4,58 @@
 }
 
 <style>
-	/*#register-form input {
-		width: 60%;
+	#register-form input {
+		width: 80%;
 	}
+	</style>
 
-	#alert {
-		width: 40%;
-		margin-left: -1em;
-	}*/
-</style>
 
-<h3>@ViewBag.Title</h3>
-<hr />
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { id = "register-form", role = "form" }))
-{
-	@Html.AntiForgeryToken()
-	@Html.ValidationSummary("", new { @class = "text-danger" })
 
-	<input type="hidden" id="duplicate" value="@Resources.DuplicatedEmail" />
-	<input type="hidden" id="invalid" value="@Resources.EmailFormatError" />
+<div class="span5">
+	<h3>@ViewBag.Title</h3>
+	<hr />
+	@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { id = "register-form", role = "form" }))
+	{
+		@Html.AntiForgeryToken()
+		@Html.ValidationSummary("", new { @class = "text-danger" })
 
-	<div class="container">
-		<p id="alert" class="alert marginBottom1em"></p>
-	</div>
+		<input type="hidden" id="duplicate" value="@Resources.DuplicatedEmail" />
+		<input type="hidden" id="invalid" value="@Resources.EmailFormatError" />
 
-	<div class="form-group">
-		@Html.TextBoxFor(m => m.Email, new { placeholder = Resources.Email })&nbsp;
-		@*<img id="imgOk" alt="ok" title="ok" src="~/img/ok.png" />*@
-		<i class="glyphicons-icon circle_ok" id="imgOk"></i>
-	</div>
+		<div class="">
+			<p id="alert" class="text-danger"></p>
+		</div>
+		
+			
+		
+		<div class="span4">
+			<div class="form-group">
+				@Html.TextBoxFor(m => m.Email, new { placeholder = Resources.Email, @class="" }) <i class="glyphicons-icon circle_ok" id="imgOk" style=""></i>
+			</div>
 
-	<div class="form-group">
-		@Html.TextBoxFor(m => m.UserName, new { placeholder = Resources.UserName })
-	</div>
+			<div class="form-group">
+				@Html.TextBoxFor(m => m.UserName, new { placeholder = Resources.UserName })
+			</div>
 
-	<div class="form-group">
-		@Html.PasswordFor(m => m.Password, new { placeholder = Resources.Password })
+			<div class="form-group">
+				@Html.PasswordFor(m => m.Password, new { placeholder = Resources.Password })
 
-	</div>
-	<div class="form-group">
+			</div>
+			<div class="form-group">
 
-		@Html.PasswordFor(m => m.ConfirmPassword, new { placeholder = Resources.ConfirmPassword })
+				@Html.PasswordFor(m => m.ConfirmPassword, new { placeholder = Resources.ConfirmPassword })
 
-	</div>
-	<div class="form-group">
+			</div>
+			<div class="form-group">
 
-		<button type="submit">@Resources.Register</button>
+				<button type="submit">@Resources.Register</button>
 
-	</div>
-}
+			</div>
+		</div>
+		
+	}
+</div>
+
 
 @section Scripts {
 	@Scripts.Render("~/bundles/jqueryval")
