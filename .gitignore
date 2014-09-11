@@ -3,7 +3,6 @@ GitHubClone
 UI/UI.csproj.user
 WordCollocation/
 DAL/Properties/
-DAL/app.config
 UI/Web.config
 UI/app.config
 UI/Web.release.config
@@ -27,4 +26,4 @@ UI/*.aspx.designer.cs
 BLL/*.csproj
 UI/*.csproj.*
 DAL/*.csproj
-DAL/*.config
+DAL/app.config
