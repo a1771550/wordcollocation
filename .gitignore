@@ -26,3 +26,5 @@ UI/*.aspx.cs
 UI/*.aspx.designer.cs
 BLL/*.csproj
 UI/*.csproj.*
+DAL/*.csproj
+DAL/*.config

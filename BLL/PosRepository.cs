@@ -43,6 +43,7 @@ namespace BLL
 		}
 
 		internal override string GetCacheName { get { return "GetPossCacheName"; } }
+		
 		public override List<Pos> GetList()
 		{
 			var pos = GetPoss();
@@ -64,7 +65,7 @@ namespace BLL
 		{
 			return GetList().SingleOrDefault(x => x.Id == id);
 		}
-
+		
 		public bool[] Add(Pos pos)
 		{
 			bool[] bRet = new bool[2];
@@ -93,7 +94,7 @@ namespace BLL
 			}
 			
 		}
-
+		
 		public bool Update(Pos pos)
 		{
 			try
@@ -119,7 +120,7 @@ namespace BLL
 			CacheHelper.Clear(GetCacheName);
 			return affectedRow == 1;
 		}
-
+		
 		public bool Delete(string id)
 		{
 			try

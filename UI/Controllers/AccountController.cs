@@ -83,7 +83,8 @@ namespace UI.Controllers
 
 			// This doen't count login failures towards lockout only two factor authentication
 			// To enable password failures to trigger lockout, change to shouldLockout: true
-			var result = await SignInHelper.PasswordSignIn(model.UserNameEmail, model.Password, model.RememberMe, shouldLockout: false);
+			//var result = await SignInHelper.PasswordSignIn(model.UserNameEmail, model.Password, model.RememberMe, shouldLockout: false);
+			Task<SignInStatus> result = SignInHelper.PasswordSignIn(model.UserNameEmail, model.Password, model.RememberMe, shouldLockout: false);
 
 			//Add this to check if the email was confirmed.
 			//if (!await UserManager.IsEmailConfirmedAsync(model.Id))
@@ -92,7 +93,7 @@ namespace UI.Controllers
 			//	return View(model);
 			//}
 
-			switch (result)
+			switch (result.Result)
 			{
 				case SignInStatus.EmailNotConfirmed:
 					TempData["returnUrl"] = returnUrl;

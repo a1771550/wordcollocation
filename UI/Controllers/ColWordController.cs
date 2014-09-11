@@ -13,8 +13,8 @@ namespace UI.Controllers
 		// for demo purpose...
 		private ActionResult Index(int page = 1)
 		{
-			var model = new CommonWordViewModel(WcEntity.ColWord, page);
-			return View("CommonWordList", model);
+			var model = new CommonViewModel(WcEntity.ColWord, page);
+			return View("CommonList", model);
 		}
 
 		[Authorize(Roles = "Editor")]

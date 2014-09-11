@@ -9,6 +9,9 @@ namespace UI
 		{
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+			routes.MapRoute("Login", "{controller}/{action}/{id}",
+				new { controller = "WcAccount", action = "Login", id = UrlParameter.Optional }, new { id = @"\d+" });
+
 			routes.MapRoute("CollocationEdit", "{controller}/{action}/{id}",
 				new {controller = "Collocation", action = "Edit", id = UrlParameter.Optional},new {id=@"\d+"});
 

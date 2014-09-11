@@ -14,6 +14,26 @@ namespace UI.Models.Abstract
 
 			switch (wcEntity)
 			{
+				case WcEntity.Role:
+					ddlEntity.Add(new SelectListItem { Selected = id == null, Text = string.Format("- {0} -", Resources.Pos), Value = "0" });
+					var rrepo = new WcRoleRepository();
+					List<WcRole> rList = rrepo.GetList();
+
+					foreach (var entity in rList)
+					{
+						PopulateDropDownList_UsersRoles(id,ref ddlEntity, entity);
+					}
+					break;
+				case WcEntity.User:
+					ddlEntity.Add(new SelectListItem { Selected = id == null, Text = string.Format("- {0} -", Resources.Pos), Value = "0" });
+					var urepo = new WcUserRepository();
+					List<WcUser> uList = urepo.GetList();
+
+					foreach (var entity in uList)
+					{
+						PopulateDropDownList_UsersRoles(id,ref ddlEntity, entity);
+					}
+					break;
 				case WcEntity.Pos:
 					ddlEntity.Add(new SelectListItem { Selected = id == null, Text = string.Format("- {0} -", Resources.Pos), Value = "0" });
 					var prepo = new PosRepository();
@@ -56,6 +76,16 @@ namespace UI.Models.Abstract
 			return ddlEntity;
 		}
 
+		private static void PopulateDropDownList_UsersRoles(string id,ref List<SelectListItem> ddlEntity, WcRole entity)
+		{
+			ddlEntity.Add(new SelectListItem
+			{
+				Text = entity.Name,
+				Value = entity.Id,
+				Selected = id == entity.Id
+			});
+		}
+
 		private static void PopulateDropDownList(WcBase entity, ref List<SelectListItem> ddlEntity, string id)
 		{
 			ddlEntity.Add(new SelectListItem
@@ -74,6 +104,8 @@ namespace UI.Models.Abstract
 		Word,
 		ColWord,
 		Collocation,
-		WcExample
+		WcExample,
+		User,
+		Role
 	}
 }

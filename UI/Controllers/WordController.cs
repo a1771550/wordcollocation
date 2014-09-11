@@ -14,8 +14,8 @@ namespace UI.Controllers
 		// for demo purpose...
 		private ActionResult Index(int page = 1)
 		{
-			var model = new CommonWordViewModel(WcEntity.Word, page);
-			return View("CommonWordList",model);
+			var model = new CommonViewModel(WcEntity.Word, page);
+			return View("CommonList",model);
 		}
 
 		[Authorize(Roles = "Editor")]

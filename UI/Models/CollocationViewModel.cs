@@ -29,13 +29,14 @@ namespace UI.Models
 		public CollocationViewModel()
 		{
 		}
-		
+
 		public CollocationViewModel(Collocation collocation)
 		{
 			this.collocation = collocation;
 		}
 
-		public CollocationViewModel(int page = 1) : this()
+		public CollocationViewModel(int page = 1)
+			: this()
 		{
 			this.page = page;
 			GetCollocationList();
@@ -66,7 +67,7 @@ namespace UI.Models
 				{
 					pagingInfo.TotalCollocations = _CollocationList.Count();
 					CollocationPagingInfo = pagingInfo;
-					_CollocationList = _CollocationList.Skip((page - 1)*PageSize).Take(PageSize).ToList();
+					_CollocationList = _CollocationList.Skip((page - 1) * PageSize).Take(PageSize).ToList();
 				}
 			}
 		}
@@ -76,17 +77,20 @@ namespace UI.Models
 			get
 			{
 				var id = collocation == null ? null : collocation.posId.ToString();
-				return new PosViewModel(id).PosDropDownList;
+				return new CommonViewModel(WcEntity.Pos, id).CommonDropDownList;
 			}
 		}
 
 		public List<SelectListItem> ColPosDropDownList
 		{
-			get { var id = collocation == null ? null : collocation.colPosId.ToString(); return new ColPosViewModel(id).ColPosDropDownList; }
+			get { 
+				var id = collocation == null ? null : collocation.colPosId.ToString();
+				return new CommonViewModel(WcEntity.ColPos, id).CommonDropDownList; 
+			}
 		}
 
-		public List<SelectListItem> WordDropDownList { get { var id = collocation == null ? null : collocation.wordId.ToString(); return new CommonWordViewModel(WcEntity.Word, id).CommonWordDropDownList; } }
-		public List<SelectListItem> ColWordDropDownList { get { var id = collocation == null ? null : collocation.colWordId.ToString(); return new CommonWordViewModel(WcEntity.ColWord,id).CommonWordDropDownList; } }
+		public List<SelectListItem> WordDropDownList { get { var id = collocation == null ? null : collocation.wordId.ToString(); return new CommonViewModel(WcEntity.Word, id).CommonDropDownList; } }
+		public List<SelectListItem> ColWordDropDownList { get { var id = collocation == null ? null : collocation.colWordId.ToString(); return new CommonViewModel(WcEntity.ColWord, id).CommonDropDownList; } }
 
 		public List<SelectListItem> CollocationPatternDropDownList
 		{
@@ -94,7 +98,7 @@ namespace UI.Models
 			{
 				var ddlEntity = new List<SelectListItem>();
 				ddlEntity.Add(new SelectListItem { Selected = collocation == null, Text = string.Format("- {0} -", Resources.CollocationPattern), Value = "0" });
-				ddlEntity.Add(new SelectListItem{Text=CollocationPattern.adjective_noun.ToString(),Value=CollocationPattern.adjective_noun.ToString(),Selected = collocation != null && collocation.CollocationPattern == CollocationPattern.adjective_noun});
+				ddlEntity.Add(new SelectListItem { Text = CollocationPattern.adjective_noun.ToString(), Value = CollocationPattern.adjective_noun.ToString(), Selected = collocation != null && collocation.CollocationPattern == CollocationPattern.adjective_noun });
 				ddlEntity.Add(new SelectListItem { Text = CollocationPattern.adverb_verb.ToString(), Value = CollocationPattern.adverb_verb.ToString(), Selected = collocation != null && collocation.CollocationPattern == CollocationPattern.adverb_verb });
 				ddlEntity.Add(new SelectListItem { Text = CollocationPattern.noun_verb.ToString(), Value = CollocationPattern.noun_verb.ToString(), Selected = collocation != null && collocation.CollocationPattern == CollocationPattern.noun_verb });
 				ddlEntity.Add(new SelectListItem { Text = CollocationPattern.phrase_noun.ToString(), Value = CollocationPattern.phrase_noun.ToString(), Selected = collocation != null && collocation.CollocationPattern == CollocationPattern.phrase_noun });

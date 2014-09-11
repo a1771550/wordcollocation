@@ -1,58 +1,56 @@
-﻿@using UI.Models.Abstract
-@model IEnumerable<BLL.Abstract.WcBase>
+﻿@using UI.Helpers
+@using UI.Models.Abstract
+@model UI.Models.CommonViewModel
 
 @{
-	WcEntity Entity = (WcEntity)Enum.Parse(typeof(WcEntity), ViewBag.Entity.ToString(), true);
+	ViewBag.Title = "List";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewDataDictionary dict = new ViewDataDictionary();
+	dict.Add("Entity", Model.Entity);
+	string action = User.IsInRole("Admin") ? "IndexForAdmin" : "IndexForEditor";
 }
 
-<div class="offset1"></div>
-<h2>@Entity.ToString()</h2>
+<h2>@Model.Entity</h2>
 
-	<p>
-		@Html.ActionLink("Create New", "Edit", Entity.ToString(), new { id = "0" }, null)
-	</p>
-	<table class="table">
-		<tr>
-			<th>
-				@Html.DisplayNameFor(model => model.Entry)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.EntryZht)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.EntryZhs)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.EntryJap)
-			</th>
+<p>
+	@Html.ActionLink("Create", "Edit", Model.Entity.ToString(), new { id = "0" }, null)
+</p>
+<table class="table">
+	<tr>
+		<th>
+			Entry
+		</th>
+		<th>
+			EntryZht
+		</th>
+		<th>EntryZhs</th>
+		<th>
+			EntryJap
+		</th>
+		<th></th>
+	</tr>
 
-			<th></th>
-		</tr>
+	@switch (Model.Entity)
+	{
+		case WcEntity.Pos:
+			@Html.Partial("_CommonListItemsPartial", Model.PosList, dict)
+			break;
+		case WcEntity.ColPos:
+			@Html.Partial("_CommonListItemsPartial", Model.ColPosList, dict)
+			break;
+		case WcEntity.Word:
+			@Html.Partial("_CommonListItemsPartial", Model.WordList, dict)
+			break;
+		case WcEntity.ColWord:
+			@Html.Partial("_CommonListItemsPartial", Model.ColWordList, dict)
+			break;
+	}
+</table>
 
-		@foreach (var item in Model)
-		{
-			<tr>
-				<td>
-					@Html.DisplayFor(modelItem => item.Entry)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.EntryZht)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.EntryZhs)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.EntryJap)
-				</td>
+@if (Model.Entity != WcEntity.Pos && Model.Entity != WcEntity.ColPos)
+{
+	<div class="pagination">
+		@Html.PageLinks(Model.PagingInfo, x => Url.Action(action, Model.Entity.ToString(), new { page = x }))
+	</div>
 
-				<td>
-					@Html.ActionLink("Edit", "Edit", Entity.ToString(), new { id = item.Id }, null)
-					@if (item.CanDel != null && item.CanDel.Value)
-					{
-						@Html.Raw(" | ") @Html.ActionLink("Delete", "Delete", Entity.ToString(), new { id = item.Id }, new { id = item.Id, returnUrl = Request.Url, onclick = string.Format("return confirm('{0}');", Resources.ConfirmDelete) })
-					}
-				</td>
-			</tr>
-		}
-
-	</table>
+}

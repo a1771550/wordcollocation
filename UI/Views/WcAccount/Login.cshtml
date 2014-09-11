@@ -23,14 +23,14 @@
 
 	<section id="loginForm">
 		@*<div id="modelStateErrors">
-			@if (ViewData.ModelState.Values.Any())
-			{
-				foreach (ModelError error in ViewData.ModelState.Values.SelectMany(modelState => modelState.Errors))
+				@if (ViewData.ModelState.Values.Any())
 				{
-					@Html.Raw(string.Format("<span>Model Errors: {0}</span><br/>", error));
+					foreach (ModelError error in ViewData.ModelState.Values.SelectMany(modelState => modelState.Errors))
+					{
+						@Html.Raw(string.Format("<span>Model Errors: {0}</span><br/>", error));
+					}
 				}
-			}
-		</div>*@
+			</div>*@
 
 		@using (Html.BeginForm("Login", "WcAccount", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login-form", role = "form", id = "login-form" }))
 		{
@@ -60,7 +60,7 @@
 				</div>
 			</div>
 			<p>
-				@Html.ActionLink(Resources.RegisterAsNewUser, "Register", "WcAccount")
+				@Html.ActionLink(Resources.RegisterAsNewUser, "Register")
 			</p>
 			@* Enable this once you have account confirmation enabled for password reset functionality
 				<p>

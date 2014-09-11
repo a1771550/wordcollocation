@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Web.Mvc;
 using BLL;
 using UI.Controllers.Abstract;
+using UI.Models;
 using UI.Models.Abstract;
 
 namespace UI.Controllers
@@ -14,9 +14,10 @@ namespace UI.Controllers
 		// GET: Pos
 		public ActionResult Index()
 		{
-			List<ColPos> colPoss = repo.GetList();
-			ViewBag.Entity = WcEntity.ColPos;
-			return View("CommonList", colPoss);
+			//List<ColPos> colPoss = repo.GetList();
+			//ViewBag.Entity = WcEntity.ColPos;
+			CommonViewModel model = new CommonViewModel(WcEntity.ColPos, 0);
+			return View("CommonList", model);
 		}
 
 		public ViewResult Edit(string id)

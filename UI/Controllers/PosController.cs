@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Web.Mvc;
 using BLL;
 using UI.Controllers.Abstract;
+using UI.Models;
 using UI.Models.Abstract;
 
 namespace UI.Controllers
@@ -14,26 +14,12 @@ namespace UI.Controllers
 
 		public ActionResult Index()
 		{
-			List<Pos> Poss = repo.GetList();
-			ViewBag.Entity = WcEntity.Pos;
-			return View("CommonList", Poss);
+			//List<Pos> Poss = repo.GetList();
+			//ViewBag.Entity = WcEntity.Pos;
+			CommonViewModel model = new CommonViewModel(WcEntity.Pos,0);
+			return View("CommonList", model);
 		}
 
-		//public ActionResult IndexForAdmin()
-		//{
-		//	return Index();
-		//}
-
-		//[Authorize(Roles = "Editor")]
-		//public ActionResult IndexForEditor()
-		//{
-		//	return Index();
-		//}
-
-		//public ActionResult Create()
-		//{
-		//	return View("CommonEdit", null);
-		//}
 		public ViewResult Edit(string id)
 		{
 			var pos = repo.GetObjectById(id);

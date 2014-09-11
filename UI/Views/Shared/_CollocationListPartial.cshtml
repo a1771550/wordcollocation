@@ -2,21 +2,6 @@
 @using UI.Models
 @model WcSearchViewModel
 
-@*@{
-	string action = null, controller = null;
-	switch (Model.ViewMode)
-	{
-		case ViewMode.Admin:
-			action = "Index";
-			controller = "Admin";
-			break;
-		case ViewMode.Home:
-			action = "Search";
-			controller = "Home";
-			break;
-	}
-}*@
-
 <div id="listDiv" class="marginTop3em alignLeft">
 	@foreach (var collocation in Model.CollocationList)
 	{

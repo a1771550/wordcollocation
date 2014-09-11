@@ -6,50 +6,65 @@ using UI.Models.Abstract;
 
 namespace UI.Models
 {
-	public class CommonWordViewModel : ViewModelBase
+	public class CommonViewModel : ViewModelBase
 	{
 		private readonly WcEntity entity;
 		public WcEntity Entity { get { return entity; } }
 		private readonly string id;
+		private PosRepository prepo;
+		private ColPosRepository cprepo;
 		private WordRepository wrepo;
 		private ColWordRepository cwrepo;
+		private List<Pos> _PosList;
+		private List<ColPos> _ColPosList;
 		private List<Word> _WordList;
 		private List<ColWord> _ColWordList;
 		private readonly int page;
-		public CommonWordPagingInfo PagingInfo { get; set; }
-		//public ColWordPagingInfo ColWordPagingInfo { get; set; }
+		public CommonPagingInfo PagingInfo { get; set; }
+		public List<Pos> PosList { get { return _PosList; } }
+		public List<ColPos> ColPosList { get { return _ColPosList; } }
 		public List<ColWord> ColWordList { get { return _ColWordList; } }
 		public List<Word> WordList { get { return _WordList; } }
 
 		public int PageSize = SiteConfiguration.WcViewPageSize;
 
-		public CommonWordViewModel(int page=1)
+		public CommonViewModel(int page = 1)
 		{
 			this.page = page;
 		}
 
-		public CommonWordViewModel(string id = null)
+		public CommonViewModel(string id = null)
 		{
 			this.id = id;
 		}
 
-		public CommonWordViewModel(WcEntity entity,string id = null):this(id)
+		public CommonViewModel(WcEntity entity, string id = null)
+			: this(id)
 		{
 			this.entity = entity;
 		}
 
-		public CommonWordViewModel(WcEntity entity, int page=1):this(page)
+		public CommonViewModel(WcEntity entity, int page = 1)
+			: this(page)
 		{
 			this.entity = entity;
-			SetCommonWordList();
-			SetPageInfo();
+			SetCommonList();
+			if(entity != WcEntity.Pos && entity!= WcEntity.ColPos)
+				SetPageInfo();
 		}
 
-
-		private void SetCommonWordList()
+		private void SetCommonList()
 		{
 			switch (entity)
 			{
+				case WcEntity.Pos:
+					prepo = new PosRepository();
+					_PosList = prepo.GetList();
+					break;
+				case WcEntity.ColPos:
+					cprepo = new ColPosRepository();
+					_ColPosList = cprepo.GetList();
+					break;
 				case WcEntity.Word:
 					wrepo = new WordRepository();
 					_WordList = wrepo.GetList();
@@ -63,9 +78,9 @@ namespace UI.Models
 		}
 		private void SetPageInfo()
 		{
-			CommonWordPagingInfo pagingInfo = new CommonWordPagingInfo();
+			CommonPagingInfo pagingInfo = new CommonPagingInfo();
 			pagingInfo.CurrentPage = page;
-			pagingInfo.WordsPerPage = PageSize;
+			pagingInfo.EntitiesPerPage = PageSize;
 
 			switch (entity)
 			{
@@ -81,7 +96,7 @@ namespace UI.Models
 
 		}
 
-		private void setPagingDetails(ref List<Word> wlist, ref List<ColWord> cwlist, CommonWordPagingInfo pagingInfo)
+		private void setPagingDetails(ref List<Word> wlist, ref List<ColWord> cwlist, CommonPagingInfo pagingInfo)
 		{
 			if (wlist != null && wlist.Count > 0)
 			{
@@ -99,7 +114,7 @@ namespace UI.Models
 			}
 		}
 
-		public List<SelectListItem> CommonWordDropDownList
+		public List<SelectListItem> CommonDropDownList
 		{
 			get
 			{

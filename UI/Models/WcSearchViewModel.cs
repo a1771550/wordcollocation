@@ -7,6 +7,7 @@ using System.Web.UI;
 using BLL;
 using BLL.Helpers;
 using UI.Controllers;
+using UI.Models.Abstract;
 
 namespace UI.Models
 {
@@ -148,7 +149,7 @@ namespace UI.Models
 
 		public List<SelectListItem> ColPosDropDownList
 		{
-			get { return new ColPosViewModel().ColPosDropDownList; }
+			get { return new CommonViewModel(WcEntity.ColPos, ColPosId).CommonDropDownList; }
 		}
 	}
 }
