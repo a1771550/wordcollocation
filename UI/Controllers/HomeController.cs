@@ -17,9 +17,6 @@ namespace UI.Controllers
 		public ActionResult Index()
 		{
 			WcSearchViewModel model = new WcSearchViewModel(ViewMode.Home);
-
-
-
 			return View(model);
 		}
 
