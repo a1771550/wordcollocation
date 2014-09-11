@@ -1,9 +1,7 @@
-﻿@model dynamic
-
+﻿@using UI.Helpers
 @{
-	ViewBag.Title = "title";
-	Layout = "_Layout";
+	ViewBag.Title = WcHelper.SetPageTitle(Resources.RegisterSuccess);
 }
 
-<h2>title</h2>
-<p>login ok!</p>
+<h2>@Resources.RegisterSuccess</h2>
+<p>@Resources.ThanksForRegister</p>

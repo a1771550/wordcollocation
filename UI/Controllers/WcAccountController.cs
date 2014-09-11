@@ -18,6 +18,14 @@ namespace UI.Controllers
 		Succeeded,
 		Failed,
 	}
+
+	public enum RoleType
+	{
+		Admin = 1,
+		Editors = 2,
+		Members = 3,
+		Guests = 4
+	}
 	public class WcAccountController : ControllerBase<WcBase>
 	{
 		private readonly WcUserRepository repo = new WcUserRepository();
@@ -128,37 +136,17 @@ namespace UI.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				var user = new WcUser { Name = model.UserName, Email = model.Email };
-				bool result1 = CreateUser(user, model.Password);
-				//assign the 'User' role to the new registrator; otherwise he/she will not be authenticated on next login...
-				string[] roles = { "Users" };
+				var user = new WcUser { Name = model.UserName, Email = model.Email, Password = model.Password, RoleId = (int)RoleType.Members };
 
-				var result2 = AddUserToRoles(user.Id, roles);
+				bool[] result = repo.Add(user);
 
-				if (result1 && result2)
-				{
+				if (result[1])
 					return View("SuccessfullRegister");
-				}
-				AddErrors_Register(result1, model);
+				return View(model);
 			}
 
 			// If we got this far, something failed, redisplay form
 			return View(model);
-		}
-
-		private void AddErrors_Register(bool result1, RegisterViewModel model)
-		{
-
-		}
-
-		private bool AddUserToRoles(string id, string[] roles)
-		{
-			return false;
-		}
-
-		private bool CreateUser(WcUser user, string password)
-		{
-			return false;
 		}
 
 		public ActionResult LogOff()

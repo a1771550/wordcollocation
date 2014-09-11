@@ -195,6 +195,11 @@ namespace UI.Helpers
 			Delete
 		}
 
+		public static string SetPageTitle(string pageTitle)
+		{
+			return Resources.SiteTitle + SiteConfiguration.TitleSeperator + Resources.RegisterSuccess;
+		}
+
 		public static List<WcExample> GetFormattedExamples(Collocation collocation)
 		{
 			string verb = collocation.Word;

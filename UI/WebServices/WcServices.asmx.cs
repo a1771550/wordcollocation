@@ -18,7 +18,7 @@ namespace UI.WebServices
 		public bool[] CheckEmail(string email)
 		{
 			bool[] bRet = new bool[2];
-			var repo = new AspNetUserRepository();
+			var repo = new WcUserRepository();
 			if (repo.CheckIfDuplicatedEmail(email)) bRet[0] = false;
 			else bRet[0] = true;
 

@@ -1,4 +1,5 @@
 using System;
+using System.Configuration;
 using System.Web.UI.WebControls;
 
 namespace UI.Models
@@ -126,7 +127,7 @@ namespace UI.Models
 		public static string KeyFileName { get { return System.Configuration.ConfigurationManager.AppSettings.Get("KeyFileName"); } }
 		public static string OxfordDictUrl { get { return System.Configuration.ConfigurationManager.AppSettings.Get("OxfordDictUrl"); } }
 		public static string ChDictUrl { get { return System.Configuration.ConfigurationManager.AppSettings.Get("ChDictUrl"); } }
-		public static string AppConfigFileName_Remote { get { return System.Configuration.ConfigurationManager.AppSettings.Get("AppConfigFileName_Remote"); } }
+		public static string TitleSeperator { get { return ConfigurationManager.AppSettings.Get("TitleSeperator"); } }
 		public static bool EnableOAuth { get { return bool.Parse(System.Configuration.ConfigurationManager.AppSettings.Get("EnableOAuth")); } }
 
 		public static string ContactMailSubject { get

@@ -84,18 +84,19 @@ namespace BLL
 						RoleName = row.RoleName
 					}
 				).ToList();
-		} 
+		}
+
+		public bool CheckIfDuplicatedEmail(string email)
+		{
+			var emailQuery = Adapter.EmailQuery(email);
+			return emailQuery != null && (emailQuery.Value == 1);
+		}
 
 		public bool[] Add(WcUser user)
 		{
 			bool[] bRet = new bool[2];
-			bRet[0] = CheckIfDuplicatedEntry(user.Name);
-
-			if (bRet[0])
-			{
-				bRet[1] = false;
-				return bRet;
-			}
+			/* No need to check duplicated email here, as it is done by Ajax + webservices already */
+			bRet[0]=true;
 
 			try
 			{
