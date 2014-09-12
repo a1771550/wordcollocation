@@ -9,7 +9,7 @@ using DAL.UsersRolesDSTableAdapters;
 
 namespace BLL
 {
-	public class WcRoleRepository : RepositoryBase<WcRole>, IRepository<WcRole>
+	public class WcRoleRepository : UserRoleRepositoryBase<WcRole>, IUserRoleRepository<WcRole>
 	{
 		private WcRolesTableAdapter adapter;
 		private const string CacheName = "WcRoleCache";
@@ -41,20 +41,21 @@ namespace BLL
 			return (from UsersRolesDS.WcRolesRow row in role
 					select new WcRole
 					{
-						Id = row.Id.ToString(),
+						Id = row.Id,
 						Name = row.Name,
-						RowVersion = row.RowVersion
+						RowVersion = row.RowVersion,
+						CanDel = row.CanDel
 					}).ToList();
 
 		}
-		internal override string GetCacheName
+		public string GetCacheName
 		{
 			get { return CacheName; }
 		}
 
-		public override WcRole GetObjectById(string id)
+		public override WcRole GetObjectById(int id)
 		{
-			return GetList().SingleOrDefault(x => x.Id.ToString() == id);
+			return GetList().SingleOrDefault(x => x.Id == id);
 		}
 
 		public bool[] Add(WcRole role)
@@ -72,7 +73,7 @@ namespace BLL
 			{
 				using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required))
 				{
-					var affectedRow = Convert.ToInt32(Adapter.Insert(role.Name));
+					var affectedRow = Convert.ToInt32(Adapter.Insert(role.Name,true));
 					scope.Complete();
 					bRet[1] = affectedRow == 1;
 					CacheHelper.Clear(GetCacheName);
@@ -83,6 +84,7 @@ namespace BLL
 			{
 				throw new Exception(ex.Message, ex.InnerException);
 			}
+			
 		}
 
 		public bool Update(WcRole role)
@@ -91,7 +93,7 @@ namespace BLL
 			{
 				using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required))
 				{
-					var affectedRow = Convert.ToInt32(Adapter.Update(role.Name, int.Parse(role.Id), role.RowVersion));
+					var affectedRow = Convert.ToInt32(Adapter.Update(role.Name, role.CanDel, role.Id, role.RowVersion));
 					scope.Complete();
 					CacheHelper.Clear(GetCacheName);
 					return affectedRow == 1;
@@ -103,11 +105,11 @@ namespace BLL
 			}
 		}
 
-		public bool Delete(string id)
+		public bool Delete(int id)
 		{
 			try
 			{
-				var Id = short.Parse(id);
+				var Id = id;
 				UsersRolesDS.WcRolesDataTable currentRole = Adapter.GetObjectById(Id);
 				if (currentRole.Count == 0) return false;
 				UsersRolesDS.WcRolesRow row = currentRole[0];
@@ -123,6 +125,11 @@ namespace BLL
 			{
 				throw new Exception(ex.Message, ex.InnerException);
 			}
+		}
+
+		public override bool UpdateCanDel(WcRole role)
+		{
+			return Adapter.UpdateCanDel(role.Id, role.RowVersion) == 1;
 		}
 	}
 }

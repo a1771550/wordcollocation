@@ -12,7 +12,7 @@ using UI.Models;
 namespace UI.Controllers
 {
     [Authorize(Roles = "Admin")]
-    public class UsersAdminController : ControllerBase<WcBase>
+    public class UsersAdminController : WcControllerBase<WcBase>
     {
         public UsersAdminController()
         {

@@ -327,6 +327,8 @@ namespace DAL {
             
             private global::System.Data.DataColumn columnRowVersion;
             
+            private global::System.Data.DataColumn columnCanDel;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public WcRolesDataTable() {
@@ -386,6 +388,14 @@ namespace DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CanDelColumn {
+                get {
+                    return this.columnCanDel;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -421,12 +431,13 @@ namespace DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public WcRolesRow AddWcRolesRow(string Name, byte[] RowVersion) {
+            public WcRolesRow AddWcRolesRow(string Name, byte[] RowVersion, bool CanDel) {
                 WcRolesRow rowWcRolesRow = ((WcRolesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Name,
-                        RowVersion};
+                        RowVersion,
+                        CanDel};
                 rowWcRolesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowWcRolesRow);
                 return rowWcRolesRow;
@@ -459,6 +470,7 @@ namespace DAL {
                 this.columnId = base.Columns["Id"];
                 this.columnName = base.Columns["Name"];
                 this.columnRowVersion = base.Columns["RowVersion"];
+                this.columnCanDel = base.Columns["CanDel"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -470,6 +482,8 @@ namespace DAL {
                 base.Columns.Add(this.columnName);
                 this.columnRowVersion = new global::System.Data.DataColumn("RowVersion", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRowVersion);
+                this.columnCanDel = new global::System.Data.DataColumn("CanDel", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCanDel);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -481,6 +495,8 @@ namespace DAL {
                 this.columnName.AllowDBNull = false;
                 this.columnName.MaxLength = 20;
                 this.columnRowVersion.ReadOnly = true;
+                this.columnCanDel.AllowDBNull = false;
+                this.columnCanDel.DefaultValue = ((bool)(true));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1017,6 +1033,17 @@ namespace DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool CanDel {
+                get {
+                    return ((bool)(this[this.tableWcRoles.CanDelColumn]));
+                }
+                set {
+                    this[this.tableWcRoles.CanDelColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsRowVersionNull() {
                 return this.IsNull(this.tableWcRoles.RowVersionColumn);
             }
@@ -1389,6 +1416,7 @@ namespace DAL.UsersRolesDSTableAdapters {
             tableMapping.ColumnMappings.Add("Id", "Id");
             tableMapping.ColumnMappings.Add("Name", "Name");
             tableMapping.ColumnMappings.Add("RowVersion", "RowVersion");
+            tableMapping.ColumnMappings.Add("CanDel", "CanDel");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -1399,17 +1427,19 @@ namespace DAL.UsersRolesDSTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RowVersion", global::System.Data.SqlDbType.Timestamp, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RowVersion", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [WcRoles] ([Name]) VALUES (@Name);\r\nSELECT Id, Name, RowVersion FROM " +
-                "WcRoles WHERE (Id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [WcRoles] ([Name], [CanDel]) VALUES (@Name, @CanDel);\r\nSELECT Id, Nam" +
+                "e, RowVersion, CanDel FROM WcRoles WHERE (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CanDel", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CanDel", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [WcRoles] SET [Name] = @Name WHERE (([Id] = @Original_Id) AND ([RowVersion" +
-                "] = @Original_RowVersion));\r\nSELECT Id, Name, RowVersion FROM WcRoles WHERE (Id " +
-                "= @Id)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [WcRoles] SET [Name] = @Name, [CanDel] = @CanDel WHERE (([Id] = @Original_" +
+                "Id) AND ([RowVersion] = @Original_RowVersion));\r\nSELECT Id, Name, RowVersion, Ca" +
+                "nDel FROM WcRoles WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CanDel", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CanDel", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RowVersion", global::System.Data.SqlDbType.Timestamp, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RowVersion", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1425,17 +1455,24 @@ namespace DAL.UsersRolesDSTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        Id, Name, RowVersion\r\nFROM            WcRoles";
+            this._commandCollection[0].CommandText = "SELECT        Id, Name, RowVersion, CanDel\r\nFROM            WcRoles";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT        Id, Name, RowVersion\r\nFROM            WcRoles\r\nWHERE        (Id = @" +
-                "Id)";
+            this._commandCollection[1].CommandText = "SELECT        CanDel, Id, Name, RowVersion, CanDel AS Expr1\r\nFROM            WcRo" +
+                "les\r\nWHERE        (Id = @Id)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "UPDATE       WcRoles\r\nSET                CanDel = 0\r\nWHERE        (Id = @Original" +
+                "_Id) AND (RowVersion = @Original_RowVersion)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RowVersion", global::System.Data.SqlDbType.Timestamp, 8, global::System.Data.ParameterDirection.Input, 0, 0, "RowVersion", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1549,13 +1586,14 @@ namespace DAL.UsersRolesDSTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Name) {
+        public virtual int Insert(string Name, bool CanDel) {
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Name));
             }
+            this.Adapter.InsertCommand.Parameters[1].Value = ((bool)(CanDel));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1576,21 +1614,22 @@ namespace DAL.UsersRolesDSTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Name, int Original_Id, byte[] Original_RowVersion, int Id) {
+        public virtual int Update(string Name, bool CanDel, int Original_Id, byte[] Original_RowVersion, int Id) {
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Name));
             }
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((bool)(CanDel));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_Id));
             if ((Original_RowVersion == null)) {
                 throw new global::System.ArgumentNullException("Original_RowVersion");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((byte[])(Original_RowVersion));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((byte[])(Original_RowVersion));
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Id));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1611,8 +1650,38 @@ namespace DAL.UsersRolesDSTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Name, int Original_Id, byte[] Original_RowVersion) {
-            return this.Update(Name, Original_Id, Original_RowVersion, Original_Id);
+        public virtual int Update(string Name, bool CanDel, int Original_Id, byte[] Original_RowVersion) {
+            return this.Update(Name, CanDel, Original_Id, Original_RowVersion, Original_Id);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdateCanDel(int Original_Id, byte[] Original_RowVersion) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            command.Parameters[0].Value = ((int)(Original_Id));
+            if ((Original_RowVersion == null)) {
+                throw new global::System.ArgumentNullException("Original_RowVersion");
+            }
+            else {
+                command.Parameters[1].Value = ((byte[])(Original_RowVersion));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     

@@ -519,4 +519,10 @@
   <data name="WordRequired" xml:space="preserve">
     <value>请输入被搭配单字</value>
   </data>
+  <data name="Role" xml:space="preserve">
+    <value>身份</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>用戶</value>
+  </data>
 </root>

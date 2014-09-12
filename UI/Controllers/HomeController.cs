@@ -9,7 +9,7 @@ using UI.Models;
 
 namespace UI.Controllers
 {
-	public class HomeController : ControllerBase<WcBase>
+	public class HomeController : WcControllerBase<WcBase>
 	{
 		public const string CollocationListSessionName = "CollocationList";
 		//

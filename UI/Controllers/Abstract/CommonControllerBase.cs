@@ -3,23 +3,14 @@ using System.Globalization;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
-using BLL.Abstract;
 using BLL.Helpers;
 
 namespace UI.Controllers.Abstract
 {
-	public enum CreateMode
+	public abstract class CommonControllerBase:Controller
 	{
-		WcExample,
-		Collocation
-	}
-
-    public abstract class ControllerBase<T> : Controller where T:WcBase
-    {
 		protected override IAsyncResult BeginExecuteCore(AsyncCallback callback, object state)
 		{
-			//string cultureName = RouteData.Values["culture"] as string ?? (Request.UserLanguages != null && Request.UserLanguages.Length > 0 ? Request.UserLanguages[0] : null);
-
 			string cultureName;
 
 			// attempt to read the culture cookie from request
@@ -38,6 +29,5 @@ namespace UI.Controllers.Abstract
 			return base.BeginExecuteCore(callback, state);
 		}
 
-	    
-    } 
+	}
 }

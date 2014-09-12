@@ -19,11 +19,11 @@
 			@Html.DisplayFor(modelItem => item.EntryJap)
 		</td>
 		<td>
-			@Html.ActionLink("Edit", "Edit", Entity, new { id = item.Id}, null)
+			@Html.ActionLink("Edit", "Edit", Entity, new { id = item.Id }, null)
 
 			@if (item.CanDel != null && item.CanDel.Value)
 				{
-				@Html.Raw(" | ") @Html.ActionLink("Delete", "Delete",Entity, new { id = item.Id }, new { id = item.Id, returnUrl = Request.Url, onclick = string.Format("return confirm('{0}');", Resources.ConfirmDelete) })
+				@Html.Raw(" | ") @Html.ActionLink("Delete", "Delete", Entity, new { id = item.Id }, new { id = item.Id, returnUrl = Request.Url, onclick = string.Format("return confirm('{0}');", Resources.ConfirmDelete) })
 				}
 		</td>
 	</tr>

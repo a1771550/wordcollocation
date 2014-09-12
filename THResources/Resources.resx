@@ -681,4 +681,13 @@
   <data name="Yes" xml:space="preserve">
     <value>是</value>
   </data>
+  <data name="NameRequired" xml:space="preserve">
+    <value>Name is required!</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>身份</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>用戶</value>
+  </data>
 </root>

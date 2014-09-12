@@ -9,7 +9,7 @@ using DAL.UsersRolesDSTableAdapters;
 
 namespace BLL
 {
-	public class WcUserRepository : RepositoryBase<WcUser>, IRepository<WcUser>
+	public class WcUserRepository : UserRoleRepositoryBase<WcUser>, IUserRoleRepository<WcUser>
 	{
 		private const string CacheName = "UserCache";
 
@@ -19,7 +19,8 @@ namespace BLL
 		{
 			get { return adapter ?? (adapter = new WcUsersTableAdapter()); }
 		}
-		internal override string GetCacheName
+
+		public string GetCacheName
 		{
 			get { return CacheName; }
 		}
@@ -41,22 +42,23 @@ namespace BLL
 
 		public override List<WcUser> GetList()
 		{
-			var user = GetUsers();
+			var user = GetUserRoles();
 			return (from UsersRolesDS.WcUsersRow row in user
 					select new WcUser
 					{
-						Id = row.Id.ToString(),
+						Id = row.Id,
 						Name = row.Name,
 						Password = row.Password,
 						Email = row.Email,
 						RowVersion = row.RowVersion,
-						RoleId = row.RoleId
+						RoleId = row.RoleId,
+						RoleName = row.RoleName
 					}
 				).ToList();
 		}
-		public override WcUser GetObjectById(string id)
+		public override WcUser GetObjectById(int id)
 		{
-			return GetUserRolesList().SingleOrDefault(x => x.Id.ToString() == id);
+			return GetUserRolesList().SingleOrDefault(x => x.Id == id);
 		}
 
 		public UsersRolesDS.WcUsersDataTable GetUserRoles()
@@ -75,7 +77,7 @@ namespace BLL
 			return (from UsersRolesDS.WcUsersRow row in user
 					select new WcUser
 					{
-						Id = row.Id.ToString(),
+						Id = row.Id,
 						Name = row.Name,
 						Password = row.Password,
 						Email = row.Email,
@@ -95,8 +97,13 @@ namespace BLL
 		public bool[] Add(WcUser user)
 		{
 			bool[] bRet = new bool[2];
-			/* No need to check duplicated email here, as it is done by Ajax + webservices already */
-			bRet[0]=true;
+			bRet[0] = CheckIfDuplicatedEntry(user.Name);
+
+			if (bRet[0])
+			{
+				bRet[1] = false;
+				return bRet;
+			}
 
 			try
 			{
@@ -121,7 +128,7 @@ namespace BLL
 			{
 				using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required))
 				{
-					var affectedRow = Convert.ToInt32(Adapter.Update(user.Name, user.Password, user.Email, user.RoleId, int.Parse(user.Id), user.RowVersion));
+					var affectedRow = Convert.ToInt32(Adapter.Update(user.Name, user.Password, user.Email, user.RoleId, user.Id, user.RowVersion));
 					scope.Complete();
 					CacheHelper.Clear(GetCacheName);
 					return affectedRow == 1;
@@ -133,11 +140,11 @@ namespace BLL
 			}
 		}
 
-		public bool Delete(string id)
+		public bool Delete(int id)
 		{
 			try
 			{
-				var Id = short.Parse(id);
+				var Id = id;
 				UsersRolesDS.WcUsersDataTable currentUser = Adapter.GetObjectById(Id);
 				if (currentUser.Count == 0) return false;
 				UsersRolesDS.WcUsersRow row = currentUser[0];

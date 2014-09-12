@@ -8,7 +8,7 @@ using UI.Models.Abstract;
 namespace UI.Controllers
 {
 	[Authorize(Roles = "Admin")]
-    public class ColPosController : ControllerBase<ColPos>
+    public class ColPosController : WcControllerBase<ColPos>
     {
 		private readonly ColPosRepository repo = new ColPosRepository();
 		// GET: Pos

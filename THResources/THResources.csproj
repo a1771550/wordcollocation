@@ -58,17 +58,22 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources.ja-jp.resx">
-      <Generator>ResXResourceReader</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.ja-jp.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CustomToolNamespace>THResources</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources.resx">
-      <Generator>ResXResourceReader</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <CustomToolNamespace>THResources</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources.zh-hans.resx">
-      <Generator>ResXResourceReader</Generator>
+      <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Resources.zh-hans.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CustomToolNamespace>THResources</CustomToolNamespace>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

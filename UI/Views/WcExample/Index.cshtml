@@ -2,7 +2,7 @@
 @model UI.Models.WcExampleViewModel
 
 @{
-	ViewBag.Title = "Index";
+	ViewBag.Title = "Example List";
 	Layout = "~/Views/Shared/_LayoutFullWidth.cshtml";
 	string action = User.IsInRole("Admin") ? "IndexForAdmin" : "IndexForEditor";
 }
@@ -15,7 +15,7 @@
 <h4>Example</h4>
 <div>
 	<p>
-		@Html.ActionLink("Create New", "Edit", "WcExample", new { id = 0 }, null)
+		@Html.ActionLink("Create", "Edit", "WcExample", new { id = 0 }, null)
 	</p>
 </div>
 

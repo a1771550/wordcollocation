@@ -60,6 +60,12 @@ namespace BLL
 		internal override string GetCacheName { get { return "GetWcExamplesCacheName"; } }
 		public override List<IGrouping<long, WcExample>> GetListInGroup()
 		{
+			var exList = GetList();
+			return exList.GroupBy(x=>x.CollocationId).OrderByDescending(x=>x.Key).ToList();
+		}
+
+		public override List<WcExample> GetList()
+		{
 			List<WcExample> exList = new List<WcExample>();
 			var examples = GetWcExamples();
 			foreach (var example in examples)
@@ -84,7 +90,7 @@ namespace BLL
 
 				exList.Add(ex);
 			}
-			return exList.GroupBy(x=>x.CollocationId).OrderByDescending(x=>x.Key).ToList();
+			return exList;
 		}
 
 

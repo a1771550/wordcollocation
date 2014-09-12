@@ -1,5 +1,4 @@
-﻿@using System.Diagnostics
-@using BLL.Helpers
+﻿@using BLL.Helpers
 @using UI.Helpers
 @{
 	var currentYear = DateTime.Now.Year;
@@ -60,28 +59,11 @@
 			<ul id="nav" class="@navClass">
 				<li class="active">@Html.ActionLink(Resources.Home, "Index", "Home")</li>
 
-				@if (Request.IsAuthenticated && User.IsInRole("Admin"))
-				{
-					<li>@Html.ActionLink("Roles", "Index", "RolesAdmin")</li>
-					<li>@Html.ActionLink("Users", "Index", "UsersAdmin")</li>
-				}
+				@Html.Partial("_UserRoleAdminLinks")
+
 				<li class="dropdown">
 					<a href="#" data-toggle="dropdown" class="dropdown-toggle">@Resources.ChooseLanguage <b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li>
-
-							@{
-								Debug.Assert(Request.Url != null, "Request.Url != null");
-							}
-							@Html.ActionLink("繁中", "SetCulture", "Home", new { culture = "zh-hant", returnUrl = Request.Url.AbsoluteUri }, null)
-						</li>
-						<li>
-							@Html.ActionLink("簡中", "SetCulture", "Home", new { culture = "zh-hans", returnUrl = Request.Url.AbsoluteUri }, null)
-						</li>
-						<li>
-							@Html.ActionLink("日本語", "SetCulture", "Home", new { culture = "ja-jp", returnUrl = Request.Url.AbsoluteUri }, null)
-						</li>
-					</ul>
+					@Html.Partial("_SetCultureDropDown")
 				</li>
 
 				<li>@Html.Partial("_LoginPartial")</li>
@@ -101,9 +83,7 @@
 		</div>
 		<hr>
 
-		<div class="row copyright footer">
-			<div class="span12">@footer</div>
-		</div>
+		@Html.Partial("_Footer", footer)
 	</div>
 	<!-- End Container -->
 	<!-- TODO: to bundle the following scripts upon deployment -->

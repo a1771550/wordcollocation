@@ -7,7 +7,7 @@ using UI.Models.Abstract;
 
 namespace UI.Controllers
 {
-	public class WordController : ControllerBase<Word>
+	public class WordController : WcControllerBase<Word>
 	{
 		private readonly WordRepository repo = new WordRepository();
 

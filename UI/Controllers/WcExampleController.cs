@@ -6,7 +6,7 @@ using UI.Models;
 
 namespace UI.Controllers
 {
-	public class WcExampleController : ControllerBase<WcExample>
+	public class WcExampleController : WcControllerBase<WcExample>
 	{
 		private readonly WcExampleRepository repo = new WcExampleRepository();
 

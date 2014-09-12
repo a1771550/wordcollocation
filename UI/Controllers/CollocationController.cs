@@ -8,7 +8,7 @@ using UI.Models;
 
 namespace UI.Controllers
 {
-	public class CollocationController : ControllerBase<Collocation>
+	public class CollocationController : WcControllerBase<Collocation>
 	{
 		private readonly CollocationRepository repo = new CollocationRepository();
 

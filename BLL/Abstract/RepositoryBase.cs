@@ -9,10 +9,7 @@ namespace BLL.Abstract
 		internal abstract string GetCacheName { get; }
 
 		[System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, true)]
-		public virtual List<T> GetList()
-		{
-			return null;
-		}
+		public abstract List<T> GetList();
 
 		public virtual List<IGrouping<long, T>> GetListInGroup()
 		{

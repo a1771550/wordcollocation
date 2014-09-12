@@ -627,4 +627,10 @@
   <data name="WordRequired" xml:space="preserve">
     <value>単語を入力してくださいとあった</value>
   </data>
+  <data name="Role" xml:space="preserve">
+    <value>役割</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>ユーザー</value>
+  </data>
 </root>

@@ -6,7 +6,7 @@ using UI.Helpers;
 
 namespace UI.Controllers
 {
-    public class ContactController : ControllerBase<WcBase>
+    public class ContactController : WcControllerBase<WcBase>
     {
 	    [HttpGet]
 	    public ActionResult Index()

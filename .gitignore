@@ -3,6 +3,7 @@ GitHubClone
 BLL/obj/
 BLL/bin/
 BLL/*.csproj
+BLL/*.csproj.*
 DAL/app.config
 DAL/bin/
 DAL/obj/

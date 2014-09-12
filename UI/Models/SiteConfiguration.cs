@@ -156,5 +156,7 @@ namespace UI.Models
 		}
 
 		public static string SiteUrl { get { return System.Configuration.ConfigurationManager.AppSettings.Get("SiteUrl"); } }
+
+		public static string EmailPattern { get { return ConfigurationManager.AppSettings.Get("EmailPattern"); } }
 	}
 }

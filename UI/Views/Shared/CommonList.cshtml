@@ -3,8 +3,7 @@
 @model UI.Models.CommonViewModel
 
 @{
-	ViewBag.Title = "List";
-	Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = Model.Entity + " List";
 	ViewDataDictionary dict = new ViewDataDictionary();
 	dict.Add("Entity", Model.Entity);
 	string action = User.IsInRole("Admin") ? "IndexForAdmin" : "IndexForEditor";
@@ -16,35 +15,40 @@
 	@Html.ActionLink("Create", "Edit", Model.Entity.ToString(), new { id = "0" }, null)
 </p>
 <table class="table">
-	<tr>
-		<th>
-			Entry
-		</th>
-		<th>
-			EntryZht
-		</th>
-		<th>EntryZhs</th>
-		<th>
-			EntryJap
-		</th>
-		<th></th>
-	</tr>
-
-	@switch (Model.Entity)
-	{
-		case WcEntity.Pos:
-			@Html.Partial("_CommonListItemsPartial", Model.PosList, dict)
-			break;
-		case WcEntity.ColPos:
+	<thead>
+		<tr>
+			<th>
+				Entry
+			</th>
+			<th>
+				EntryZht
+			</th>
+			<th>EntryZhs</th>
+			<th>
+				EntryJap
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		@switch (Model.Entity)
+		{
+			case WcEntity.Pos:
+				@Html.Partial("_CommonListItemsPartial", Model.PosList, dict)
+				break;
+			case WcEntity.ColPos:
 			@Html.Partial("_CommonListItemsPartial", Model.ColPosList, dict)
-			break;
-		case WcEntity.Word:
+				break;
+			case WcEntity.Word:
 			@Html.Partial("_CommonListItemsPartial", Model.WordList, dict)
-			break;
-		case WcEntity.ColWord:
+				break;
+			case WcEntity.ColWord:
 			@Html.Partial("_CommonListItemsPartial", Model.ColWordList, dict)
-			break;
-	}
+				break;
+		}
+	</tbody>
+	
 </table>
 
 @if (Model.Entity != WcEntity.Pos && Model.Entity != WcEntity.ColPos)

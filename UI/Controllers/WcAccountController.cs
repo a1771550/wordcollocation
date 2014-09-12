@@ -26,7 +26,7 @@ namespace UI.Controllers
 		Members = 3,
 		Guests = 4
 	}
-	public class WcAccountController : ControllerBase<WcBase>
+	public class WcAccountController : WcControllerBase<WcBase>
 	{
 		private readonly WcUserRepository repo = new WcUserRepository();
 		private List<WcUser> Users;

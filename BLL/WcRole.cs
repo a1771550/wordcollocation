@@ -2,9 +2,8 @@
 
 namespace BLL
 {
-	public class WcRole:WcBase
+	public class WcRole:UserRoleBase
 	{
-		public string Name { get; set; }
-		//public new DateTime RowVersion { get; set; }
+		public bool CanDel { get; set; }
 	}
 }
