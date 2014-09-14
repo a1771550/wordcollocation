@@ -1,4 +1,4 @@
-﻿@model UI.Models.RegisterViewModel
+﻿@model UI.Models.WcRegisterViewModel
 @{
 	ViewBag.Title = Resources.RegisterAsNewUser;
 }
@@ -17,18 +17,19 @@
 	@using (Html.BeginForm("Register", "WcAccount", FormMethod.Post, new { id = "register-form", role = "form" }))
 	{
 		@Html.AntiForgeryToken()
-		@Html.ValidationSummary("", new { @class = "text-danger" })
 
 		<input type="hidden" id="duplicate" value="@Resources.DuplicatedEmail" />
 		<input type="hidden" id="invalid" value="@Resources.EmailFormatError" />
+		<input type="hidden" id="pwdlength" value="@Resources.PasswordLengthError" />
 
-		<div class="">
+		<div class="span6">
+			@Html.ValidationSummary(false)
 			<p id="alert" class="text-danger"></p>
 		</div>
-
+		
 		<div class="span4">
 			<div class="form-group">
-				@Html.TextBoxFor(m => m.Email, new { placeholder = Resources.Email, @class = "" }) <i class="glyphicons-icon circle_ok" id="imgOk" style=""></i>
+				@Html.TextBoxFor(m => m.Email, new { placeholder = Resources.Email, @class = "" }) <i class="glyphicons-icon circle_ok" id="emailOk"></i>
 			</div>
 
 			<div class="form-group">
@@ -36,8 +37,8 @@
 			</div>
 
 			<div class="form-group">
-				@Html.PasswordFor(m => m.Password, new { placeholder = Resources.Password })
-
+				@Html.PasswordFor(m => m.Password, new { placeholder = Resources.Password }) <i class="glyphicons-icon circle_ok" id="pwdOk"></i>
+				<div class="text-smaller line-height-small">(@Resources.PasswordFormat)</div>
 			</div>
 			<div class="form-group">
 
@@ -57,58 +58,12 @@
 
 @section Scripts {
 	@Scripts.Render("~/bundles/jqueryval")
-
 	<script>
 		(function ($)
 		{
-			$("#alert").hide();
-			$("#imgOk").hide();
-			var duplicate = $("#duplicate").val();
-			var invalid = $("#invalid").val();
-
-			$("#Email").bind("keyup keydown keypress", function (e)
-			{
-				$("#alert").hide();
-				$("#imgOk").hide();
-			});
-
-			$("#Email").bind("change", function (e)
-			{
-				var email = $("#Email").val();
-
-				$.ajax({
-					url: '/WebServices/WcServices.asmx/CheckEmail',
-					type: 'POST',
-					dataType: 'json',
-					contentType: "application/json; charset=utf-8",
-					data: JSON.stringify({ email: email }),
-					success: function (data)
-					{
-						console.log(data.d);
-						var bRet = data.d;
-						if (!bRet[0])
-						{
-							$("#alert").show().text(duplicate);
-							$("#Email").focus();
-						}
-						else if (!bRet[1])
-						{
-							$("#alert").show().text(invalid);
-							$("#Email").focus();
-						}
-						else if (bRet[0] && bRet[1])
-						{
-							$("#alert").hide();
-							$("#imgOk").show();
-						}
-
-					},
-					error: function (data)
-					{
-						$('#alert').show().text('Error: ' + data.Message);
-					}
-				});
-			});
+			$("input[type=text]:first").focus();
 		})(jQuery);
+
 	</script>
+	<script src="~/js/register.js"></script>
 }

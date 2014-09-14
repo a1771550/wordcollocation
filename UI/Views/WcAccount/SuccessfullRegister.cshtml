@@ -2,5 +2,13 @@
 	ViewBag.Title = Resources.RegisterSuccess;
 }
 
+@section Scripts {
+
+	<script src="~/js/timezone.js"></script>
+}
+
 <h2>@Resources.RegisterSuccess</h2>
 <p>@Resources.ThanksForRegister</p>
+
+<p>Client Time: @ViewBag.ClientTime</p>
+

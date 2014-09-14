@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace UI
 {
@@ -8,6 +7,8 @@ namespace UI
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+			bundles.Add(new ScriptBundle("~/bundles/layout").Include("~/js/jquery-{version}.js").Include("~/js/bootstrap.js").Include("~/js/tinynav.js").Include("~/js/template.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 

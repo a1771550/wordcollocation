@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace BLL.Abstract
 {
@@ -13,18 +11,6 @@ namespace BLL.Abstract
 		public virtual bool UpdateCanDel(WcRole T)
 		{
 			return false;
-		}
-
-		public virtual bool CheckIfDuplicatedEntry(params string[] entities)
-		{
-			bool bRet = false;
-
-			if (entities.Length == 1) 
-			{
-				bRet = GetList().Any(x => x.Name.Equals(entities[0], StringComparison.OrdinalIgnoreCase));
-			}
-
-			return bRet;
 		}
 	}
 }

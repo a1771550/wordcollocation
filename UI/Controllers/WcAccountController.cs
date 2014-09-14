@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Web.UI.WebControls;
 using BLL;
-using BLL.Abstract;
+using BLL.Helpers;
+using RestSharp;
 using THResources;
 using UI.Controllers.Abstract;
+using UI.Helpers;
 using UI.Models;
 
 namespace UI.Controllers
@@ -26,8 +29,10 @@ namespace UI.Controllers
 		Members = 3,
 		Guests = 4
 	}
-	public class WcAccountController : WcControllerBase<WcBase>
+	public class WcAccountController : UserRoleControllerBase
 	{
+		private const string UserCookie = "UserName";
+		private const string GreetingsCookie = "Greetings";
 		private readonly WcUserRepository repo = new WcUserRepository();
 		private List<WcUser> Users;
 		//
@@ -44,7 +49,7 @@ namespace UI.Controllers
 		[HttpPost]
 		[AllowAnonymous]
 		[ValidateAntiForgeryToken]
-		public ActionResult Login(LoginViewModel model, string returnUrl)
+		public ActionResult Login(WcLoginViewModel model, string returnUrl)
 		{
 			if (!ModelState.IsValid)
 			{
@@ -57,15 +62,16 @@ namespace UI.Controllers
 				return View(model);
 			}
 
-			SignInStatus result = PasswordSignIn(model.UserNameEmail);
+			SignInStatus result = PasswordSignIn(model);
 
 			switch (result)
 			{
 				case SignInStatus.Success:
+
 					if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/") && !returnUrl.StartsWith("//") &&
 						!returnUrl.StartsWith("/\\"))
 					{
-						return Redirect(returnUrl);
+						return RedirectToAction(returnUrl);
 					}
 					return RedirectToAction("Index", "Home");
 				case SignInStatus.Failure:
@@ -75,33 +81,77 @@ namespace UI.Controllers
 			return null;
 		}
 
-		SignInStatus PasswordSignIn(string userEmail)
+
+		SignInStatus PasswordSignIn(WcLoginViewModel model)
 		{
 			//login uses email as username
-			WcUser user = FindByEmail(userEmail);
+			WcUser user = FindByEmail(model.UserNameEmail);
 			if (user == null)
 			{
 				//login uses username
-				user = FindByName(userEmail);
+				user = FindByName(model.UserNameEmail);
 				if (user == null) return SignInStatus.Failure;
+				CookieHelper.SetCookie(UserCookie, model.UserNameEmail, DateTime.Now.AddDays(1));
+				//Session["UserName"] = model.UserNameEmail;
 			}
 
 			if (CheckPassword(user))
 			{
-				return SignIn(user);
+				FormsAuthentication.SetAuthCookie(model.UserNameEmail, model.RememberMe);
+				//Session["UserName"] = repo.GetList().Single(x => x.Email == model.UserNameEmail).Name;
+				string name = repo.GetList().Single(x => x.Email == model.UserNameEmail).Name;
+				CookieHelper.SetCookie(UserCookie, name, DateTime.Now.AddDays(1));
+				string greetings = SetGreetings(name);
+				CookieHelper.SetCookie(GreetingsCookie,greetings,DateTime.Now.AddDays(1));
+				return SignInStatus.Success;
 			}
 
 			return SignInStatus.Failure;
 		}
 
-		private SignInStatus SignIn(WcUser user)
+		private string SetGreetings(string userName)
 		{
-			string userInfo = "name:" + user.Name + ";role:" + user.RoleName;
-			FormsAuthentication.SetAuthCookie(user.Name, false);
-			var cookie = new HttpCookie("UserInfo", userInfo);
-			Response.SetCookie(cookie);
-			return SignInStatus.Success;
+			DateTime dt = DateTime.UtcNow;
+			string client = dt.ToClientTime();
+			// client = 14/9/2014 16:26:50
+			const string pattern = @"(\s\d{2})";
+			Regex regex = new Regex(pattern, RegexOptions.IgnoreCase);
+			int hour = 0;
+			if (regex.IsMatch(client))
+			{
+				MatchCollection matches = regex.Matches(client);
+				foreach (Match match in matches)
+				{
+					hour = Convert.ToInt32(match.Groups[1].Value);
+					break;
+				}
+
+				string greetings = null;
+				string culture = CookieHelper.GetCookieValue("_culture");
+				switch (culture)
+				{
+					case null: // => set default value
+					case "zh-hans":
+					case "zh-hant":
+						if (hour <= 12)
+							greetings = SiteConfiguration.GoodMorning;
+						else if (hour > 12 && hour <= 17)
+							greetings = SiteConfiguration.GoodAfternoon;
+						else if (hour > 17) greetings = SiteConfiguration.GoodEvening;
+						break;
+					case "ja-jp":
+						if (hour <= 12)
+							greetings = SiteConfiguration.GoodMorningJap;
+						else if (hour > 12 && hour <= 17)
+							greetings = SiteConfiguration.GoodAfternoonJap;
+						else if (hour > 17) greetings = SiteConfiguration.GoodEveningJap;
+						break;
+				}
+				return string.Format("{0} {1}", userName, greetings);
+			}
+			return null;
 		}
+
 
 		private bool CheckPassword(WcUser user)
 		{
@@ -132,7 +182,7 @@ namespace UI.Controllers
 		[HttpPost]
 		[AllowAnonymous]
 		[ValidateAntiForgeryToken]
-		public ActionResult Register(RegisterViewModel model)
+		public ActionResult Register(WcRegisterViewModel model)
 		{
 			if (ModelState.IsValid)
 			{
@@ -141,7 +191,10 @@ namespace UI.Controllers
 				bool[] result = repo.Add(user);
 
 				if (result[1])
+				{
 					return View("SuccessfullRegister");
+				}
+
 				return View(model);
 			}
 
@@ -152,6 +205,9 @@ namespace UI.Controllers
 		public ActionResult LogOff()
 		{
 			FormsAuthentication.SignOut();
+			CookieHelper.DeleteCookie("UserName");
+			CookieHelper.DeleteCookie("Greetings");
+			Session.Abandon();
 			return RedirectToAction("Index", "Home");
 		}
 	}

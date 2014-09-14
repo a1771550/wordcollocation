@@ -7,11 +7,13 @@ using UI.Models.Abstract;
 
 namespace UI.Controllers
 {
-    public class ColWordController : WcControllerBase<ColWord>
+    public class ColWordController : WcControllerBase
     {
 		private readonly ColWordRepository repo = new ColWordRepository();
+
+		[Authorize]
 		// for demo purpose...
-		private ActionResult Index(int page = 1)
+		public ActionResult Index(int page = 1)
 		{
 			var model = new CommonViewModel(WcEntity.ColWord, page);
 			return View("CommonList", model);

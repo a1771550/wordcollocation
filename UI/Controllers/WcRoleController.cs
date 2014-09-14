@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Web.Mvc;
 using BLL;
+using UI.Controllers.Abstract;
 using UI.Models;
 using UI.Models.Abstract;
 
 namespace UI.Controllers
 {
 	[Authorize(Roles = "Admin")]
-	public class WcRoleController : Controller
+	public class WcRoleController : UserRoleControllerBase
 	{
 		readonly WcRoleRepository repo = new WcRoleRepository();
 		private WcUserRoleModelView model;
@@ -56,16 +57,18 @@ namespace UI.Controllers
 					}
 					else // Edit
 					{
-
+						//TODO
 					}
 				}
 			}
-			catch (Exception ex)
+			catch (Exception exception)
 			{
-				throw new Exception(ex.Message, ex.InnerException);
+				ViewBag.ErrorMessage = exception.Message;
+				ViewBag.InnerMessage = exception.InnerException;
+				return View("Edit");
 			}
 
-			return View("Index");
+			return null;
 		}
 
 		public ActionResult Delete(string id)

@@ -486,7 +486,7 @@
   <data name="UserName" xml:space="preserve">
     <value>用户名称</value>
   </data>
-  <data name="UserNameEmailforLogin" xml:space="preserve">
+  <data name="UserNameEmailForLogin" xml:space="preserve">
     <value>用户名称或电子邮件</value>
   </data>
   <data name="UserNameEmailNotMatch" xml:space="preserve">
@@ -524,5 +524,17 @@
   </data>
   <data name="User" xml:space="preserve">
     <value>用戶</value>
+  </data>
+  <data name="ThisPageUnderConstruction" xml:space="preserve">
+    <value>这页在建构中，请稍​​后再来访。</value>
+  </data>
+  <data name="GoodAfternoon" xml:space="preserve">
+    <value>午安</value>
+  </data>
+  <data name="GoodEvening" xml:space="preserve">
+    <value>晚安</value>
+  </data>
+  <data name="GoodMorning" xml:space="preserve">
+    <value>早安</value>
   </data>
 </root>

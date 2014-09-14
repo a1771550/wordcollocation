@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
 using System.Text.RegularExpressions;
 using System.Web.Services;
 using BLL;
@@ -14,7 +13,7 @@ namespace UI.WebServices
 	/// <summary>
 	/// Summary description for WcServices
 	/// </summary>
-	[WebService(Namespace = "http://www.translationhall.com/")]
+	[WebService(Namespace = "http://www.translationhall.com/WebServices")]
 	[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 	[System.ComponentModel.ToolboxItem(false)]
 	// To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
@@ -41,6 +40,7 @@ namespace UI.WebServices
 			return null;
 		}
 		
+/*
 		private IEnumerable<UserRoleBase> GetUrList(WcEntity entity)
 		{
 			switch (entity)
@@ -54,6 +54,7 @@ namespace UI.WebServices
 			}
 			return null;
 		}
+*/
 
 		[WebMethod]
 		public bool[] CheckEmail(string email)
@@ -82,6 +83,14 @@ namespace UI.WebServices
 			}
 
 			return bRet;
+		}
+
+		[WebMethod]
+		public bool CheckPasswordLength(string package)
+		{
+			var min = SiteConfiguration.MinPasswordLength;
+			var max = SiteConfiguration.MaxPasswordLength;
+			return package.Length >= min && package.Length <= max;
 		}
 	}
 }

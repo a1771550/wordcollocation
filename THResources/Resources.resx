@@ -633,7 +633,7 @@
   <data name="UserName" xml:space="preserve">
     <value>用戶名稱</value>
   </data>
-  <data name="UserNameEmailforLogin" xml:space="preserve">
+  <data name="UserNameEmailForLogin" xml:space="preserve">
     <value>用戶名稱或電郵</value>
   </data>
   <data name="UserNameEmailNotMatch" xml:space="preserve">
@@ -689,5 +689,17 @@
   </data>
   <data name="User" xml:space="preserve">
     <value>用戶</value>
+  </data>
+  <data name="ThisPageUnderConstruction" xml:space="preserve">
+    <value>這頁在建構中，請稍後再來訪。</value>
+  </data>
+  <data name="GoodAfternoon" xml:space="preserve">
+    <value>午安</value>
+  </data>
+  <data name="GoodEvening" xml:space="preserve">
+    <value>晚安</value>
+  </data>
+  <data name="GoodMorning" xml:space="preserve">
+    <value>早安</value>
   </data>
 </root>

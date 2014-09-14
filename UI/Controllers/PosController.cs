@@ -8,7 +8,7 @@ using UI.Models.Abstract;
 namespace UI.Controllers
 {
 	[Authorize(Roles = "Admin")]
-	public class PosController : WcControllerBase<Pos>
+	public class PosController : WcControllerBase
 	{
 		private readonly PosRepository repo = new PosRepository();
 

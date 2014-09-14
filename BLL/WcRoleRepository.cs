@@ -58,10 +58,15 @@ namespace BLL
 			return GetList().SingleOrDefault(x => x.Id == id);
 		}
 
+		private bool CheckIfDuplicatedRole(string role)
+		{
+			return Adapter.CheckIfDuplicatedRole(role) == 1;
+		}
+
 		public bool[] Add(WcRole role)
 		{
 			bool[] bRet = new bool[2];
-			bRet[0] = CheckIfDuplicatedEntry(role.Name);
+			bRet[0] = CheckIfDuplicatedRole(role.Name);
 
 			if (bRet[0])
 			{

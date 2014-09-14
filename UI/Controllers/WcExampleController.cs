@@ -6,12 +6,13 @@ using UI.Models;
 
 namespace UI.Controllers
 {
-	public class WcExampleController : WcControllerBase<WcExample>
+	public class WcExampleController : WcControllerBase
 	{
 		private readonly WcExampleRepository repo = new WcExampleRepository();
 
+		[Authorize]
 		// for demo purpose...
-		private ActionResult Index(int page = 1)
+		public ActionResult Index(int page = 1)
 		{
 			var model = new WcExampleViewModel(page);
 			return View("Index",model);

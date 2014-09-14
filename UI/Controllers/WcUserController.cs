@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BLL;
 using UI.Controllers.Abstract;
 using UI.Models;
 using UI.Models.Abstract;
 
 namespace UI.Controllers
 {
-    public class WcUserController : UserRoleControllerBase<WcUser>
+    public class WcUserController : UserRoleControllerBase
     {
 		//private readonly WcUserRepository repo = new WcUserRepository();
 		private WcUserRoleModelView model;
@@ -32,8 +31,18 @@ namespace UI.Controllers
 		[HttpPost]
 		public ActionResult Edit(int id, string name)
 		{
+			try
+			{
 
-			return View("Index");
+
+			}
+			catch (Exception exception)
+			{
+				ViewBag.ErrorMessage = exception.Message;
+				ViewBag.InnerMessage = exception.InnerException;
+				return View("Edit");
+			}
+			return null;
 		}
 
 		public ActionResult Delete(string id)

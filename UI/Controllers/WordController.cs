@@ -7,12 +7,13 @@ using UI.Models.Abstract;
 
 namespace UI.Controllers
 {
-	public class WordController : WcControllerBase<Word>
+	public class WordController : WcControllerBase
 	{
 		private readonly WordRepository repo = new WordRepository();
 
+		[Authorize]
 		// for demo purpose...
-		private ActionResult Index(int page = 1)
+		public ActionResult Index(int page = 1)
 		{
 			var model = new CommonViewModel(WcEntity.Word, page);
 			return View("CommonList",model);

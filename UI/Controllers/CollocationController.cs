@@ -8,12 +8,13 @@ using UI.Models;
 
 namespace UI.Controllers
 {
-	public class CollocationController : WcControllerBase<Collocation>
+	public class CollocationController : WcControllerBase
 	{
 		private readonly CollocationRepository repo = new CollocationRepository();
 
+		[Authorize]
 		// for demo purpose...
-		private ActionResult Index(int page = 1)
+		public ActionResult Index(int page = 1)
 		{
 			var model = new CollocationViewModel(page);
 			return View("Index",model);

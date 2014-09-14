@@ -1,28 +1,33 @@
+﻿@using UI.Helpers
 @{
 	string navClass = "nav ww-nav pull-right hidden-phone";
+	string greetings = null;
 	if (Request.IsAuthenticated)
 	{
 		navClass = "nav ww-nav-admin pull-right hidden-phone";
+		greetings = CookieHelper.GetCookieValue("Greetings");
 	}
 }
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "WcAccount", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" })) {
-        @Html.AntiForgeryToken()
+	using (Html.BeginForm("LogOff", "WcAccount", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+	{
+		@Html.AntiForgeryToken()
 
-        <ul class="@navClass" style="padding-top:0;">
-	        <li>
-		        @Html.ActionLink(User.Identity.Name, "Index", "ManageUsers", null, new { title = "Manage" })
-	        </li>
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">@Resources.LogOff</a></li>
-        </ul>
-    }
+		<ul class="@navClass" style="padding-top:0;">
+			<li><a href="javascript:document.getElementById('logoutForm').submit()">@Resources.LogOff</a></li>
+		</ul>
+	}
+	<span class="text-small">@greetings</span>
 }
-else {
-    <ul class="@navClass" style="padding-top:0;">
-        <li>@if (Request.Url != null)
-            {
-	            @Html.ActionLink(Resources.LogOn, "Login", "WcAccount", null, new { id = "loginLink", returnUrl=Request.Url.PathAndQuery })
-            }</li>
-    </ul>
+else
+{
+	<ul class="@navClass" style="padding-top:0;">
+		<li>
+			@if (Request.Url != null)
+			{
+				@Html.ActionLink(Resources.LogOn, "Login", "WcAccount", null, new { id = "loginLink", returnUrl = Request.Url.PathAndQuery })
+			}
+	</li>
+</ul>
 }

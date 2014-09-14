@@ -72,27 +72,20 @@
 		<hr>
 
 		<div class="row main-content">
-				<div class="offset3 span12 zone-content">
-					@Html.Partial("_AdminLinksPartial")
-				</div>
+			<div class="offset3 span12 zone-content">
+				@Html.Partial("_AdminLinksPartial")
+			</div>
 				
-				<div class="span12 zone-content">
-					@RenderBody()
-				</div>
+			<div class="span12 zone-content">
+				@RenderBody()
+			</div>
 		</div>
 		<hr>
 
 		@Html.Partial("_Footer",footer)
 	</div>
-	<!-- End Container -->
-	<!-- TODO: to bundle the following scripts upon deployment -->
-	<!-- Javascript
-	================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="~/js/jquery-1.9.1.js"></script>
-	<script src="~/js/bootstrap.js"></script>
-	<script src="~/js/tinynav.js"></script>
-	<script src="~/js/template.js"></script>
+	@*@Html.Partial("_ScriptsSection") => can't work in partial*@
+	@Scripts.Render("~/bundles/layout")
 	@RenderSection("scripts", required: false)
 	@Html.RenderJavaScripts()
 </body>

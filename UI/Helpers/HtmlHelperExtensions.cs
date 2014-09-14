@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text;
-using System.Web;
 using System.Web.Mvc;
 
 namespace UI.Helpers
@@ -16,7 +13,7 @@ namespace UI.Helpers
 										 string scriptURL)
 		{
 			List<string> scriptList = htmlHelper.ViewContext.HttpContext
-			  .Items[HtmlHelperExtensions._jSViewDataName] as List<string>;
+			  .Items[_jSViewDataName] as List<string>;
 			if (scriptList != null)
 			{
 				if (!scriptList.Contains(scriptURL))
@@ -29,7 +26,7 @@ namespace UI.Helpers
 				scriptList = new List<string>();
 				scriptList.Add(scriptURL);
 				htmlHelper.ViewContext.HttpContext
-				  .Items.Add(HtmlHelperExtensions._jSViewDataName, scriptList);
+				  .Items.Add(_jSViewDataName, scriptList);
 			}
 		}
 
@@ -38,7 +35,7 @@ namespace UI.Helpers
 			StringBuilder result = new StringBuilder();
 
 			List<string> scriptList = HtmlHelper.ViewContext.HttpContext
-			  .Items[HtmlHelperExtensions._jSViewDataName] as List<string>;
+			  .Items[_jSViewDataName] as List<string>;
 			if (scriptList != null)
 			{
 				foreach (string script in scriptList)
@@ -55,7 +52,7 @@ namespace UI.Helpers
 		public static void AddStyle(this HtmlHelper htmlHelper, string styleURL)
 		{
 			List<string> styleList = htmlHelper.ViewContext.HttpContext
-			  .Items[HtmlHelperExtensions._styleViewDataName] as List<string>;
+			  .Items[_styleViewDataName] as List<string>;
 
 			if (styleList != null)
 			{
@@ -69,7 +66,7 @@ namespace UI.Helpers
 				styleList = new List<string>();
 				styleList.Add(styleURL);
 				htmlHelper.ViewContext.HttpContext
-				  .Items.Add(HtmlHelperExtensions._styleViewDataName, styleList);
+				  .Items.Add(_styleViewDataName, styleList);
 			}
 		}
 
@@ -78,7 +75,7 @@ namespace UI.Helpers
 			StringBuilder result = new StringBuilder();
 
 			List<string> styleList = htmlHelper.ViewContext.HttpContext
-			  .Items[HtmlHelperExtensions._styleViewDataName] as List<string>;
+			  .Items[_styleViewDataName] as List<string>;
 
 			if (styleList != null)
 			{

@@ -817,6 +817,33 @@ namespace THResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 午安.
+        /// </summary>
+        public static string GoodAfternoon {
+            get {
+                return ResourceManager.GetString("GoodAfternoon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 晚安.
+        /// </summary>
+        public static string GoodEvening {
+            get {
+                return ResourceManager.GetString("GoodEvening", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 早安.
+        /// </summary>
+        public static string GoodMorning {
+            get {
+                return ResourceManager.GetString("GoodMorning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 您好，以下是您的密碼，請小心儲存，謝謝!!.
         /// </summary>
         public static string HereIsYourPassword {
@@ -1564,6 +1591,15 @@ namespace THResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 這頁在建構中，請稍後再來訪。.
+        /// </summary>
+        public static string ThisPageUnderConstruction {
+            get {
+                return ResourceManager.GetString("ThisPageUnderConstruction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 網頁錯誤.
         /// </summary>
         public static string Title {
@@ -1638,9 +1674,9 @@ namespace THResources {
         /// <summary>
         ///   Looks up a localized string similar to 用戶名稱或電郵.
         /// </summary>
-        public static string UserNameEmailforLogin {
+        public static string UserNameEmailForLogin {
             get {
-                return ResourceManager.GetString("UserNameEmailforLogin", resourceCulture);
+                return ResourceManager.GetString("UserNameEmailForLogin", resourceCulture);
             }
         }
         

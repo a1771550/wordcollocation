@@ -1,6 +1,4 @@
-﻿using BLL.Abstract;
-
-namespace UI.Controllers.Abstract
+﻿namespace UI.Controllers.Abstract
 {
 	public enum CreateMode
 	{
@@ -8,7 +6,8 @@ namespace UI.Controllers.Abstract
 		Collocation
 	}
 
-    public abstract class WcControllerBase<T> : CommonControllerBase where T:WcBase
+    public abstract class WcControllerBase : CommonControllerBase
     {
+		
     } 
 }

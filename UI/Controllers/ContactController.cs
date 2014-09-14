@@ -1,12 +1,11 @@
 ﻿using System.Web.Mvc;
 using BLL;
-using BLL.Abstract;
 using UI.Controllers.Abstract;
 using UI.Helpers;
 
 namespace UI.Controllers
 {
-    public class ContactController : WcControllerBase<WcBase>
+    public class ContactController : WcControllerBase
     {
 	    [HttpGet]
 	    public ActionResult Index()

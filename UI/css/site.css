@@ -203,9 +203,6 @@ select {
 	text-indent: 1em;
 }
 
-.footer {
-}
-
 .fLeft {
 	float: left;
 }
@@ -267,3 +264,18 @@ ul#letters {
 	text-align: left;
 }
 
+.text-small {
+	font-size: .8em;
+}
+
+.text-smaller {
+		font-size: .7em;
+	}
+.line-height-small {
+	line-height: 90%;
+}
+.validation-summary-errors ul
+{
+    list-style-type: none;
+	text-indent: -1.5em;
+}

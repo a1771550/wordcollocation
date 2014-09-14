@@ -2,14 +2,13 @@
 using System.Web;
 using System.Web.Mvc;
 using BLL;
-using BLL.Abstract;
 using BLL.Helpers;
 using UI.Controllers.Abstract;
 using UI.Models;
 
 namespace UI.Controllers
 {
-	public class HomeController : WcControllerBase<WcBase>
+	public class HomeController : WcControllerBase
 	{
 		public const string CollocationListSessionName = "CollocationList";
 		//

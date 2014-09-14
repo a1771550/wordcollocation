@@ -1,5 +1,5 @@
 ﻿@using UI.Models
-@model LoginViewModel
+@model WcLoginViewModel
 
 @{
 	ViewBag.Title = Resources.LogOn;
@@ -32,7 +32,7 @@
 				}
 			</div>*@
 
-		@using (Html.BeginForm("Login", "WcAccount", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login-form", role = "form", id = "login-form" }))
+		@using (Html.BeginForm("Login", "WcAccount", new {ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login-form", role = "form", id = "login-form" }))
 		{
 			@Html.AntiForgeryToken()
 
@@ -41,7 +41,7 @@
 			<div class="form-group">
 				<div class="form-group">
 					<div class="text">
-						@Html.TextBoxFor(m => m.UserNameEmail, new { placeholder = Resources.UserNameEmailforLogin })
+						@Html.TextBoxFor(m => m.UserNameEmail, new { placeholder = Resources.UserNameEmailForLogin })
 					</div>
 				</div>
 			</div>

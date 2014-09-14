@@ -90,14 +90,14 @@ namespace BLL
 
 		public bool CheckIfDuplicatedEmail(string email)
 		{
-			var emailQuery = Adapter.EmailQuery(email);
-			return emailQuery != null && (emailQuery.Value == 1);
+			return Convert.ToBoolean(Adapter.CheckIfDuplicatedEmail(email));
 		}
 
 		public bool[] Add(WcUser user)
 		{
 			bool[] bRet = new bool[2];
-			bRet[0] = CheckIfDuplicatedEntry(user.Name);
+			
+			bRet[0] = CheckIfDuplicatedEmail(user.Name);
 
 			if (bRet[0])
 			{

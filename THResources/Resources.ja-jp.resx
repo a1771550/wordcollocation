@@ -585,7 +585,7 @@
   <data name="UserName" xml:space="preserve">
     <value>ユーザー名</value>
   </data>
-  <data name="UserNameEmailforLogin" xml:space="preserve">
+  <data name="UserNameEmailForLogin" xml:space="preserve">
     <value>ユーザー名または電子メール</value>
   </data>
   <data name="UserNameEmailNotMatch" xml:space="preserve">
@@ -632,5 +632,17 @@
   </data>
   <data name="User" xml:space="preserve">
     <value>ユーザー</value>
+  </data>
+  <data name="ThisPageUnderConstruction" xml:space="preserve">
+    <value>このページの構成では、後でもう一度ご覧ください。</value>
+  </data>
+  <data name="GoodAfternoon" xml:space="preserve">
+    <value>こんにちは</value>
+  </data>
+  <data name="GoodEvening" xml:space="preserve">
+    <value>おやすみなさい</value>
+  </data>
+  <data name="GoodMorning" xml:space="preserve">
+    <value>おはよう</value>
   </data>
 </root>
