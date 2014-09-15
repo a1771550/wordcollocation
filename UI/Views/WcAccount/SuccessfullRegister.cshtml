@@ -3,12 +3,11 @@
 }
 
 @section Scripts {
-
-	<script src="~/js/timezone.js"></script>
+	<script src="/js/autoredirect.js"></script>
 }
 
 <h2>@Resources.RegisterSuccess</h2>
 <p>@Resources.ThanksForRegister</p>
+<div class="text-smaller">@Resources.SystemWillRedirectText1 <span id="timeout"></span> @Resources.SystemWillRedirectText2</div>
 
-<p>Client Time: @ViewBag.ClientTime</p>
 

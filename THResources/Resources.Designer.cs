@@ -1573,6 +1573,24 @@ namespace THResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 系統將會於.
+        /// </summary>
+        public static string SystemWillRedirectText1 {
+            get {
+                return ResourceManager.GetString("SystemWillRedirectText1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 秒後自動導回首頁.
+        /// </summary>
+        public static string SystemWillRedirectText2 {
+            get {
+                return ResourceManager.GetString("SystemWillRedirectText2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 感謝確認。您現在可以進行登錄。.
         /// </summary>
         public static string ThanksForConfirmAccount {
@@ -1582,7 +1600,7 @@ namespace THResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 感謝註冊本站。.
+        ///   Looks up a localized string similar to 感謝註冊本站。稍後系統會導向回首頁。.
         /// </summary>
         public static string ThanksForRegister {
             get {

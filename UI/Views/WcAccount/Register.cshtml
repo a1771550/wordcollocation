@@ -7,6 +7,10 @@
 	#register-form input {
 		width: 80%;
 	}
+	/* Change the white to any color ;)-*/
+	input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #f6f6ed inset;
+}
 </style>
 
 
@@ -16,20 +20,24 @@
 	<hr />
 	@using (Html.BeginForm("Register", "WcAccount", FormMethod.Post, new { id = "register-form", role = "form" }))
 	{
-		@Html.AntiForgeryToken()
+		@Html.AntiForgeryToken() 
+		
+		<div class="span6">
+			@Html.ValidationSummary(false)
+			<p id="alert" class="text-danger"></p>
+		</div>
 
 		<input type="hidden" id="duplicate" value="@Resources.DuplicatedEmail" />
 		<input type="hidden" id="invalid" value="@Resources.EmailFormatError" />
 		<input type="hidden" id="pwdlength" value="@Resources.PasswordLengthError" />
 
-		<div class="span6">
-			@Html.ValidationSummary(false)
-			<p id="alert" class="text-danger"></p>
-		</div>
+		
 		
 		<div class="span4">
 			<div class="form-group">
-				@Html.TextBoxFor(m => m.Email, new { placeholder = Resources.Email, @class = "" }) <i class="glyphicons-icon circle_ok" id="emailOk"></i>
+				@Html.TextBoxFor(m => m.Email, new { placeholder = Resources.Email }) <i class="glyphicons-icon circle_ok" id="emailOk"></i>
+				
+
 			</div>
 
 			<div class="form-group">
@@ -58,12 +66,5 @@
 
 @section Scripts {
 	@Scripts.Render("~/bundles/jqueryval")
-	<script>
-		(function ($)
-		{
-			$("input[type=text]:first").focus();
-		})(jQuery);
-
-	</script>
 	<script src="~/js/register.js"></script>
 }

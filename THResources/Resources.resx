@@ -610,7 +610,7 @@
     <value>感謝確認。您現在可以進行登錄。</value>
   </data>
   <data name="ThanksForRegister" xml:space="preserve">
-    <value>感謝註冊本站。</value>
+    <value>感謝註冊本站。稍後系統會導向回首頁。</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>網頁錯誤</value>
@@ -701,5 +701,11 @@
   </data>
   <data name="GoodMorning" xml:space="preserve">
     <value>早安</value>
+  </data>
+  <data name="SystemWillRedirectText1" xml:space="preserve">
+    <value>系統將會於</value>
+  </data>
+  <data name="SystemWillRedirectText2" xml:space="preserve">
+    <value>秒後自動導回首頁</value>
   </data>
 </root>

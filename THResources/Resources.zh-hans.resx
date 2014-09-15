@@ -478,7 +478,7 @@
     <value>感谢确认。您现在可以进行登录。</value>
   </data>
   <data name="ThanksForRegister" xml:space="preserve">
-    <value>感谢注册本站。</value>
+    <value>感谢注册本站。稍后系统会导向回首页。</value>
   </data>
   <data name="UnderConstruction" xml:space="preserve">
     <value>网站维修中，不日复工，谢谢。</value>
@@ -536,5 +536,11 @@
   </data>
   <data name="GoodMorning" xml:space="preserve">
     <value>早安</value>
+  </data>
+  <data name="SystemWillRedirectText1" xml:space="preserve">
+    <value>系统将会于</value>
+  </data>
+  <data name="SystemWillRedirectText2" xml:space="preserve">
+    <value>秒后自动导回首页</value>
   </data>
 </root>

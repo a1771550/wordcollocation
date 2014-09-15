@@ -9,8 +9,9 @@ namespace UI.Controllers.Abstract
 {
 	public abstract class CommonControllerBase : Controller
 	{
-		//private const string UserCookie = "UserName";
-		//private const string GreetingsCookie = "Greetings";
+		public const string UserCookie = "UserName";
+		public const string GreetingsCookie = "Greetings";
+		
 		protected override IAsyncResult BeginExecuteCore(AsyncCallback callback, object state)
 		{
 			string cultureName;
@@ -23,17 +24,6 @@ namespace UI.Controllers.Abstract
 
 			// validate culture name
 			cultureName = CultureHelper.GetImplementedCulture(cultureName);
-
-			// set greetings
-			//if (CookieHelper.IsCookieExist(UserCookie))
-			//{
-			//string name = CookieHelper.GetCookieValue(UserCookie);
-			////if (!string.IsNullOrEmpty(name))
-			////{
-			//	string greetings = GetGreetings(name);
-			//	CookieHelper.SetCookie(GreetingsCookie, greetings, DateTime.Now.AddDays(1));
-			//}
-			//}
 
 			// modify current thread's cultures
 			Thread.CurrentThread.CurrentCulture = new CultureInfo(cultureName);

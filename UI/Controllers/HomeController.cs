@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using BLL;
 using BLL.Helpers;
 using UI.Controllers.Abstract;
+using UI.Helpers;
 using UI.Models;
 
 namespace UI.Controllers
@@ -31,11 +32,13 @@ namespace UI.Controllers
 				cookie.Expires = DateTime.Now.AddYears(1);
 			}
 			Response.Cookies.Add(cookie);
-			//RouteData.Values["culture"] = culture;
+
+			if (Request.IsAuthenticated)
+			{
+				GreetingsHelper.SetGreetings((string)Session["UserName"], GreetingsCookie);	
+			}
 
 			Response.Redirect(returnUrl);
-
-			//return null;
 		}
 
 		[HttpPost]
