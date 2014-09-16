@@ -1,4 +1,15 @@
 SET IDENTITY_INSERT [dbo].[WcUsers] ON
 INSERT INTO [dbo].[WcUsers] ([Id], [Name], [Password], [Email], [RoleId]) VALUES (1, N'a1771550', N'111111', N'a1771550@gmail.com', 1)
 INSERT INTO [dbo].[WcUsers] ([Id], [Name], [Password], [Email], [RoleId]) VALUES (2, N'a1771550Hotmail', N'111111', N'a1771550@hotmail.com', 2)
+INSERT INTO [dbo].[WcUsers] ([Id], [Name], [Password], [Email], [RoleId]) VALUES (3, N'test', N'111111', N'a@test.cn', 3)
+INSERT INTO [dbo].[WcUsers] ([Id], [Name], [Password], [Email], [RoleId]) VALUES (4, N'test', N'111111', N'test@test.com', 3)
+INSERT INTO [dbo].[WcUsers] ([Id], [Name], [Password], [Email], [RoleId]) VALUES (5, N't', N'111111', N't@t.ttt', 3)
+INSERT INTO [dbo].[WcUsers] ([Id], [Name], [Password], [Email], [RoleId]) VALUES (6, N'Kevin Lau', N'111111', N'b@b.com', 3)
+INSERT INTO [dbo].[WcUsers] ([Id], [Name], [Password], [Email], [RoleId]) VALUES (7, N'dddd', N'111111', N'b@b2.cn', 3)
+INSERT INTO [dbo].[WcUsers] ([Id], [Name], [Password], [Email], [RoleId]) VALUES (8, N'111', N'111111', N'c@c.cn', 3)
+INSERT INTO [dbo].[WcUsers] ([Id], [Name], [Password], [Email], [RoleId]) VALUES (9, N'a', N'111111', N'd@d.dn', 3)
+INSERT INTO [dbo].[WcUsers] ([Id], [Name], [Password], [Email], [RoleId]) VALUES (10, N'a', N'111111', N'd@d.dn', 3)
+INSERT INTO [dbo].[WcUsers] ([Id], [Name], [Password], [Email], [RoleId]) VALUES (11, N'a', N'111111', N'd@d.dn', 3)
+INSERT INTO [dbo].[WcUsers] ([Id], [Name], [Password], [Email], [RoleId]) VALUES (12, N'Kevin Lau', N'111111', N'e@e.cn', 3)
+INSERT INTO [dbo].[WcUsers] ([Id], [Name], [Password], [Email], [RoleId]) VALUES (13, N'Kevin Lau', N'111111', N'e@e.cn', 3)
 SET IDENTITY_INSERT [dbo].[WcUsers] OFF

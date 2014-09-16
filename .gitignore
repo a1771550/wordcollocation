@@ -5,6 +5,7 @@ BLL/bin/
 BLL/*.csproj
 BLL/*.csproj.*
 DAL/app.config
+DAL/*\.*\.*
 DAL/bin/
 DAL/obj/
 DAL/Properties/
