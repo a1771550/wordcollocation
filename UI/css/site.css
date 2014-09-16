@@ -1,11 +1,17 @@
 ﻿@import url("/css/wisewords/magic-bootstrap.css");
-@import url("/css/wisewords/bootstrap.css");
+@import url("/css/wisewords/bootstrap.min.css");
 @import url("/css/wisewords/bootstrap-responsive.min.css");
 @import url("/css/wisewords/socialicons.css");
 @import url("/css/wisewords/glyphicons.css");
 @import url("/css/wisewords/halflings.css");
 @import url("/css/wisewords/template.css");
 @import url("/css/wisewords/colors/color-classic.css");
+
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input, select {
+	padding: 4px 6px;
+	height: 35px;
+	box-sizing: content-box;
+}
 
 h2, h3, h4, h5, h6 {
 	/*font-family: "Microsoft YaHei", "微软雅黑", STXihei, "华文细黑", SimSun, NSimSun, SimHei, PMingLiU, MingLiU, serif !important;*/
@@ -31,7 +37,6 @@ select {
 	-moz-transition: border linear 0.2s, box-shadow linear 0.2s;
 	-o-transition: border linear 0.2s, box-shadow linear 0.2s;
 	transition: border linear 0.2s, box-shadow linear 0.2s;
-	height: 35px;
 }
 
 /*-- Navigation Elements --*/
@@ -279,3 +284,21 @@ ul#letters {
     list-style-type: none;
 	text-indent: -1.5em;
 }
+
+div#colorswitcher {
+	box-sizing: content-box;
+}
+ul#socialLinks {
+			display: inline-block;
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			/*height: 36px;*/
+			/*width: 100%;*/
+			overflow: hidden;
+		}
+
+			ul#socialLinks li {				
+				float: left;
+				padding-right: .2em;
+			}

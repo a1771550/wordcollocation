@@ -1,5 +1,6 @@
 ﻿@using BLL.Helpers
-@using UI.Helpers
+@using UI.Extensions
+
 @{
 	var currentYear = DateTime.Now.Year;
 	var footer = currentYear == 2014 ? Html.Raw(string.Format("&copy; 2014 {0} {1}.", Resources.SiteTitle, Resources.AllRightsReserved)) : Html.Raw(string.Format("&copy; 2014 - {0} {1}. {2}", currentYear, Resources.SiteTitle, Resources.AllRightsReserved));
@@ -11,6 +12,8 @@
 	}
 	string lang = CultureHelper.GetCurrentNeutralCulture();
 	string dir = CultureHelper.IsRighToLeft() ? "rtl" : "ltr";
+
+	string title = string.Format("{0}: {1}", Resources.SiteTitle, ViewBag.Title);
 }
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -23,8 +26,14 @@
 	<meta charset="UTF-8">
 	<meta name="keywords" content="Word Collocation, WordCollocation">
 	<meta name="description" content="A Word Collocation website designed for Chinese-English translators and students.">
+	<meta property="og:title"
+	      content="@title" />
+	<meta property="og:site_name" content="@Resources.SiteTitle" />
+	<meta property="og:url"
+	      content="http://www.translationhall.com" />
+	<meta property="og:description" content="A Word Collocation website designed for Chinese-English translators and students." />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>@Resources.SiteTitle: @ViewBag.Title</title>
+	<title>@title</title>
 	<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
@@ -50,7 +59,6 @@
 		<script src="~/js/html5shiv.js"></script>
 	<![endif]-->
 	<link href="~/css/adminLinks.css" rel="stylesheet" />
-	@*@Html.RenderStyles()*@
 </head>
 <body>
 	<div class="container">
@@ -88,12 +96,11 @@
 		@Html.Partial("_Footer", footer)
 	</div>
 	<!-- End Container -->
-
 	<!-- Javascript: Placed at the end of the document so the pages load faster -->
-	<!-- ================================================== -->	
+	<!-- ================================================== -->
 	@Scripts.Render("~/bundles/layout")
 	@RenderSection("scripts", required: false)
 	@Html.RenderJavaScripts()
-	@*@Html.Partial("_ScriptsSection") => can't work in partial page *@ 
+	
 </body>
 </html>

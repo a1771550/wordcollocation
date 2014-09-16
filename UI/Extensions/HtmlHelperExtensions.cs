@@ -2,7 +2,7 @@
 using System.Text;
 using System.Web.Mvc;
 
-namespace UI.Helpers
+namespace UI.Extensions
 {
 	public static class HtmlHelperExtensions
 	{
@@ -41,7 +41,7 @@ namespace UI.Helpers
 				foreach (string script in scriptList)
 				{
 					result.AppendLine(string.Format(
-					  "<script type=\"text/javascript\" src=\"{0}\"></script>",
+					  "<script src=\"{0}\"></script>",
 					  script));
 				}
 			}

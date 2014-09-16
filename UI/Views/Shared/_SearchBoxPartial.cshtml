@@ -1,20 +1,20 @@
-﻿@using UI.Helpers
+﻿@using UI.Extensions
 @model UI.Models.WcSearchViewModel
 
 <div class="span3">
-	@using (Html.BeginForm("Search", "Home", FormMethod.Post, new { @id = "search-form", @class = "search-form" }))
+	@using (Html.BeginForm("Search", "Home", FormMethod.Post, new { @id = "search-form" }))
 	{
-		<fieldset class="search-form">
+		<div class="form-group">
 			<label for="Word">@Resources.SearchWordText</label>
 			@Html.TextBoxFor(m => m.Word)
-		</fieldset>
-		<fieldset class="search-form">
+		</div>
+		<div class="form-group">
 			<label for="ColPosId">@Resources.SearchColPosText</label>
 			@Html.DropDownList("ColPosId", Model.ColPosDropDownList, new { @class = "text fLeft" })
-		</fieldset>
-		<fieldset class="what fLeft">
+		</div>
+		<div class="form-group">
 			<button type="submit" id="btnSearch" name="btnSearch">@Resources.Search</button>
-		</fieldset>
+		</div>
 		<input type="hidden" id="wordRequired" value="@Resources.WordRequired" />
 		<input type="hidden" id="colPosRequired" value="@Resources.ColPosRequired" />
 	}
