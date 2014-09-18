@@ -2,55 +2,49 @@
 
 @{
 	ViewBag.Title = Resources.Contact;
-	Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="span5">
+	<h3>@Resources.Contact</h3>
 
-<h3>@Resources.Contact</h3>
+	<p class="lead">@Resources.ContactParagraph</p>
 
-<p class="lead">@Resources.ContactParagraph</p>
+	@if (!string.IsNullOrEmpty(ViewBag.MessageOK))
+	{
+		<h4>@ViewBag.MessageOK</h4>
+	}
+	<hr />
 
-@if (!string.IsNullOrEmpty(ViewBag.MessageOK))
-{
-	<h4>@ViewBag.MessageOK</h4>
-}
+	<div class="span3">
+		@using (Html.BeginForm("Index", "Contact", FormMethod.Post, new { @class = "contact-form" }))
+		{
+			@Html.AntiForgeryToken()
 
-@using (Html.BeginForm("Index", "Contact", FormMethod.Post, new { @class = "contact-form" }))
-{
-	@Html.AntiForgeryToken()
+			@Html.ValidationSummary(false)
 
-	<div>
-		<hr />
-		@Html.ValidationSummary()
-
-		<fieldset class="who">
 			
-			<div class="form-group">
-				@Html.LabelFor(model => model.Email)
-				<div>
-					@Html.EditorFor(model => model.Email,new{@class="text"})
+				<div class="form-group">
+					@Html.LabelFor(model => model.UserName)
+					@Html.EditorFor(model => model.UserName)
 				</div>
-			</div>
-			
-		</fieldset>
 
-		<fieldset class="what">
+				<div class="form-group">
+					@Html.LabelFor(model => model.Email)
+					@Html.EditorFor(model => model.Email, new { @class = "text" })
+				</div>
+			
+
 			<div class="form-group">
 				@Html.LabelFor(model => model.Message)
-				<div>
-					@Html.TextAreaFor(model => model.Message, new{rows="10",cols="30"})
-					
-				</div>
+				@Html.TextAreaFor(model => model.Message, new { @rows = "5", style="width:120%;"})
 			</div>
-			
+
 			<button type="submit">@Resources.Send</button>
-		</fieldset>
+
+		}
 	</div>
-	@section Scripts {
-		@Scripts.Render("~/bundles/jqueryval")
-		<script type="text/javascript">
-			//(function ($) {
-				
-			//})(jQuery);
-		</script>
-	}
+
+</div>
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+
 }

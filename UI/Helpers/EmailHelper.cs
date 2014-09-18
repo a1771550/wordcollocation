@@ -25,7 +25,7 @@ namespace UI.Helpers
 			client.Host = SiteConfiguration.MailServer;
 			return client;
 		}
-		public static void SendMail_Contact(Contact contact)
+		public static async Task SendMailAsnyc(Contact contact)
 		{
 			try
 			{
@@ -33,10 +33,11 @@ namespace UI.Helpers
 				MailMessage mail = new MailMessage { From = new MailAddress(SiteConfiguration.MailSender) };
 				mail.To.Add(SiteConfiguration.MailReceiver);
 				mail.Subject = SiteConfiguration.ContactMailSubject;
-				mail.IsBodyHtml = true;
-				string body = string.Format("<p>username: {0}</p><p>email: {1}</p><p>message: {2}</p>", contact.Username, contact.Email, contact.Message);
+				mail.IsBodyHtml = SiteConfiguration.IsMailHtml;
+				string body = string.Format("<p>username: {0}</p><p>email: {1}</p><p>message: {2}</p>", contact.UserName, contact.Email, contact.Message);
 				mail.Body = body;
-				client.Send(mail);
+				//client.Send(mail);
+				await Task.Run(() => client.Send(mail));
 			}
 			catch (SmtpException ex)
 			{

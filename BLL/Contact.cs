@@ -5,10 +5,10 @@ namespace BLL
 {
 	public class Contact
 	{
-		[Display(Name = "Username", ResourceType = typeof(Resources))]
+		[Display(Name = "UserName", ResourceType = typeof(Resources))]
 		[Required(ErrorMessageResourceType = typeof(Resources),
-				  ErrorMessageResourceName = "UsernameRequired")]
-		public string Username { get; set; }
+				  ErrorMessageResourceName = "UserNameRequired")]
+		public string UserName { get; set; }
 
 		[Display(Name = "Email", ResourceType = typeof(Resources))]
 		[Required(ErrorMessageResourceType = typeof(Resources),

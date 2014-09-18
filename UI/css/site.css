@@ -7,7 +7,7 @@
 @import url("/css/wisewords/template.css");
 @import url("/css/wisewords/colors/color-classic.css");
 
-textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input, select {
+input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input, select {
 	padding: 4px 6px;
 	height: 35px;
 	box-sizing: content-box;
@@ -122,7 +122,6 @@ select {
 }*/
 
 .collocation-form {
-	
 }
 /*-- Form Elements End --*/
 
@@ -274,31 +273,39 @@ ul#letters {
 }
 
 .text-smaller {
-		font-size: .7em;
-	}
+	font-size: .7em;
+}
+
 .line-height-small {
 	line-height: 90%;
 }
-.validation-summary-errors ul
-{
-    list-style-type: none;
+
+.validation-summary-errors ul {
+	list-style-type: none;
 	text-indent: -1.5em;
 }
 
 div#colorswitcher {
 	box-sizing: content-box;
 }
-ul#socialLinks {
-			display: inline-block;
-			list-style-type: none;
-			margin: 0;
-			padding: 0;
-			/*height: 36px;*/
-			/*width: 100%;*/
-			overflow: hidden;
-		}
 
-			ul#socialLinks li {				
-				float: left;
-				padding-right: .2em;
-			}
+ul#socialLinks {
+	display: inline-block;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	/*height: 36px;*/
+	/*width: 100%;*/
+	overflow: hidden;
+}
+
+	ul#socialLinks li {
+		float: left;
+		padding-right: .2em;
+	}
+
+#imgUnderconstruction {
+	vertical-align: text-bottom;
+	width: 20%;
+	height: 20%;
+}

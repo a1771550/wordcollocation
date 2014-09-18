@@ -28,5 +28,6 @@ UI/*.aspx.designer.cs
 UI/*.csproj.*
 UI/UI.csproj.user
 UI/Logs/*
+UI/Comics/*
 WordCollocation/
 

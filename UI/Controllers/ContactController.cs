@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Threading.Tasks;
+using System.Web.Mvc;
 using BLL;
 using UI.Controllers.Abstract;
 using UI.Helpers;
@@ -14,11 +15,11 @@ namespace UI.Controllers
 	    }
 
         [HttpPost]
-        public ActionResult Index(Contact contact)
+        public async Task<ActionResult> Index(Contact contact)
         {
 	        if (ModelState.IsValid)
 	        {
-				EmailHelper.SendMail_Contact(contact);
+				await EmailHelper.SendMailAsnyc(contact);
 		        return View("Completed");
 	        }
 	        return View(contact);

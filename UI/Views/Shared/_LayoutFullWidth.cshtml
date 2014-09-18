@@ -77,6 +77,7 @@
 				</li>
 
 				<li>@Html.Partial("_LoginPartial")</li>
+				<li>@Html.ActionLink(Resources.Contact, "Index","Contact")</li>
 			</ul>
 		</div>
 		<hr>
@@ -85,6 +86,8 @@
 			<div class="offset3 span12 zone-content">
 				@Html.Partial("_AdminLinksPartial")
 			</div>
+			
+			@Html.Partial("_Underconstruction")
 
 			<div class="span12 zone-content">
 				@RenderBody()
