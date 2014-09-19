@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Transactions;
 using DAL.Properties;
 using Microsoft.Practices.EnterpriseLibrary.Data;
@@ -11,7 +12,6 @@ namespace DAL
 		MsSql,
 		MySql,
 		Oracle,
-		Postgres
 	}
 	public class DataAccess
 	{
@@ -35,20 +35,27 @@ namespace DAL
 				case DbType.Oracle:
 
 					break;
-				case DbType.Postgres:
-
-					break;
 			}
 		}
 
-		//private void InitDataSet()
-		//{
-		//	dsProducts = new ProductsDataSet();
-		//	this.dsProducts.DataSetName = "ProductsDataSet";
-		//	this.dsProducts.Locale = new System.Globalization.CultureInfo("en-US");
-		//	this.dsProducts.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-		//}
+		public static ConnectionState CheckSqlConnection()
+		{
+			string connString = Settings.Default.DbConnectionString;
+			try
+			{
+				SqlConnection connection=new SqlConnection(connString);
+				using (connection)
+				{
+					connection.Open();
+					return connection.State;
+				}
 
+			}
+			catch (SqlException)
+			{
+				return ConnectionState.Broken;
+			}
+		}
 		public object ExecuteScalar(string sql, CommandType commandType = CommandType.Text)
 		{
 			return database.ExecuteScalar(CommandType.Text, sql);

@@ -543,4 +543,13 @@
   <data name="SystemWillRedirectText2" xml:space="preserve">
     <value>秒后自动导回首页</value>
   </data>
+  <data name="DbConnectionFailed" xml:space="preserve">
+    <value>数据库连线失败</value>
+  </data>
+  <data name="Sorry" xml:space="preserve">
+    <value>对不起</value>
+  </data>
+  <data name="SystemError" xml:space="preserve">
+    <value>系统异常</value>
+  </data>
 </root>

@@ -708,4 +708,13 @@
   <data name="SystemWillRedirectText2" xml:space="preserve">
     <value>秒後自動導回首頁</value>
   </data>
+  <data name="DbConnectionFailed" xml:space="preserve">
+    <value>資料庫連線失敗</value>
+  </data>
+  <data name="Sorry" xml:space="preserve">
+    <value>對不起</value>
+  </data>
+  <data name="SystemError" xml:space="preserve">
+    <value>系統異常</value>
+  </data>
 </root>

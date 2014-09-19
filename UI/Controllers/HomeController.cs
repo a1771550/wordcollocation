@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using BLL;
@@ -16,8 +17,14 @@ namespace UI.Controllers
 		// GET: /Home/
 		public ActionResult Index()
 		{
+			if (!CheckDbConnection()) return View("DbConnectionFailed");
 			WcSearchViewModel model = new WcSearchViewModel(ViewMode.Home);
 			return View(model);
+		}
+
+		private bool CheckDbConnection()
+		{
+			return DbHelper.CheckDbConnection();
 		}
 
 		public void SetCulture(string culture, string returnUrl)

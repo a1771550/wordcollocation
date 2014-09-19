@@ -651,4 +651,13 @@
   <data name="SystemWillRedirectText2" xml:space="preserve">
     <value>秒ホームにつながる</value>
   </data>
+  <data name="DbConnectionFailed" xml:space="preserve">
+    <value>データベース接続に失敗しました</value>
+  </data>
+  <data name="Sorry" xml:space="preserve">
+    <value>ごめんなさい</value>
+  </data>
+  <data name="SystemError" xml:space="preserve">
+    <value>システムの異常</value>
+  </data>
 </root>

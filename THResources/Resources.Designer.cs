@@ -520,6 +520,15 @@ namespace THResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 資料庫連線失敗.
+        /// </summary>
+        public static string DbConnectionFailed {
+            get {
+                return ResourceManager.GetString("DbConnectionFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 新用戶您好.
         /// </summary>
         public static string DearNewUser {
@@ -1555,6 +1564,15 @@ namespace THResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 對不起.
+        /// </summary>
+        public static string Sorry {
+            get {
+                return ResourceManager.GetString("Sorry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 來源.
         /// </summary>
         public static string Source {
@@ -1569,6 +1587,15 @@ namespace THResources {
         public static string SourceText {
             get {
                 return ResourceManager.GetString("SourceText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 系統異常.
+        /// </summary>
+        public static string SystemError {
+            get {
+                return ResourceManager.GetString("SystemError", resourceCulture);
             }
         }
         
