@@ -1,7 +1,5 @@
-﻿using System.Security.Policy;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
-using System.Web.UI;
 
 namespace UI
 {
@@ -11,7 +9,7 @@ namespace UI
 		{
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-			//routes.MapRoute("LoginGreetings", "{controller}/{action}/{greetings}", null, new []{"UI.Controllers"});
+			routes.MapRoute("UnderConstruction", "{controller}/{action}", new{controller="Home",action="UnderConstruction"} );
 
 			routes.MapRoute("CommonList", "{controller}/{action}/{page}",
 				new { controller = "Word", action = "Index", page = UrlParameter.Optional }, new { page = @"\d+" });
