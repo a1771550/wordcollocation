@@ -160,5 +160,13 @@ namespace UI.Controllers
 			Session.Abandon();
 			return RedirectToAction("Index", "Home");
 		}
+
+		/// <summary>
+		/// specially for elmah use only
+		/// </summary>
+		public void elmah()
+		{
+			Response.Redirect("~/elmah");
+		}
 	}
 }

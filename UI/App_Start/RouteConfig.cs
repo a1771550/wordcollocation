@@ -8,8 +8,17 @@ namespace UI
 		public static void RegisterRoutes(RouteCollection routes)
 		{
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+			
 			routes.MapRoute("UnderConstruction", "{controller}/{action}", new{controller="Home",action="UnderConstruction"} );
+
+			routes.MapRoute(
+				name: "Default",
+				url: "{controller}/{action}/{id}",
+				defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+			);
+
+			routes.MapRoute("elmah", "{controller}/{action}", new { controller = "WcAccount", action = "elmah" });
+
 
 			routes.MapRoute("CommonList", "{controller}/{action}/{page}",
 				new { controller = "Word", action = "Index", page = UrlParameter.Optional }, new { page = @"\d+" });
@@ -30,11 +39,7 @@ namespace UI
 				new { controller = "WcExample", action = "Edit", id = UrlParameter.Optional }, new { id = @"\d+" });
 
 
-			routes.MapRoute(
-				name: "Default",
-				url: "{controller}/{action}/{id}",
-				defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-			);
+			
 
 			
 
