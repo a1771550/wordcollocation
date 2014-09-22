@@ -555,4 +555,22 @@
   <data name="DBEnginesInTrouble" xml:space="preserve">
     <value>出了问题的资料库引擎</value>
   </data>
+  <data name="AccessDenied" xml:space="preserve">
+    <value>拒絕存取</value>
+  </data>
+  <data name="AccessDeniedDescription" xml:space="preserve">
+    <value>非網站管理員無權取存這項資源</value>
+  </data>
+  <data name="ResourcesNotFound" xml:space="preserve">
+    <value>找不到這項資源</value>
+  </data>
+  <data name="ResourcesNotFoundDescription" xml:space="preserve">
+    <value>伺服器無法提供這項資源給使用者</value>
+  </data>
+  <data name="UrlErrors" xml:space="preserve">
+    <value>網址錯誤</value>
+  </data>
+  <data name="UrlErrorsDescription" xml:space="preserve">
+    <value>請檢查網址是否輸入錯誤</value>
+  </data>
 </root>

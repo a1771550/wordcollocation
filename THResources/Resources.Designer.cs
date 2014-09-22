@@ -61,6 +61,24 @@ namespace THResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 拒絕存取.
+        /// </summary>
+        public static string AccessDenied {
+            get {
+                return ResourceManager.GetString("AccessDenied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 非網站管理員無權取存這項資源.
+        /// </summary>
+        public static string AccessDeniedDescription {
+            get {
+                return ResourceManager.GetString("AccessDeniedDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 帳號.
         /// </summary>
         public static string Account {
@@ -1420,6 +1438,24 @@ namespace THResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 找不到資源.
+        /// </summary>
+        public static string ResourcesNotFound {
+            get {
+                return ResourceManager.GetString("ResourcesNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 伺服器無法為您提供這項資源.
+        /// </summary>
+        public static string ResourcesNotFoundDescription {
+            get {
+                return ResourceManager.GetString("ResourcesNotFoundDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 身份.
         /// </summary>
         public static string Role {
@@ -1695,6 +1731,24 @@ namespace THResources {
         public static string UnknownErrorOccurred {
             get {
                 return ResourceManager.GetString("UnknownErrorOccurred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 網址錯誤.
+        /// </summary>
+        public static string UrlErrors {
+            get {
+                return ResourceManager.GetString("UrlErrors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 請檢查網址是否輸入錯誤.
+        /// </summary>
+        public static string UrlErrorsDescription {
+            get {
+                return ResourceManager.GetString("UrlErrorsDescription", resourceCulture);
             }
         }
         
