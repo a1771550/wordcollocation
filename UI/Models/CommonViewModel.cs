@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using BLL;
+using UI.Classes;
 using UI.Models.Abstract;
 
 namespace UI.Models

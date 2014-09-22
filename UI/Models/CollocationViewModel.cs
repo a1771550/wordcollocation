@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using BLL;
 using BLL.Abstract;
 using THResources;
+using UI.Classes;
 using UI.Models.Abstract;
 
 namespace UI.Models

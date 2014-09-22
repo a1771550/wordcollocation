@@ -4,7 +4,7 @@ using System.Linq;
 using System.Xml.Linq;
 using BLL;
 
-namespace UI.Models
+namespace UI.Classes
 {
 	[Serializable]
 	public class Verb

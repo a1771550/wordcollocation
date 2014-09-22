@@ -529,6 +529,15 @@ namespace THResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 出了問題的資料庫引擎.
+        /// </summary>
+        public static string DBEnginesInTrouble {
+            get {
+                return ResourceManager.GetString("DBEnginesInTrouble", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 新用戶您好.
         /// </summary>
         public static string DearNewUser {

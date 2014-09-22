@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using System.Web.Services;
 using BLL;
 using BLL.Abstract;
+using UI.Classes;
 using UI.Models;
 using UI.Models.Abstract;
 

@@ -2,7 +2,7 @@ using System;
 using System.Configuration;
 using System.Web.UI.WebControls;
 
-namespace UI.Models
+namespace UI.Classes
 {
 	public static class SiteConfiguration
 	{

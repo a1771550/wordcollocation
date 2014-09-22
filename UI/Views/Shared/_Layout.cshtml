@@ -27,10 +27,10 @@
 	<meta name="keywords" content="Word Collocation, WordCollocation">
 	<meta name="description" content="A Word Collocation website designed for Chinese-English translators and students.">
 	<meta property="og:title"
-	      content="@title" />
+		  content="@title" />
 	<meta property="og:site_name" content="@Resources.SiteTitle" />
 	<meta property="og:url"
-	      content="http://www.translationhall.com" />
+		  content="http://www.translationhall.com" />
 	<meta property="og:description" content="A Word Collocation website designed for Chinese-English translators and students." />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>@title</title>
@@ -87,7 +87,7 @@
 			<div class="offset3 span6 zone-content">
 				@Html.Partial("_AdminLinksPartial")
 			</div>
-			
+
 			@*@Html.Partial("_Underconstruction")*@
 
 			<div class="offset1 span6 zone-content">
@@ -102,8 +102,11 @@
 	<!-- Javascript: Placed at the end of the document so the pages load faster -->
 	<!-- ================================================== -->
 	@Scripts.Render("~/bundles/layout")
+	<script type="text/javascript">
+		var logErrorUrl = '@Url.Action("LogJavaScriptError", "Error")';
+	</script>
 	@RenderSection("scripts", required: false)
+	<script src="@Url.Content("~/js/errorhandler.js")"></script>
 	@Html.RenderJavaScripts()
-	
 </body>
 </html>

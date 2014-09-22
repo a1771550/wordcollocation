@@ -9,6 +9,7 @@ using UI.Models;
 
 namespace UI.Controllers
 {
+	//[HandleError]
 	public class HomeController : WcControllerBase
 	{
 		public const string CollocationListSessionName = "CollocationList";
@@ -16,14 +17,36 @@ namespace UI.Controllers
 		// GET: /Home/
 		public ActionResult Index()
 		{
-			if (!CheckDbConnection()) return View("DbConnectionFailed");
+			bool[] bCon = DbHelper.CheckDbConnection();
+			if (bCon.Length == 1)
+			{
+				if (!bCon[0])
+				{
+					ViewBag.DbEngines = "MsSql";
+					return View("DbConnectionFailed");
+				}
+			}
+			if (bCon.Length == 2)
+			{
+				if (!bCon[0] && bCon[1])
+				{
+					ViewBag.DbEngines = "MsSql";
+					return View("DbConnectionFailed");
+				}
+				if (!bCon[0] && !bCon[1])
+				{
+					ViewBag.DbEngines = "MsSql + MySql";
+					return View("DbConnectionFailed");
+				}
+				if (bCon[0] && !bCon[1])
+				{
+					ViewBag.DbEngines = "MySql";
+					return View("DbConnectionFailed");
+				}
+			}
+			
 			WcSearchViewModel model = new WcSearchViewModel(ViewMode.Home);
 			return View(model);
-		}
-
-		private bool CheckDbConnection()
-		{
-			return DbHelper.CheckDbConnection();
 		}
 
 		public void SetCulture(string culture, string returnUrl)

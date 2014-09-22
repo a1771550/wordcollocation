@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Web.Mvc;
-using UI.Models;
-using UI.Models.Abstract;
+using UI.Classes.Abstract;
 
 namespace UI.Helpers
 {

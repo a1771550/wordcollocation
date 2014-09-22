@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Transactions;
 using DAL.Properties;
-using Microsoft.Practices.EnterpriseLibrary.Data;
+using DALC4NET;
+using MySql.Data.MySqlClient;
 
 namespace DAL
 {
-	public enum DbType
+	public enum DbEngine
 	{
 		MsSql,
 		MySql,
@@ -15,152 +15,124 @@ namespace DAL
 	}
 	public class DataAccess
 	{
-		//private ProductsDataSet dsProducts;
-		readonly DatabaseProviderFactory factory = new DatabaseProviderFactory();
-		private readonly Database database;
-		public DataAccess(string dbName = null)
+		private readonly DBHelper helper;
+		//readonly DatabaseProviderFactory factory = new DatabaseProviderFactory();
+		//private readonly Database database;
+		public DataAccess()
 		{
-			//InitDataSet();
-			DbType dbType;
-			Enum.TryParse(Settings.Default.DbType, out dbType);
+			//helper = new DBHelper();
+			DbEngine engine = (DbEngine)Enum.Parse(typeof(DbEngine), Settings.Default.DbEngine, true);
 
-			switch (dbType)
+			switch (engine)
 			{
-				case DbType.MsSql:
-					database = string.IsNullOrEmpty(dbName) ? factory.CreateDefault() : factory.Create(dbName);
+				case DbEngine.MsSql:
+					helper = new DBHelper(DbEngine.MsSql.ToString());
+					//database = string.IsNullOrEmpty(dbName) ? factory.CreateDefault() : factory.Create(dbName);
 					break;
-				case DbType.MySql:
-
+				case DbEngine.MySql:
+					helper = new DBHelper(DbEngine.MySql.ToString());
 					break;
-				case DbType.Oracle:
+				case DbEngine.Oracle:
 
 					break;
 			}
 		}
 
-		public static ConnectionState CheckSqlConnection()
+		public object ExecuteScalar(string sql, CommandType commandType = CommandType.Text, bool useTrans = true, DBParameterCollection parameters = null)
 		{
-			string connString = Settings.Default.DbConnectionString;
-			try
+			if (useTrans)
 			{
-				SqlConnection connection=new SqlConnection(connString);
-				using (connection)
+				IDbTransaction transaction = helper.BeginTransaction();
+				try
 				{
-					connection.Open();
-					return connection.State;
+					object oRet = helper.ExecuteScalar(sql, parameters, transaction, commandType);
+					helper.CommitTransaction(transaction);
+					return oRet;
+				}
+				catch (Exception ex)
+				{
+					helper.RollbackTransaction(transaction);
+					throw new Exception(ex.Message, ex.InnerException);
+				}
+			}
+			return helper.ExecuteScalar(sql, parameters, commandType);
+		}
+
+		public object ExecuteScalar(string sql, CommandType commandType = CommandType.Text, bool useTrans = true, params DBParameter[] parameters)
+		{
+			DBParameterCollection parameterCollection = new DBParameterCollection();
+			foreach (DBParameter parameter in parameters)
+				parameterCollection.Add(parameter);
+
+			return ExecuteScalar(sql, commandType, useTrans, parameterCollection);
+		}
+
+		public int ExecuteNonQuery(string sql, CommandType commandType = CommandType.Text, bool useTrans = true, DBParameterCollection parameters = null)
+		{
+			int iRet;
+
+			if (useTrans)
+			{
+				IDbTransaction transaction = helper.BeginTransaction();
+
+				try
+				{
+					iRet = helper.ExecuteNonQuery(sql, parameters ?? new DBParameterCollection(), transaction, commandType);
+					helper.CommitTransaction(transaction);
+					return iRet;
+				}
+				catch (Exception ex)
+				{
+					helper.RollbackTransaction(transaction);
+					throw new Exception(ex.Message, ex.InnerException);
 				}
 
 			}
-			catch (SqlException)
-			{
-				return ConnectionState.Broken;
-			}
-		}
-		public object ExecuteScalar(string sql, CommandType commandType = CommandType.Text)
-		{
-			return database.ExecuteScalar(CommandType.Text, sql);
-		}
+			iRet = helper.ExecuteNonQuery(sql, parameters, commandType);
 
-		public int ExecuteNonQuery(string sql, CommandType commandType = CommandType.Text, object[] parameters = null)
-		{
-			int iRet = 0;
-			switch (commandType)
-			{
-				case CommandType.StoredProcedure:
-					try
-					{
-						using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required))
-						{
-							if (parameters != null)
-							{
-								iRet = database.ExecuteNonQuery(sql, parameters);
-								scope.Complete();
-							}
-						}
-					}
-					catch (TransactionException exception)
-					{
-						throw new Exception(exception.Message, exception.InnerException);
-					}
-
-					break;
-				case CommandType.Text:
-					try
-					{
-						using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required))
-						{
-							iRet = database.ExecuteNonQuery(commandType, sql);
-							scope.Complete();
-						}
-					}
-					catch (TransactionException exception)
-					{
-						throw new Exception(exception.Message, exception.InnerException);
-					}
-					
-					break;
-			}
 			return iRet;
 		}
 
-		public DataSet ExecuteDataSet(string sql, CommandType commandType = CommandType.Text, object[] parameters = null)
+		public DataSet ExecuteDataSet(string sql, CommandType commandType = CommandType.Text, DBParameterCollection parameters = null)
 		{
-			switch (commandType)
-			{
-				case CommandType.StoredProcedure:
-					return database.ExecuteDataSet(commandType, sql);
-				case CommandType.Text:
-					return database.ExecuteDataSet(commandType, sql);
-			}
-			return null;
+			return helper.ExecuteDataSet(sql, parameters ?? new DBParameterCollection(), commandType);
 		}
-		//public DataSet LoadDataSet(string sql, string[] tableNames, CommandType commandType = CommandType.Text, params object[] objects)
-		//{
-		//	switch (commandType)
-		//	{
-		//		case CommandType.StoredProcedure:
-		//			dsProducts.Clear();
-		//			database.LoadDataSet(sql, dsProducts, tableNames, objects);
-		//			return dsProducts;
-		//		case CommandType.Text:
-		//			dsProducts.Clear();
-		//			database.LoadDataSet(commandType, sql, dsProducts, tableNames);
-		//			return dsProducts;
-		//	}
-		//	return null;
-		//}
 
-		//public int UpdateDataSet(string[] sqls, DbParameter[] inParameters, DbParameter[] deParameters, DbParameter[] upParameters, string tableName, UpdateBehavior behavior = UpdateBehavior.Transactional, CommandType commandType = CommandType.StoredProcedure)
-		//{
-		//	DbCommand insertCommand = database.GetStoredProcCommand(sqls[0]);
-		//	DbCommand deleteCommand = database.GetStoredProcCommand(sqls[2]);
-		//	DbCommand updateCommad = database.GetStoredProcCommand(sqls[1]);
+		public static bool[] CheckDbConnections()
+		{
+			byte dbNum = Settings.Default.CheckDbNumber;
+			bool[] bEngines = new bool[dbNum];
+			
+			var msConnString = Settings.Default.DbConnectionString;
+			var myConnString = Settings.Default.MySqlConnectionString;
+			try
+			{
+				SqlConnection msConnection = new SqlConnection(msConnString);
+				using (msConnection)
+				{
+					msConnection.Open();
+					bEngines[0] = msConnection.State == ConnectionState.Open;
+				}
+				//if (dbNum == 1) bEngines[1] = true;
 
-		//	foreach (DbParameter obj in inParameters)
-		//	{
-		//		SetParameters(obj, insertCommand);
-		//	}
+				if (dbNum == 2)
+				{
+					MySqlConnection myConnection = new MySqlConnection(myConnString);
+					using (myConnection)
+					{
+						myConnection.Open();
+						bEngines[1] = myConnection.State == ConnectionState.Open;
+					}
+				}
+				
+			}
+			catch (Exception ex)
+			{
+				throw new Exception(ex.Message, ex.InnerException);
+			}
 
-		//	foreach (DbParameter obj in deParameters)
-		//	{
-		//		SetParameters(obj, deleteCommand);
-		//	}
+			return bEngines;
 
-		//	foreach (DbParameter obj in upParameters)
-		//	{
-		//		SetParameters(obj, updateCommad);
-		//	}
-
-		//	return database.UpdateDataSet(dsProducts, tableName, insertCommand, updateCommad, deleteCommand, behavior);
-		//}
-
-		//private void SetParameters(DbParameter obj, DbCommand command)
-		//{
-		//	string name = obj.ParameterName;
-		//	System.Data.DbType type = obj.DbType;
-		//	string sourceColumn = obj.SourceColumn;
-		//	DataRowVersion version = obj.SourceVersion;
-		//	database.AddInParameter(command, name, type, sourceColumn, version);
-		//}
+		}
 	}
 }

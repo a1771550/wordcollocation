@@ -552,4 +552,7 @@
   <data name="SystemError" xml:space="preserve">
     <value>系统异常</value>
   </data>
+  <data name="DBEnginesInTrouble" xml:space="preserve">
+    <value>出了问题的资料库引擎</value>
+  </data>
 </root>

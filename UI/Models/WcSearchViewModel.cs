@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.UI;
 using BLL;
 using BLL.Helpers;
+using UI.Classes;
 using UI.Controllers;
 using UI.Models.Abstract;
 

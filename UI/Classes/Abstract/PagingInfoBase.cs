@@ -1,4 +1,4 @@
-﻿namespace UI.Models.Abstract
+﻿namespace UI.Classes.Abstract
 {
 	public abstract class PagingInfoBase
 	{

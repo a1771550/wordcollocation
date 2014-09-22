@@ -1,14 +1,16 @@
-﻿using System.Data;
-using DAL;
+﻿using DAL;
 
 namespace BLL.Helpers
 {
 	public static class DbHelper
 	{
-		public static bool CheckDbConnection()
+		public static byte GetDbNumber()
 		{
-			ConnectionState state= DataAccess.CheckSqlConnection();
-			return state == ConnectionState.Open;
+			return DAL.Properties.Settings.Default.CheckDbNumber;
+		}
+		public static bool[] CheckDbConnection()
+		{
+			return DataAccess.CheckDbConnections();
 		}
 	}
 }

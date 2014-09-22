@@ -660,4 +660,7 @@
   <data name="SystemError" xml:space="preserve">
     <value>システムの異常</value>
   </data>
+  <data name="DBEnginesInTrouble" xml:space="preserve">
+    <value>質問データベースエンジンのうち</value>
+  </data>
 </root>

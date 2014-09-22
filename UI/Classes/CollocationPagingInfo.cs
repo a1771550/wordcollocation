@@ -1,7 +1,7 @@
 ﻿using System;
-using UI.Models.Abstract;
+using UI.Classes.Abstract;
 
-namespace UI.Models
+namespace UI.Classes
 {
 	public class CollocationPagingInfo:PagingInfoBase
 	{
