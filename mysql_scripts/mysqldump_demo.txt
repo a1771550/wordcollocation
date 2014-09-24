@@ -1,0 +1,3 @@
+C:\xampp\mysql\bin>mysqldump -u root -p --no-create-info --fields-terminated-by=, --t
+ab=c:/temp publications > publications.sql 
+Enter password: ******
