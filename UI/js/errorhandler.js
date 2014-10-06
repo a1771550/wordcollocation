@@ -3,7 +3,7 @@
 function logError(ex, stack)
 {
 	if (ex == null) return;
-	if (logErrorUrl == null)
+	if (window.logErrorUrl == null)
 	{
 		alert('logErrorUrl must be defined.');
 		return;
@@ -20,7 +20,7 @@ function logError(ex, stack)
 	// send error message
 	$.ajax({
 		type: 'POST',
-		url: logErrorUrl,
+		url: window.logErrorUrl,
 		data: { message: out }
 	});
 }

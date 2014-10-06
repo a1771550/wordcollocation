@@ -87,7 +87,7 @@
 				@Html.Partial("_AdminLinksPartial")
 			</div>
 
-			@Html.Partial("_Underconstruction")
+			@*@Html.Partial("_Underconstruction")*@
 
 			<div class="span12 zone-content">
 				@RenderBody()
@@ -97,12 +97,12 @@
 
 		@Html.Partial("_Footer", footer)
 	</div>
+	<script src="/js/init_variables.js"></script>
+
 	@Scripts.Render("~/bundles/layout")
-	<script type="text/javascript">
-		var logErrorUrl = '@Url.Action("LogJavaScriptError", "Error")';
-	</script>
+
 	@RenderSection("scripts", required: false)
-	<script src="@Url.Content("~/js/errorhandler.js")"></script>
+	@*<script src="@Url.Content("~/js/errorhandler.js")"></script>*@
 	@Html.RenderJavaScripts()
 </body>
 </html>

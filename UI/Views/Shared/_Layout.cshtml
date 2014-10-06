@@ -101,12 +101,20 @@
 	<!-- End Container -->
 	<!-- Javascript: Placed at the end of the document so the pages load faster -->
 	<!-- ================================================== -->
+	<script src="/js/init_variables.js"></script>
 	@Scripts.Render("~/bundles/layout")
-	<script type="text/javascript">
-		var logErrorUrl = '@Url.Action("LogJavaScriptError", "Error")';
-	</script>
+	@*bundles.Add(new ScriptBundle("~/bundles/layout").Include("~/js/jquery-{version}.js").Include("~/js/bootstrap.js").Include("~/js/tinynav.js").Include("~/js/template.js").Include("~/js/socialLinks.js").Include("~/js/errorhandler.js").Include("~/js/timezone.js"));*@
+	@*<script src="/js/jquery-1.9.1.js"></script>
+		<script src="/js/bootstrap.js"></script>
+		<script src="/js/tinynav.js"></script>
+		<script src="/js/template.js"></script>
+		<script src="/js/socialLinks.js"></script>
+		<script src="/js/errorhandler.js"></script>
+		<script src="/js/jquery-cookie-plugin.js"></script>
+		<script src="/js/timezone.js"></script>*@
+
 	@RenderSection("scripts", required: false)
-	<script src="@Url.Content("~/js/errorhandler.js")"></script>
+	@*<script src="@Url.Content("~/js/errorhandler.js")"></script>*@
 	@Html.RenderJavaScripts()
 </body>
 </html>

@@ -9,6 +9,9 @@ namespace UI.Helpers
 	{
 		public static MvcHtmlString PageLinks(this HtmlHelper helper, PagingInfoBase pagingInfo, Func<int, string> pageUrl)
 		{
+			// if totalpages == 1, don't display the link
+			if (pagingInfo.TotalPages == 1) return null;
+
 			StringBuilder lists = new StringBuilder();
 			TagBuilder ulTag = new TagBuilder("ul");
 			TagBuilder listTag;
