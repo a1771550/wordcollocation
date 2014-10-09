@@ -41,12 +41,12 @@
 			<div class="form-group">
 				<div class="form-group">
 					<div class="text">
-						@Html.TextBoxFor(m => m.UserNameEmail, new { placeholder = Resources.UserNameEmailForLogin })
+						@Html.TextBoxFor(m => m.UserNameEmail, new { placeholder = Resources.UserNameEmailForLogin, autocomplete="off" })
 					</div>
 				</div>
 			</div>
 			<div class="form-group">
-				@Html.PasswordFor(m => m.Password, new { placeholder = Resources.Password })
+				@Html.PasswordFor(m => m.Password, new { placeholder = Resources.Password, autocomplete = "off" })
 			</div>
 			<div class="form-group">
 				<div class="checkbox">

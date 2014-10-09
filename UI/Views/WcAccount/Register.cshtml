@@ -35,22 +35,22 @@
 		
 		<div class="span4">
 			<div class="form-group">
-				@Html.TextBoxFor(m => m.Email, new { placeholder = Resources.Email }) <i class="glyphicons-icon circle_ok" id="emailOk"></i>
+				@Html.TextBoxFor(m => m.Email, new { placeholder = Resources.Email, autocomplete = "off" }) <i class="glyphicons-icon circle_ok" id="emailOk"></i>
 				
 
 			</div>
 
 			<div class="form-group">
-				@Html.TextBoxFor(m => m.UserName, new { placeholder = Resources.UserName })
+				@Html.TextBoxFor(m => m.UserName, new { placeholder = Resources.UserName, autocomplete = "off" })
 			</div>
 
 			<div class="form-group">
-				@Html.PasswordFor(m => m.Password, new { placeholder = Resources.Password }) <i class="glyphicons-icon circle_ok" id="pwdOk"></i>
+				@Html.PasswordFor(m => m.Password, new { placeholder = Resources.Password, autocomplete = "off" }) <i class="glyphicons-icon circle_ok" id="pwdOk"></i>
 				<div class="text-smaller line-height-small">(@Resources.PasswordFormat)</div>
 			</div>
 			<div class="form-group">
 
-				@Html.PasswordFor(m => m.ConfirmPassword, new { placeholder = Resources.ConfirmPassword })
+				@Html.PasswordFor(m => m.ConfirmPassword, new { placeholder = Resources.ConfirmPassword, autocomplete = "off" })
 
 			</div>
 			<div class="form-group">
@@ -66,5 +66,5 @@
 
 @section Scripts {
 	@Scripts.Render("~/bundles/jqueryval")
-	<script src="~/js/register.js"></script>
+	<script src="~/js/register.min.js"></script>
 }
