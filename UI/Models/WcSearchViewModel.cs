@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.UI;
 using BLL;
 using BLL.Helpers;
 using UI.Classes;
@@ -12,10 +11,6 @@ using UI.Models.Abstract;
 
 namespace UI.Models
 {
-	public enum CultureName
-	{
-		
-	}
 	public enum ViewMode
 	{
 		Admin,
@@ -63,15 +58,14 @@ namespace UI.Models
 			: this(mode)
 		{
 			this.page = page;
-			GetCollocationList(true);
+			GetCollocationList();
 		}
 		public WcSearchViewModel(ViewMode mode, string firstLetter = null, int page = 1)
 			: this(mode, page)
 		{
 			this.firstLetter = !String.IsNullOrEmpty(firstLetter) ? firstLetter : "a";
 			string[] lettterStrings = letters.Split(';');
-			this.Letters = lettterStrings;
-			//SetCollocationList(true);
+			Letters = lettterStrings;
 		}
 
 		private void SetPageInfo()
@@ -85,16 +79,10 @@ namespace UI.Models
 				if (page >= 1)
 				{
 					pagingInfo.TotalCollocations = _collocationList.Count();
-					this.CollocationPagingInfo = pagingInfo;
+					CollocationPagingInfo = pagingInfo;
 					_collocationList = _collocationList.Skip((page - 1) * PageSize).Take(PageSize).ToList();
 				}
 			}
-		}
-
-		private void GetConnectionStringForDebug()
-		{
-			var repo = new CollocationRepository();
-			
 		}
 
 		private void GetCollocationList(bool setPageInfo = true)

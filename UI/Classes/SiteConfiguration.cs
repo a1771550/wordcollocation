@@ -167,5 +167,6 @@ namespace UI.Classes
 
 		public static string GoodEvening { get { return ConfigurationManager.AppSettings.Get("GoodEvening"); } }
 		public static string GoodEveningJap { get { return ConfigurationManager.AppSettings.Get("GoodEveningJap"); } }
+		public static string Protocol { get { return ConfigurationManager.AppSettings.Get("Protocol"); } }
 	}
 }

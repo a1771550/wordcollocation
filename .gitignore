@@ -17,6 +17,10 @@ UI/Web.release.config
 UI/Web.debug.config
 UI/*.csproj
 UI/bin/
+UI/img/*\.zip
+UI/img/*\.rar
+UI/js/*\.zip
+UI/js/*\.rar
 UI/obj/
 UI/Properties/
 UI/*.html
@@ -29,5 +33,6 @@ UI/*.csproj.*
 UI/UI.csproj.user
 UI/Logs/*
 UI/Comics/*
+UI/*\.zip
 WordCollocation/
 

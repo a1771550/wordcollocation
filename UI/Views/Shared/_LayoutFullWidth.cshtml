@@ -51,14 +51,16 @@
 	<meta name="msapplication-TileImage" content="/mstile-144x144.png">
 	<!-- Google Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Poiret+One|PT+Serif|Open+Sans:400,300' rel='stylesheet' type='text/css'>
-	<link href="~/css/site.css" rel="stylesheet" />
+	@*<link href="~/css/site.css" rel="stylesheet" />*@
 	<!-- Modernizr for Glyphicons (SVG) -->
-	<script src="~/js/modernizr.js"></script>
+	@*<script src="~/js/modernizr.js"></script>*@
 	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 	<!--[if lt IE 9]>
 		<script src="~/js/html5shiv.js"></script>
 	<![endif]-->
-	<link href="~/css/adminLinks.css" rel="stylesheet" />
+	@*<link href="~/css/adminLinks.css" rel="stylesheet" />*@
+	@Scripts.Render("~/bundles/modernizr")
+	@Styles.Render("~/bundles/css")
 </head>
 <body>
 	<div class="container">
@@ -97,12 +99,18 @@
 
 		@Html.Partial("_Footer", footer)
 	</div>
-	<script src="/js/init_variables.js"></script>
-
+	@*<script src="/js/init_variables.js"></script>*@
+	<!-- DON'T move/remove/replace the following code (into bundle/other js file)!!! -->
+	<script>
+		// logErrorUrl is a global variable, used by errorhandler.js rendered in the following 'layout bundle'...
+		var logErrorUrl = '@Url.Action("LogJavaScriptError", "Error")';
+		
+	</script>
 	@Scripts.Render("~/bundles/layout")
 
 	@RenderSection("scripts", required: false)
-	@*<script src="@Url.Content("~/js/errorhandler.js")"></script>*@
+	<!-- DON'T move/remove/replace the following code (into bundle/other js file)!!! -->
+	<script src="@Url.Content("~/js/errorhandler.js")"></script>
 	@Html.RenderJavaScripts()
 </body>
 </html>

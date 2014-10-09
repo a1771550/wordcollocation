@@ -51,14 +51,19 @@
 	<meta name="msapplication-TileImage" content="/mstile-144x144.png">
 	<!-- Google Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Poiret+One|PT+Serif|Open+Sans:400,300' rel='stylesheet' type='text/css'>
-	<link href="~/css/site.css" rel="stylesheet" />
+	@*<link href="~/css/site.css" rel="stylesheet" />*@
 	<!-- Modernizr for Glyphicons (SVG) -->
-	<script src="~/js/modernizr.js"></script>
+	@*<script src="~/js/modernizr.js"></script>*@
 	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 	<!--[if lt IE 9]>
 		<script src="~/js/html5shiv.js"></script>
 	<![endif]-->
-	<link href="~/css/adminLinks.css" rel="stylesheet" />
+	@*<link href="~/css/adminLinks.css" rel="stylesheet" />*@
+	@Scripts.Render("~/bundles/modernizr")
+	@Styles.Render("~/bundles/css")
+	@*<link href="~/js/jquery-ui.custom/jquery-ui.css" rel="stylesheet" />
+	<link href="~/js/jquery-ui.custom/jquery-ui.structure.css" rel="stylesheet" />
+	<link href="~/js/jquery-ui.custom/jquery-ui.theme.css" rel="stylesheet" />*@
 </head>
 <body>
 	<div class="container">
@@ -89,6 +94,10 @@
 			</div>
 
 			@*@Html.Partial("_Underconstruction")*@
+			
+			<!-- for debug only starts -->
+				@*@Html.ActionLink("JsError", "Index", "ElmahJsDemo")*@
+			<!-- for debug only ends -->
 
 			<div class="offset1 span6 zone-content">
 				@RenderBody()
@@ -101,20 +110,16 @@
 	<!-- End Container -->
 	<!-- Javascript: Placed at the end of the document so the pages load faster -->
 	<!-- ================================================== -->
-	<script src="/js/init_variables.js"></script>
+	<!-- DON'T move/remove/replace the following code (into bundle/other js file)!!! -->
+	<script>
+		// logErrorUrl is a global variable, used by errorhandler.js rendered in the following 'layout bundle'...
+		var logErrorUrl = '@Url.Action("LogJavaScriptError", "Error")';
+		
+	</script>
 	@Scripts.Render("~/bundles/layout")
-	@*bundles.Add(new ScriptBundle("~/bundles/layout").Include("~/js/jquery-{version}.js").Include("~/js/bootstrap.js").Include("~/js/tinynav.js").Include("~/js/template.js").Include("~/js/socialLinks.js").Include("~/js/errorhandler.js").Include("~/js/timezone.js"));*@
-	@*<script src="/js/jquery-1.9.1.js"></script>
-		<script src="/js/bootstrap.js"></script>
-		<script src="/js/tinynav.js"></script>
-		<script src="/js/template.js"></script>
-		<script src="/js/socialLinks.js"></script>
-		<script src="/js/errorhandler.js"></script>
-		<script src="/js/jquery-cookie-plugin.js"></script>
-		<script src="/js/timezone.js"></script>*@
-
 	@RenderSection("scripts", required: false)
-	@*<script src="@Url.Content("~/js/errorhandler.js")"></script>*@
+	<!-- DON'T move/remove/replace the following code (into bundle/other js file)!!! -->
+	<script src="@Url.Content("~/js/errorhandler.js")"></script>
 	@Html.RenderJavaScripts()
 </body>
 </html>

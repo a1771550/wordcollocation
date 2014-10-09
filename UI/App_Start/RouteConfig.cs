@@ -12,6 +12,8 @@ namespace UI
 			//routes.MapRoute("Catchall", "{*anything}", new { controller = "Error", action = "UrlErrors" });
 
 			//routes.MapRoute("")
+			routes.MapRoute("SearchResult", "{controller}/{action}/{page}",
+				new {controller = "Home", action = "SearchResult", page = UrlParameter.Optional}, new {page = @"\d+"});
 
 			routes.MapRoute("UnderConstruction", "{controller}/{action}", new { controller = "Home", action = "UnderConstruction" });
 

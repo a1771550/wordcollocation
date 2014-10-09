@@ -681,4 +681,7 @@
   <data name="UrlErrorsDescription" xml:space="preserve">
     <value>請檢查網址是否輸入錯誤</value>
   </data>
+  <data name="Processing" xml:space="preserve">
+    <value>しばらくお待ちください...</value>
+  </data>
 </root>

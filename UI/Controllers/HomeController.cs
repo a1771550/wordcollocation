@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Services;
 using BLL;
 using BLL.Helpers;
+using UI.Classes;
 using UI.Controllers.Abstract;
 using UI.Helpers;
 using UI.Models;
@@ -44,7 +46,7 @@ namespace UI.Controllers
 					return View("DbConnectionFailed");
 				}
 			}
-			
+
 			WcSearchViewModel model = new WcSearchViewModel(ViewMode.Home);
 			return View(model);
 		}
@@ -64,42 +66,42 @@ namespace UI.Controllers
 
 			if (Request.IsAuthenticated)
 			{
-				GreetingsHelper.SetGreetings((string)Session["UserName"], GreetingsCookie);	
+				GreetingsHelper.SetGreetings((string)Session["UserName"], GreetingsCookie);
 			}
 
 			Response.Redirect(returnUrl);
 		}
 
-		[HttpPost]
-		public ActionResult Search(WcSearchViewModel model)
+		[AcceptVerbs(HttpVerbs.Get)]
+		public ActionResult Search(string word, string colposid)
 		{
-			if (ModelState.IsValid)
+			if (word!=null&&colposid!=null)
 			{
-				string word = model.Word;
-				short colPosId = Convert.ToInt16(model.ColPosId);
+				//string word = model.Word;
+				short colPosId = Convert.ToInt16(colposid);
 				var repo = new CollocationRepository();
 				var collocationList = repo.GetCollocationListByWordColPosId(word, colPosId);
 				if (collocationList.Count > 0)
 				{
 					Session[CollocationListSessionName] = collocationList;
-					//return View("SearchResult",model);
-					return RedirectToAction("SearchResult");
+					int pageSize = SiteConfiguration.WcViewPageSize;
+					int pageCount;
+					int listSize = collocationList.Count;
+					if (listSize > 10)
+						pageCount = (int) Math.Ceiling((double) (collocationList.Count/pageSize));
+					else pageCount = 1;
+					return RedirectToAction("SearchResult", pageCount);
 				}
+				WcSearchViewModel model=new WcSearchViewModel();
+				model.Word = word;
+				model.ColPosId = colposid;
 				return View("NoSearchResult", model);
 			}
 			return null;
 		}
 
-		/*
-		 * public ActionResult Index(string letter = null, int page = 1)
-		{
-			if (string.IsNullOrEmpty(letter)) letter = "a";
-			WcSearchViewModel model = new WcSearchViewModel(ViewMode.Admin, letter, page);
-            return View(model);
-        }
-		 */
-		[HttpGet]
-		public ViewResult SearchResult(int page=1)
+		[AcceptVerbs(HttpVerbs.Get)]
+		public ViewResult SearchResult(int page = 1)
 		{
 			WcSearchViewModel model = new WcSearchViewModel(ViewMode.SearchResult, page);
 			return View("SearchResult", model);
@@ -109,6 +111,16 @@ namespace UI.Controllers
 		public ViewResult UnderConstruction()
 		{
 			return View("_SiteUnderConstruction");
+		}
+
+		/// <summary>
+		/// for debug only
+		/// </summary>
+		/// <returns></returns>
+		public string Headers()
+		{
+			string host = System.Web.HttpContext.Current.Request.Headers["HOST"];
+			return host;
 		}
 	}
 }

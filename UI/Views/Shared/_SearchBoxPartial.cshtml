@@ -1,9 +1,27 @@
-﻿@using UI.Extensions
+﻿@using BLL.Helpers
+@using UI.Extensions
 @model UI.Models.WcSearchViewModel
-
-<div class="span3">
-	@using (Html.BeginForm("Search", "Home", FormMethod.Post, new { @id = "search-form" }))
+@{
+	string culture = CultureHelper.GetCurrentCulture();
+	string textClass = null;
+	
+	switch (culture)
 	{
+		case "zh-hans":
+		case "zh-hant":
+			textClass = "font-size:small;";
+			break;
+		case "ja-jp":
+			textClass = "font-size:x-small;";
+			break;
+	}
+}  
+
+<link href="~/css/progress.css" rel="stylesheet" />
+<div class="span3">
+	@*@using (Html.BeginForm("Search", "Home", FormMethod.Get, new {@id = "search-form"}))
+		{*@
+	<form action="javascript:void(0);" id="search-form">
 		<div class="form-group">
 			<label for="Word">@Resources.SearchWordText</label>
 			@Html.TextBoxFor(m => m.Word)
@@ -17,8 +35,17 @@
 		</div>
 		<input type="hidden" id="wordRequired" value="@Resources.WordRequired" />
 		<input type="hidden" id="colPosRequired" value="@Resources.ColPosRequired" />
-	}
-	@{
-		Html.AddJavaScript("/js/searchbox_submit.js");
-	}
+	</form>
+	@* } *@
+	@*@{
+			Html.AddJavaScript("/js/searchbox_submit.js");
+		}*@
+	<div id="progress" style="text-align:center;padding:.5em 0 0 0;margin:0;min-height: 0 !important;">
+		<img id="preloader" alt="preloader" src="/img/preloader.gif"/>
+		<p style="@textClass">@Resources.Processing</p>
+	</div>
+
+@{
+	Html.AddJavaScript("/js/searchbox_submit.js");
+}	
 </div>

@@ -1357,6 +1357,15 @@ namespace THResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 資料讀取中，請稍候....
+        /// </summary>
+        public static string Processing {
+            get {
+                return ResourceManager.GetString("Processing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 敬上.
         /// </summary>
         public static string Regards {

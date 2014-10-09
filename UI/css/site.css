@@ -1,11 +1,11 @@
-﻿@import url("/css/wisewords/magic-bootstrap.css");
+﻿/*@import url("/css/wisewords/magic-bootstrap.css");
 @import url("/css/wisewords/bootstrap.min.css");
 @import url("/css/wisewords/bootstrap-responsive.min.css");
 @import url("/css/wisewords/socialicons.css");
 @import url("/css/wisewords/glyphicons.css");
 @import url("/css/wisewords/halflings.css");
 @import url("/css/wisewords/template.css");
-@import url("/css/wisewords/colors/color-classic.css");
+@import url("/css/wisewords/colors/color-classic.css");*/
 
 input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input, select {
 	padding: 4px 6px;
@@ -312,4 +312,14 @@ ul#socialLinks {
 
 #Message {
 	width: 120%;
+}
+
+
+.modal-dialog {
+	background-color: #f6f6ed;
+	border: 1px solid #b2b8c1;
+}
+
+.ui-widget-overlay {
+	background-color: #000;cursor: wait; opacity: 0.5; height: 100%; width: 100%; position: fixed; left: 0; top: 0; z-index: 1001;
 }

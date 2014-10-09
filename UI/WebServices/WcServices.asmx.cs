@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Web;
+using System.Web.Helpers;
+using System.Web.Mvc;
 using System.Web.Services;
 using BLL;
 using BLL.Abstract;
@@ -27,35 +30,64 @@ namespace UI.WebServices
 			{
 				case WcEntity.Pos:
 
-					
+
 				case WcEntity.ColPos:
 
-					
+
 				case WcEntity.Word:
 
-					
+
 				case WcEntity.ColWord:
 
 					return null;
 			}
 			return null;
 		}
-		
-/*
-		private IEnumerable<UserRoleBase> GetUrList(WcEntity entity)
+		const string CollocationListSessionName = "CollocationList";
+		/*
+				private IEnumerable<UserRoleBase> GetUrList(WcEntity entity)
+				{
+					switch (entity)
+					{
+						case WcEntity.User:
+							var urepo = new WcUserRepository();
+							return urepo.GetList();
+						case WcEntity.Role:
+							var rrepo = new WcRoleRepository();
+							return rrepo.GetList();
+					}
+					return null;
+				}
+		*/
+
+		[WebMethod(EnableSession = true)]
+		public string SearchCollocation(string word, string id)
 		{
-			switch (entity)
+			if (word != null && id != null)
 			{
-				case WcEntity.User:
-					var urepo = new WcUserRepository();
-					return urepo.GetList();
-				case WcEntity.Role:
-					var rrepo = new WcRoleRepository();
-					return rrepo.GetList();
+				short Id = Convert.ToInt16(id);
+				var repo = new CollocationRepository();
+				var collocationList = repo.GetCollocationListByWordColPosId(word, Id);
+				string host = HttpContext.Current.Request.Headers["HOST"];
+				string url;
+				string protocol = SiteConfiguration.Protocol + @"://";
+				if (collocationList.Count > 0)
+				{
+					HttpContext.Current.Session[CollocationListSessionName] = collocationList;
+					int pageSize = SiteConfiguration.WcViewPageSize;
+					int pageCount;
+					int listSize = collocationList.Count;
+					if (listSize > 10)
+						pageCount = (int)Math.Ceiling((double)(collocationList.Count / pageSize));
+					else pageCount = 1;
+					url = string.Format("{0}{1}{2}{3}",protocol, host, @"/Home/SearchResult/", pageCount);
+					return url;
+				}
+				url = string.Format("{0}{1}{2}",protocol, host, @"/Home/NoSearchResult");
+				return url;
 			}
 			return null;
 		}
-*/
 
 		[WebMethod]
 		public bool[] CheckEmail(string email)
