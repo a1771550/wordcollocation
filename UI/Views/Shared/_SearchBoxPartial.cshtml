@@ -1,5 +1,4 @@
 ﻿@using BLL.Helpers
-@using UI.Extensions
 @model UI.Models.WcSearchViewModel
 @{
 	string culture = CultureHelper.GetCurrentCulture();
@@ -17,10 +16,9 @@
 	}
 }  
 
-<link href="~/css/progress.min.css" rel="stylesheet" />
+@*<link href="~/css/progress.min.css" rel="stylesheet" />*@
 <div class="span3">
-	@*@using (Html.BeginForm("Search", "Home", FormMethod.Get, new {@id = "search-form"}))
-		{*@
+	
 	<form action="javascript:void(0);" id="search-form">
 		<div class="form-group">
 			<label for="Word">@Resources.SearchWordText</label>
@@ -36,16 +34,13 @@
 		<input type="hidden" id="wordRequired" value="@Resources.WordRequired" />
 		<input type="hidden" id="colPosRequired" value="@Resources.ColPosRequired" />
 	</form>
-	@* } *@
-	@*@{
-			Html.AddJavaScript("/js/searchbox_submit.js");
-		}*@
+	
 	<div id="progress" style="text-align:center;padding:.5em 0 0 0;margin:0;min-height: 0 !important;">
 		<img id="preloader" alt="preloader" src="/img/preloader.gif"/>
-		<p style="@textClass">@Resources.Processing</p>
+		<p id="pro-p" style="@textClass">@Resources.Processing</p>
 	</div>
 
 @{
-	Html.AddJavaScript("/js/searchbox_submit.min.js");
+	//Html.AddJavaScript("/js/searchbox_submit.min.js");
 }	
 </div>

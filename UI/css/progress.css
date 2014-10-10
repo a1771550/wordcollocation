@@ -1,7 +1,9 @@
 ﻿.modal-dialog {
-		height: auto;
-		box-sizing: content-box;
-	}
+	height: auto;
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
 	 .ui-dialog-titlebar-close {
 		 display: none;
 	 }
@@ -10,10 +12,10 @@
 		display: none;
 	}
 
-	img {
+	img#preloader {
 		width: 40%;
 		height: 40%;
 		min-height: 40%;
 		min-width: 40%;
 	}
-	p{padding:1.5em 0 0 0;margin:0;}
+	p#pro-p{padding:1.5em 0 0 0;margin:0;}
