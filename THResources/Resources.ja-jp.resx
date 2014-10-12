@@ -172,13 +172,10 @@
     <value>搭配</value>
   </data>
   <data name="CollocatingPOS" xml:space="preserve">
-    <value>コロケーションのためである品詞:</value>
+    <value>コロケーションのためである品詞</value>
   </data>
   <data name="CollocationPattern" xml:space="preserve">
-    <value>単語のコロケーションのパターン: </value>
-  </data>
-  <data name="CollocationPattern1" xml:space="preserve">
-    <value>単語のコロケーションのパターン: </value>
+    <value>単語のコロケーションのパターン</value>
   </data>
   <data name="CollocationPatternRequired" xml:space="preserve">
     <value>コロケーション·パターンを入力してください</value>

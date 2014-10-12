@@ -588,4 +588,13 @@
   <data name="ProgressTitle" xml:space="preserve">
     <value>资料读取中</value>
   </data>
+  <data name="Collocate" xml:space="preserve">
+    <value>搭配</value>
+  </data>
+  <data name="CollocatingPOS" xml:space="preserve">
+    <value>搭配词类</value>
+  </data>
+  <data name="CollocationPattern" xml:space="preserve">
+    <value>搭配型态</value>
+  </data>
 </root>
