@@ -23,7 +23,7 @@ UI/js/*\.zip
 UI/js/*\.rar
 UI/obj/
 UI/Properties/
-UI/Scripts/_reference.js
+UI/Scripts/_references.js
 UI/*.html
 UI/*.txt
 UI/*.config
