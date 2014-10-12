@@ -1204,6 +1204,15 @@ namespace THResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 確定.
+        /// </summary>
+        public static string OK {
+            get {
+                return ResourceManager.GetString("OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 其他.
         /// </summary>
         public static string Others {
@@ -1362,6 +1371,15 @@ namespace THResources {
         public static string Processing {
             get {
                 return ResourceManager.GetString("Processing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 資料讀取中.
+        /// </summary>
+        public static string ProgressTitle {
+            get {
+                return ResourceManager.GetString("ProgressTitle", resourceCulture);
             }
         }
         
@@ -1911,6 +1929,24 @@ namespace THResources {
         public static string WordRequired {
             get {
                 return ResourceManager.GetString("WordRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 輸入單字建議.
+        /// </summary>
+        public static string WordSuggestion {
+            get {
+                return ResourceManager.GetString("WordSuggestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 目前詞庫存有單字(名詞)如下.
+        /// </summary>
+        public static string WordSuggestionText {
+            get {
+                return ResourceManager.GetString("WordSuggestionText", resourceCulture);
             }
         }
         

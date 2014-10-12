@@ -1,4 +1,6 @@
-﻿(function ($)
+﻿var progressTitle;
+
+(function ($)
 {
 	// don't move this code...
 	if ($("div#progress").length) $("div#progress").hide();
@@ -7,6 +9,7 @@
 		e.preventDefault();
 		var wordrequired = $("#wordRequired").val();
 		var colposrequired = $("#colPosRequired").val();
+		progressTitle = $("#progressTitle").val();
 		var word = $("input[name='Word']").val();
 		var submit = true;
 		if (word == '')
@@ -22,8 +25,6 @@
 			$("select#ColPosId").focus();
 			submit = false;
 		}
-
-		//if (submit) $("form#search-form").submit();
 
 		if (submit)
 		{
@@ -54,11 +55,12 @@ function showProgress()
 	$("div#progress").show();
 	$("div#progress").dialog({
 		closeOnEscape: false,
-		open: function (event, ui) { $(".ui-dialog-titlebar-close", ui.dialog || ui).hide(); },
+		open: function (event, ui) { $(".ui-dialog-titlebar-close", ui.dialog || ui).show(); },
 		dialogClass: "modal-dialog",
 		buttons: {},
 		modal: true,
 		width: 150,
 		height: 'auto',
+		title: progressTitle,
 	});
 }

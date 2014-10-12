@@ -741,4 +741,16 @@
   <data name="Processing" xml:space="preserve">
     <value>資料讀取中，請稍候...</value>
   </data>
+  <data name="OK" xml:space="preserve">
+    <value>確定</value>
+  </data>
+  <data name="WordSuggestion" xml:space="preserve">
+    <value>輸入單字建議</value>
+  </data>
+  <data name="WordSuggestionText" xml:space="preserve">
+    <value>目前詞庫存有單字(名詞)如下</value>
+  </data>
+  <data name="ProgressTitle" xml:space="preserve">
+    <value>資料讀取中</value>
+  </data>
 </root>

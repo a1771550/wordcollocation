@@ -684,4 +684,16 @@
   <data name="Processing" xml:space="preserve">
     <value>しばらくお待ちください...</value>
   </data>
+  <data name="OK" xml:space="preserve">
+    <value>よし</value>
+  </data>
+  <data name="WordSuggestion" xml:space="preserve">
+    <value>単語の提案を入力してください</value>
+  </data>
+  <data name="WordSuggestionText" xml:space="preserve">
+    <value>次のように現在の単語シソーラス（名詞）がある</value>
+  </data>
+  <data name="ProgressTitle" xml:space="preserve">
+    <value>データのロード</value>
+  </data>
 </root>

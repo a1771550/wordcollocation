@@ -95,7 +95,7 @@ namespace UI.Controllers
 				WcSearchViewModel model=new WcSearchViewModel();
 				model.Word = word;
 				model.ColPosId = colposid;
-				return View("NoSearchResult", model);
+				Session["WcSearchViewModel"] = model;
 			}
 			return null;
 		}
@@ -106,6 +106,12 @@ namespace UI.Controllers
 			WcSearchViewModel model = new WcSearchViewModel(ViewMode.SearchResult, page);
 			return View("SearchResult", model);
 			//return null;
+		}
+
+		public ActionResult NoSearchResult()
+		{
+			WcSearchViewModel model = (WcSearchViewModel) Session["WcSearchViewModel"];
+			return View("NoSearchResult", model);
 		}
 
 		public ViewResult UnderConstruction()

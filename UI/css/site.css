@@ -286,6 +286,8 @@ ul#letters {
 }
 
 div#colorswitcher {
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
 	box-sizing: content-box;
 }
 
@@ -294,8 +296,6 @@ ul#socialLinks {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
-	/*height: 36px;*/
-	/*width: 100%;*/
 	overflow: hidden;
 }
 
@@ -315,7 +315,7 @@ ul#socialLinks {
 }
 
 
-.modal-dialog {
+.modal-dialog,.modal-dialog-suggestion {
 	background-color: #f6f6ed;
 	border: 1px solid #b2b8c1;
 }

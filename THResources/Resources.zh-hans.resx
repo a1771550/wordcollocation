@@ -576,4 +576,16 @@
   <data name="Processing" xml:space="preserve">
     <value>资料读取中，请稍候...</value>
   </data>
+  <data name="OK" xml:space="preserve">
+    <value>确定</value>
+  </data>
+  <data name="WordSuggestion" xml:space="preserve">
+    <value>输入单字建议</value>
+  </data>
+  <data name="WordSuggestionText" xml:space="preserve">
+    <value>目前词库存有单字(名词)如下</value>
+  </data>
+  <data name="ProgressTitle" xml:space="preserve">
+    <value>资料读取中</value>
+  </data>
 </root>

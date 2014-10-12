@@ -3,7 +3,7 @@
 @{
 	string culture = CultureHelper.GetCurrentCulture();
 	string textClass = null;
-	
+	string sugTitleSize = null;
 	switch (culture)
 	{
 		case "zh-hans":
@@ -12,17 +12,16 @@
 			break;
 		case "ja-jp":
 			textClass = "font-size:x-small;";
+			sugTitleSize = "small";
 			break;
 	}
-}  
-
-@*<link href="~/css/progress.min.css" rel="stylesheet" />*@
+}
 <div class="span3">
-	
+
 	<form action="javascript:void(0);" id="search-form">
 		<div class="form-group">
 			<label for="Word">@Resources.SearchWordText</label>
-			@Html.TextBoxFor(m => m.Word)
+			@Html.TextBoxFor(m => m.Word, new{@autocomplete="off"})
 		</div>
 		<div class="form-group">
 			<label for="ColPosId">@Resources.SearchColPosText</label>
@@ -33,14 +32,25 @@
 		</div>
 		<input type="hidden" id="wordRequired" value="@Resources.WordRequired" />
 		<input type="hidden" id="colPosRequired" value="@Resources.ColPosRequired" />
+		<input type="hidden" id="progressTitle" value="@Resources.ProgressTitle"/>
+		<input type="hidden" id="wordSuggestion" value="@Resources.WordSuggestion" />
+		<input type="hidden" id="titleSize" value="@sugTitleSize"/>
+		<input type="hidden" id="ok" value="@Resources.OK"/>
+		<input type="hidden" id="cancel" value="@Resources.Cancel"/>
 	</form>
-	
+
 	<div id="progress" style="text-align:center;padding:.5em 0 0 0;margin:0;min-height: 0 !important;">
-		<img id="preloader" alt="preloader" src="/img/preloader.gif"/>
+		<img id="preloader" alt="preloader" src="/img/preloader.gif" />
 		<p id="pro-p" style="@textClass">@Resources.Processing</p>
 	</div>
 
-@{
-	//Html.AddJavaScript("/js/searchbox_submit.min.js");
-}	
+	<div id="WordSuggestion">
+		<p>@Resources.WordSuggestionText:</p>
+		<ul>
+			<li><a href="#" class="lnkWord" tabindex="-1">abandon</a></li>
+			<li><a href="#" class="lnkWord" tabindex="-1">ability</a></li>
+			<li><a href="#" class="lnkWord" tabindex="-1">absence</a></li>
+			<li><a href="#" class="lnkWord" tabindex="-1">look</a></li>
+		</ul>
+	</div>
 </div>
