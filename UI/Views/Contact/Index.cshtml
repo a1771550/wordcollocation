@@ -1,20 +1,20 @@
-﻿@model Contact
+﻿@model UI.Models.ContactViewModel
 
 @{
 	ViewBag.Title = Resources.Contact;
 }
-<div class="span5">
-	<h3>@Resources.Contact</h3>
+<div class="offset1 span6">
+	<h1>@Resources.IhaveOpinion</h1>
 
-	<p class="lead">@Resources.ContactParagraph</p>
+	<p class="lead">@Resources.OpinionParagraph</p>
 
 	@if (!string.IsNullOrEmpty(ViewBag.MessageOK))
 	{
 		<h4>@ViewBag.MessageOK</h4>
 	}
-	<hr />
+	
+	<h3>@Resources.YourOpinion</h3>
 
-	<div class="span3">
 		@using (Html.BeginForm("Index", "Contact", FormMethod.Post, new { @class = "contact-form" }))
 		{
 			@Html.AntiForgeryToken()
@@ -23,19 +23,19 @@
 
 			
 				<div class="form-group">
-					@Html.LabelFor(model => model.UserName)
-					@Html.EditorFor(model => model.UserName)
+					@Html.LabelFor(model => model.Name)
+					@Html.TextBoxFor(model => model.Name, new{@id="Name",@class="text"})
 				</div>
 
 				<div class="form-group">
 					@Html.LabelFor(model => model.Email)
-					@Html.EditorFor(model => model.Email, new { @class = "text" })
+					@Html.TextBoxFor(model => model.Email, new { @id="Email",@class = "text" })
 				</div>
 			
 
 			<div class="form-group">
-				@Html.LabelFor(model => model.Message)
-				@Html.TextAreaFor(model => model.Message, new { @rows = "7"})
+				@Html.LabelFor(model => model.MessageText)
+				@Html.TextAreaFor(model => model.MessageText, new { @id="message-text", @rows = "10", @cols="30", style="box-sizing: content-box;"})
 			</div>
 
 			<button type="submit">@Resources.Send</button>
@@ -43,8 +43,6 @@
 		}
 	</div>
 
-</div>
 @section Scripts {
 	@Scripts.Render("~/bundles/jqueryval")
-
 }

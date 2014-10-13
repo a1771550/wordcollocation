@@ -600,4 +600,28 @@
   <data name="ContinueToSearch" xml:space="preserve">
     <value>继续搜寻</value>
   </data>
+  <data name="IhaveOpinion" xml:space="preserve">
+    <value>我有话说</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>姓名</value>
+  </data>
+  <data name="NameRequired" xml:space="preserve">
+    <value>请输入姓名</value>
+  </data>
+  <data name="Opinion" xml:space="preserve">
+    <value>意见</value>
+  </data>
+  <data name="OpinionCompleted" xml:space="preserve">
+    <value>您的意见已送出</value>
+  </data>
+  <data name="OpinionParagraph" xml:space="preserve">
+    <value>若您对本站有任何疑问或建议，欢迎提出来，谢谢。</value>
+  </data>
+  <data name="OpinionRequired" xml:space="preserve">
+    <value>请输入意见</value>
+  </data>
+  <data name="YourOpinion" xml:space="preserve">
+    <value>您的意见</value>
+  </data>
 </root>

@@ -681,9 +681,6 @@
   <data name="Yes" xml:space="preserve">
     <value>是</value>
   </data>
-  <data name="NameRequired" xml:space="preserve">
-    <value>Name is required!</value>
-  </data>
   <data name="Role" xml:space="preserve">
     <value>身份</value>
   </data>
@@ -755,5 +752,29 @@
   </data>
   <data name="ContinueToSearch" xml:space="preserve">
     <value>繼續搜尋</value>
+  </data>
+  <data name="IhaveOpinion" xml:space="preserve">
+    <value>我有話說</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>姓名</value>
+  </data>
+  <data name="NameRequired" xml:space="preserve">
+    <value>請輸入姓名</value>
+  </data>
+  <data name="Opinion" xml:space="preserve">
+    <value>意見</value>
+  </data>
+  <data name="OpinionCompleted" xml:space="preserve">
+    <value>您的意見已送出</value>
+  </data>
+  <data name="OpinionParagraph" xml:space="preserve">
+    <value>若您對本站有任何疑問或建議，歡迎提出來，謝謝。</value>
+  </data>
+  <data name="OpinionRequired" xml:space="preserve">
+    <value>請輸入意見</value>
+  </data>
+  <data name="YourOpinion" xml:space="preserve">
+    <value>您的意見</value>
   </data>
 </root>

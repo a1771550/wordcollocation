@@ -696,4 +696,28 @@
   <data name="ContinueToSearch" xml:space="preserve">
     <value>検索を続ける</value>
   </data>
+  <data name="IhaveOpinion" xml:space="preserve">
+    <value>私が言いたいことがある</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="NameRequired" xml:space="preserve">
+    <value>あなたの名前を入力してください</value>
+  </data>
+  <data name="Opinion" xml:space="preserve">
+    <value>意見</value>
+  </data>
+  <data name="OpinionCompleted" xml:space="preserve">
+    <value>お客さまのご意見を送信しました</value>
+  </data>
+  <data name="OpinionParagraph" xml:space="preserve">
+    <value>あなたが質問や提案のウェブサイトを持っている場合は、あなたに感謝し、歓迎します。</value>
+  </data>
+  <data name="OpinionRequired" xml:space="preserve">
+    <value>コメントを入力してください。</value>
+  </data>
+  <data name="YourOpinion" xml:space="preserve">
+    <value>あなたのご意見</value>
+  </data>
 </root>

@@ -925,6 +925,15 @@ namespace THResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 我有話說.
+        /// </summary>
+        public static string IhaveOpinion {
+            get {
+                return ResourceManager.GetString("IhaveOpinion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to collocate.jpg.
         /// </summary>
         public static string ImgCollocate {
@@ -1069,7 +1078,16 @@ namespace THResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name is required!.
+        ///   Looks up a localized string similar to 姓名.
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 請輸入姓名.
         /// </summary>
         public static string NameRequired {
             get {
@@ -1218,6 +1236,42 @@ namespace THResources {
         public static string OK {
             get {
                 return ResourceManager.GetString("OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 意見.
+        /// </summary>
+        public static string Opinion {
+            get {
+                return ResourceManager.GetString("Opinion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 您的意見已送出.
+        /// </summary>
+        public static string OpinionCompleted {
+            get {
+                return ResourceManager.GetString("OpinionCompleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 若您對本站有任何疑問或建議，歡迎提出來，謝謝。.
+        /// </summary>
+        public static string OpinionParagraph {
+            get {
+                return ResourceManager.GetString("OpinionParagraph", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 請輸入意見.
+        /// </summary>
+        public static string OpinionRequired {
+            get {
+                return ResourceManager.GetString("OpinionRequired", resourceCulture);
             }
         }
         
@@ -1974,6 +2028,15 @@ namespace THResources {
         public static string Yes {
             get {
                 return ResourceManager.GetString("Yes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 您的意見.
+        /// </summary>
+        public static string YourOpinion {
+            get {
+                return ResourceManager.GetString("YourOpinion", resourceCulture);
             }
         }
     }

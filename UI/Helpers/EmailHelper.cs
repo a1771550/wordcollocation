@@ -26,7 +26,7 @@ namespace UI.Helpers
 			client.Host = SiteConfiguration.MailServer;
 			return client;
 		}
-		public static async Task SendMailAsnyc(Contact contact)
+		public static async Task SendMailAsnyc(ContactViewModel contact)
 		{
 			try
 			{
@@ -35,7 +35,7 @@ namespace UI.Helpers
 				mail.To.Add(SiteConfiguration.MailReceiver);
 				mail.Subject = SiteConfiguration.ContactMailSubject;
 				mail.IsBodyHtml = SiteConfiguration.IsMailHtml;
-				string body = string.Format("<p>username: {0}</p><p>email: {1}</p><p>message: {2}</p>", contact.UserName, contact.Email, contact.Message);
+				string body = string.Format("<p>username: {0}</p><p>email: {1}</p><p>message: {2}</p>", contact.Name, contact.Email, contact.MessageText);
 				mail.Body = body;
 				//client.Send(mail);
 				await Task.Run(() => client.Send(mail));
