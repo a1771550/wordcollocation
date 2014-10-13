@@ -7,7 +7,6 @@
 
 <div class="span4">
 	<h3>@ViewBag.Title</h3>
-	<hr />
 
 	@{
 		if (ViewBag.ErrorList != null && ViewBag.ErrorList.Count > 0)
@@ -32,21 +31,19 @@
 				}
 			</div>*@
 
-		@using (Html.BeginForm("Login", "WcAccount", new {ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login-form", role = "form", id = "login-form" }))
+		@using (Html.BeginForm("Login", "WcAccount", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login-form", role = "form", id = "login-form" }))
 		{
 			@Html.AntiForgeryToken()
 
 			@Html.ValidationSummary(false)
 
+
 			<div class="form-group">
-				<div class="form-group">
-					<div class="text">
-						@Html.TextBoxFor(m => m.UserNameEmail, new { placeholder = Resources.UserNameEmailForLogin, autocomplete="off" })
-					</div>
-				</div>
+				@Html.TextBoxFor(m => m.UserNameEmail, new { placeholder = Resources.UserNameEmailForLogin, @class = "text", @autocomplete = "off" })
 			</div>
+
 			<div class="form-group">
-				@Html.PasswordFor(m => m.Password, new { placeholder = Resources.Password, autocomplete = "off" })
+				@Html.PasswordFor(m => m.Password, new { placeholder = Resources.Password, autocomplete = "off", @class = "text" })
 			</div>
 			<div class="form-group">
 				<div class="checkbox">
@@ -55,17 +52,13 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<div class="">
-					<button type="submit">@Resources.LogOn</button>
-				</div>
+				<button type="submit" style="vertical-align: text-bottom;">@Resources.LogOn</button>
+				
+				@Html.ActionLink(Resources.ForgetPassword, "ForgetPassword", "WcAccount", new{style="padding-left:1em;"})
 			</div>
 			<p>
 				@Html.ActionLink(Resources.RegisterAsNewUser, "Register")
 			</p>
-			@* Enable this once you have account confirmation enabled for password reset functionality
-				<p>
-					@Html.ActionLink("Forgot your password?", "ForgotPassword")
-				</p>*@
 		}
 	</section>
 

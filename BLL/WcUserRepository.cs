@@ -93,6 +93,11 @@ namespace BLL
 			return Convert.ToBoolean(Adapter.CheckIfDuplicatedEmail(email));
 		}
 
+		public bool CheckIfDuplicatedUserName(string name)
+		{
+			return Convert.ToBoolean(Adapter.CheckIfDuplicatedUserName(name));
+		}
+
 		public bool[] Add(WcUser user)
 		{
 			bool[] bRet = new bool[2];

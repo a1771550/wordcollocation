@@ -150,7 +150,19 @@ namespace UI.Controllers
 			return Users.SingleOrDefault(x => x.Email == email);
 		}
 
+		[HttpGet]
+		public ActionResult ForgetPassword()
+		{
+			WcLoginViewModel model =new WcLoginViewModel();
+			return View(model);
+		}
 
+		[HttpPost]
+		public ActionResult ForgetPassword(string email)
+		{
+
+			return View();
+		}
 
 		public ActionResult LogOff()
 		{

@@ -1,6 +1,8 @@
-﻿var duplicate;
+﻿var duplicateEmail;
+var duplicateName;
 var invalid;
 var pwdlength;
+var confirmPwdError;
 
 (function ($)
 {
@@ -11,51 +13,103 @@ var pwdlength;
 		setTimeout(function () { $('input:not([type=hidden])').val('-').val(null); }, 1);
 	});
 
-	
-
 	$("#alert").hide();
 	$("#emailOk").hide();
+	$("#nameOk").hide();
 	$("#pwdOk").hide();
-	duplicate = $("#duplicate").val();
+	$("#confirmOk").hide();
+
+	duplicateEmail = $("#duplicateEmail").val();
+	duplicateName = $("#duplicateName").val();
 	invalid = $("#invalid").val();
 	pwdlength = $("#pwdlength").val();
+	confirmPwdError = $("#confirmPwdError").val();
 
 	$("#Email").bind("keyup keydown keypress", function (e)
 	{
 		$("#alert").hide();
 		$("#emailOk").hide();
+	});
 
-		//var keyCode = e.keyCode || e.which;
-		//// catch tap event
-		//if (keyCode == 9) {
-		//	e.preventDefault();
-		//	checkMail();
-		//}
+	$("#UserName").bind("keyup keydown keypress", function (e)
+	{
+		$("#alert").hide();
+		$("#nameOk").hide();
 	});
 
 	$("#Password").bind("keyup keydown keypress", function (e)
 	{
 		$("#alert").hide();
 		$("#pwdOk").hide();
-
-		//var keyCode = e.keyCode || e.which;
-		//// catch tap event
-		//if (keyCode == 9)
-		//{
-		//	e.preventDefault();
-		//	checkPassword();
-		//}
 	});
 
-	$("#Email").bind("change", function (e) {
+	$("#ConfirmPassword").bind("keyup keydown keypress", function (e)
+	{
+		$("#alert").hide();
+		$("#confirmOk").hide();
+	});
+
+	$("#Email").bind("change", function (e)
+	{
 		checkMail();
 	});
 
-	$("#Password").bind("change", function (e) {
+	$("#UserName").bind("change", function (e)
+	{
+		checkUserName();
+	});
+
+	$("#Password").bind("change", function (e)
+	{
 		checkPassword();
 	});
 
+	$("#ConfirmPassword").bind("change", function (e)
+	{
+		checkConfirmPassword();
+	});
+
 })(jQuery);
+
+function checkConfirmPassword() {
+	var cp = $("#ConfirmPassword").val();
+	var p = $("#Password").val();
+	if (cp == p) {
+		$("#alert").hide();
+		$("#confirmOk").show();
+	} else {
+		$("#alert").show().text(confirmPwdError);
+		$("#ConfirmPassword").focus();
+	}
+}
+
+function checkUserName()
+{
+	var name = $("#UserName").val();
+	$.ajax({
+		url: '/WebServices/WcServices.asmx/CheckIfDuplicatedUserName',
+		type: 'POST',
+		dataType: 'json',
+		contentType: "application/json; charset=utf-8",
+		data: JSON.stringify({ name: name }),
+		success: function (data)
+		{
+			var bRet = data.d;
+			if (bRet) {
+				$("#alert").show().text(duplicateName);
+				$("#UserName").focus();
+			} else
+			{
+				$("#alert").hide();
+				$("#nameOk").show();
+			}
+		},
+		error: function (data)
+		{
+			showError(data.Message);
+		}
+	});
+}
 
 function checkMail()
 {
@@ -73,7 +127,7 @@ function checkMail()
 			var bRet = data.d;
 			if (!bRet[0])
 			{
-				$("#alert").show().text(duplicate);
+				$("#alert").show().text(duplicateEmail);
 				$("#Email").focus();
 			}
 			else if (!bRet[1])
@@ -90,12 +144,13 @@ function checkMail()
 		},
 		error: function (data)
 		{
-			$('#alert').show().text('Error: ' + data.Message);
+			showError(data.Message);
 		}
 	});
 }
 
-function checkPassword() {
+function checkPassword()
+{
 	var pwd = $("#Password").val();
 
 	$.ajax({
@@ -123,7 +178,12 @@ function checkPassword() {
 		},
 		error: function (data)
 		{
-			$('#alert').show().text('Error: ' + data.Message);
+			showError(data.Message);
 		}
 	});
+}
+
+function showError(error)
+{
+	$('#alert').show().text('Error: ' + error);
 }

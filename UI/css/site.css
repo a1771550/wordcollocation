@@ -7,6 +7,10 @@
 @import url("/css/wisewords/template.css");
 @import url("/css/wisewords/colors/color-classic.css");*/
 
+a:link {
+	text-decoration: none;
+}
+
 input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input, select {
 	padding: 4px 6px;
 	height: 35px;

@@ -60,6 +60,13 @@ namespace UI.WebServices
 				}
 		*/
 
+		[WebMethod]
+		public bool CheckIfDuplicatedUserName(string name)
+		{
+			var repo = new WcUserRepository();
+			return repo.CheckIfDuplicatedUserName(name);
+		}
+
 		[WebMethod(EnableSession = true)]
 		public string SearchCollocation(string word, string id)
 		{
