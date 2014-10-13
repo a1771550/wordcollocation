@@ -753,4 +753,7 @@
   <data name="ProgressTitle" xml:space="preserve">
     <value>資料讀取中</value>
   </data>
+  <data name="ContinueToSearch" xml:space="preserve">
+    <value>繼續搜尋</value>
+  </data>
 </root>

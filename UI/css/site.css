@@ -263,6 +263,12 @@ ul#letters {
 }
 /*-- margin list end --*/
 
+/*-- padding list starts */
+.paddingLeftDot3em{ padding-left: .3em;}
+.paddingLeftDot5em{ padding-left: .5em;}
+.paddingLeft1em{ padding-left: 1em;}
+.paddingLeft3em{ padding-left: 3em;}
+/*-- padding list ends */
 
 .alignLeft {
 	text-align: left;
@@ -322,4 +328,16 @@ ul#socialLinks {
 
 .ui-widget-overlay {
 	background-color: #000;cursor: wait; opacity: 0.5; height: 100%; width: 100%; position: fixed; left: 0; top: 0; z-index: 1001;
+}
+
+table#WordList {
+		color: #333333; border-collapse: collapse; background-color: #d7c1c1;
+	}
+
+	table#WordList td {
+		padding-bottom:0!important;
+	}
+
+.pagination {
+	margin: 1em 0 !important;
 }

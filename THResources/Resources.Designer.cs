@@ -475,6 +475,15 @@ namespace THResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 繼續搜尋.
+        /// </summary>
+        public static string ContinueToSearch {
+            get {
+                return ResourceManager.GetString("ContinueToSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 版權所有不得轉載.
         /// </summary>
         public static string CopyRight {

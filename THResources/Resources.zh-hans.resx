@@ -597,4 +597,7 @@
   <data name="CollocationPattern" xml:space="preserve">
     <value>搭配型态</value>
   </data>
+  <data name="ContinueToSearch" xml:space="preserve">
+    <value>继续搜寻</value>
+  </data>
 </root>

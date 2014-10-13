@@ -693,4 +693,7 @@
   <data name="ProgressTitle" xml:space="preserve">
     <value>データのロード</value>
   </data>
+  <data name="ContinueToSearch" xml:space="preserve">
+    <value>検索を続ける</value>
+  </data>
 </root>

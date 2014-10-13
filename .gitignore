@@ -21,6 +21,7 @@ UI/img/*\.zip
 UI/img/*\.rar
 UI/js/*\.zip
 UI/js/*\.rar
+UI/img/close_buttons/*
 UI/obj/
 UI/Properties/
 UI/Scripts/\_references.js

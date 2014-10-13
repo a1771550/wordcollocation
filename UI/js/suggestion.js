@@ -83,7 +83,7 @@ function setDropDownList(w)
 	switch (wl)
 	{
 		case "abandon":
-			$("#ColPosId").val("3");
+			$("#ColPosId").val("4");
 			break;
 		case "ability":
 			$("#ColPosId").val("2");
