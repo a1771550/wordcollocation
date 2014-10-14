@@ -26,17 +26,8 @@ namespace UI.Models
 		public bool RememberMe { get; set; }
 	}
 
-	public class WcRegisterViewModel
+	public class WcResetPasswordViewModel
 	{
-		[Required(ErrorMessageResourceName = "UserNameRequired", ErrorMessageResourceType = typeof(Resources), ErrorMessage = null)]
-		[Display(Name = "UserName", ResourceType = typeof(Resources))]
-		public string UserName { get; set; }
-
-		[Required(ErrorMessageResourceName = "EmailRequired", ErrorMessageResourceType = typeof(Resources), ErrorMessage = null)]
-		[EmailAddress(ErrorMessageResourceName = "EmailFormatError", ErrorMessageResourceType = typeof(Resources), ErrorMessage = null)]
-		[Display(Name = "Email", ResourceType = typeof(Resources))]
-		public string Email { get; set; }
-
 		[Required(ErrorMessageResourceName = "PasswordRequired", ErrorMessageResourceType = typeof(Resources), ErrorMessage = null)]
 		[StringLength(20, ErrorMessageResourceName = "PasswordLengthError", ErrorMessageResourceType = typeof(Resources), ErrorMessage = null, MinimumLength = 6)]
 		//[MaxLength(ErrorMessageResourceName = "MaxPasswordLengthError", ErrorMessageResourceType = typeof(Resources))]
@@ -48,6 +39,18 @@ namespace UI.Models
 		[Display(Name = "ConfirmPassword", ResourceType = typeof(Resources))]
 		[Compare("Password", ErrorMessageResourceName = "ConfirmPasswordError", ErrorMessageResourceType = typeof(Resources), ErrorMessage = null)]
 		public string ConfirmPassword { get; set; }
+	}
+
+	public class WcRegisterViewModel:WcResetPasswordViewModel
+	{
+		[Required(ErrorMessageResourceName = "UserNameRequired", ErrorMessageResourceType = typeof(Resources), ErrorMessage = null)]
+		[Display(Name = "UserName", ResourceType = typeof(Resources))]
+		public string UserName { get; set; }
+
+		[Required(ErrorMessageResourceName = "EmailRequired", ErrorMessageResourceType = typeof(Resources), ErrorMessage = null)]
+		[EmailAddress(ErrorMessageResourceName = "EmailFormatError", ErrorMessageResourceType = typeof(Resources), ErrorMessage = null)]
+		[Display(Name = "Email", ResourceType = typeof(Resources))]
+		public string Email { get; set; }
 	}
 
 }

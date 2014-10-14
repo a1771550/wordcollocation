@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Security.Cryptography;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Caching;
@@ -11,162 +8,13 @@ using BLL.Helpers;
 using Microsoft.VisualBasic;
 using THResources;
 using UI.Classes;
-using UI.Models;
 using Verb = BLL.Verb;
 
 namespace UI.Helpers
 {
 	/// <summary>
-	/// Contains static text methods.
-	/// Put this in a separate class in your project.
-	/// </summary>
-	public static class TextTools
-	{
-		/// <summary>
-		/// Count occurrences of strings.
-		/// </summary>
-		public static int CountStringOccurrences(string text, string pattern)
-		{
-			// Loop through all instances of the string 'text'.
-			int count = 0;
-			int i = 0;
-			while ((i = text.IndexOf(pattern, i)) != -1)
-			{
-				i += pattern.Length;
-				count++;
-			}
-			return count;
-		}
-
-		/// <summary>
-		/// Encrypt a string using dual encryption method. Return a encrypted cipher Text
-		/// </summary>
-		/// <param name="toEncrypt">string to be encrypted</param>
-		/// <param name="useHashing">use hashing? send to for extra secirity</param>
-		/// <returns></returns>
-		public static string Encrypt(string toEncrypt, bool useHashing)
-		{
-			byte[] keyArray;
-			byte[] toEncryptArray = Encoding.UTF8.GetBytes(toEncrypt);
-
-			// Get the key from config file
-			string key = SiteConfiguration.SecurityKey;
-
-			var salt = Guid.NewGuid().ToString();
-			var path = Path.Combine(SiteConfiguration.KeyPath, SiteConfiguration.KeyFileName);
-			StreamWriter writer = new StreamWriter(path, false);
-			using (writer)
-			{
-				writer.WriteLine(salt);
-			}
-			key += salt;
-
-			if (useHashing)
-			{
-				MD5CryptoServiceProvider hashmd5 = new MD5CryptoServiceProvider();
-				keyArray = hashmd5.ComputeHash(Encoding.UTF8.GetBytes(key));
-				hashmd5.Clear();
-			}
-			else
-				keyArray = Encoding.UTF8.GetBytes(key);
-
-			TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider
-			{
-				Key = keyArray,
-				Mode = CipherMode.ECB,
-				Padding = PaddingMode.PKCS7
-			};
-
-			ICryptoTransform cTransform = tdes.CreateEncryptor();
-			byte[] resultArray = cTransform.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
-			tdes.Clear();
-			return Convert.ToBase64String(resultArray, 0, resultArray.Length);
-		}
-		/// <summary>
-		/// DeCrypt a string using dual encryption method. Return a DeCrypted clear string
-		/// </summary>
-		/// <param name="cipherString">encrypted string</param>
-		/// <param name="useHashing">Did you use hashing to encrypt this data? pass true is yes</param>
-		/// <returns></returns>
-		public static string Decrypt(string cipherString, bool useHashing)
-		{
-			byte[] keyArray;
-			byte[] toEncryptArray = Convert.FromBase64String(cipherString);
-
-			//get the salt value
-			var path = Path.Combine(SiteConfiguration.KeyPath, SiteConfiguration.KeyFileName);
-			StreamReader reader = new StreamReader(path);
-			string salt;
-			using (reader)
-			{
-				salt = reader.ReadLine();
-			}
-
-			//Get your key from config file to open the lock!
-			string key = SiteConfiguration.SecurityKey;
-			key += salt;
-
-			if (useHashing)
-			{
-				MD5CryptoServiceProvider hashmd5 = new MD5CryptoServiceProvider();
-				keyArray = hashmd5.ComputeHash(Encoding.UTF8.GetBytes(key));
-				hashmd5.Clear();
-			}
-			else
-				keyArray = Encoding.UTF8.GetBytes(key);
-
-			TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider
-			{
-				Key = keyArray,
-				Mode = CipherMode.ECB,
-				Padding = PaddingMode.PKCS7
-			};
-
-			ICryptoTransform cTransform = tdes.CreateDecryptor();
-			byte[] resultArray = cTransform.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
-
-			tdes.Clear();
-			return Encoding.UTF8.GetString(resultArray);
-		}
-
-		public static string HashMD5(string email)
-		{
-			MD5 md5 = MD5.Create();
-			byte[] data = md5.ComputeHash(Encoding.Default.GetBytes(email));
-			StringBuilder builder = new StringBuilder();
-			foreach (var d in data)
-				builder.Append(d.ToString("x2"));
-			return builder.ToString();
-		}
-
-		/// <summary>
-		/// Uppercase first letters of all words in the string.
-		/// </summary>
-		public static string UpperFirst(string s)
-		{
-			return Regex.Replace(s, @"\b[a-z]\w+", delegate(Match match)
-			{
-				string v = match.ToString();
-				return char.ToUpper(v[0]) + v.Substring(1);
-			});
-		}
-	}
-
-	/// <summary>
 	/// an ad-hoc class to help formatting example with regular expression
 	/// </summary>
-	//class WcCapture
-	//{
-	//	public int Index { get; set; }
-	//	public string Value { get; set; }
-	//}
-
-	//enum VerbForm
-	//{
-	//	regular,
-	//	irregular,
-	//	others
-	//}
 	public static class WcHelper
 	{
 		private const string RegularVerbListCacheName = "RegularVerbList";
@@ -285,7 +133,7 @@ namespace UI.Helpers
 				case CollocationPattern.preposition_noun:
 					//eg: in sb's absence, in my absence, in her absence, in his absence, in our absence, in their absence, in your absence
 					// => absence = word; in = preposition
-					string prepForReplace = colWord + "|" + TextTools.UpperFirst(colWord); //in this pattern, 'prep' can have capitalization issue
+					string prepForReplace = colWord + "|" + TextHelper.UpperFirst(colWord); //in this pattern, 'prep' can have capitalization issue
 					//(in|In)(\s+)(sb's|someone's|my|your|his|her|our|their){1}(\s+)([^in])*(absence){1}
 					pattern = string.Format(@"({0})(\s+)(sb's|someone's|my|your|his|her|our|their){{1}}(\s+)([^{1}])*({2}){{1}}",
 						prepForReplace, colWord, word);
@@ -1089,7 +937,7 @@ Examples:do / doing; echo / echoing; go / going; ski / skiing */
 
 		private static string[] FormatExampleWithWord(string example, string word, bool isWord)
 		{
-			string pattern = "(" + word + "|" + TextTools.UpperFirst(word) + ")";
+			string pattern = "(" + word + "|" + TextHelper.UpperFirst(word) + ")";
 			Regex regex = new Regex(pattern);
 			if (!regex.IsMatch(example)) return null;
 			string replacement = isWord ? @"<span class=""word"">$1</span>" : @"<span class=""colWord"">$1</span>";

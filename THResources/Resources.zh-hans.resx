@@ -624,4 +624,19 @@
   <data name="YourOpinion" xml:space="preserve">
     <value>您的意见</value>
   </data>
+  <data name="InvalidAccount" xml:space="preserve">
+    <value>帐号不适用</value>
+  </data>
+  <data name="InvalidAccountText" xml:space="preserve">
+    <value>查无此帐号，请重新输入</value>
+  </data>
+  <data name="ReEnter" xml:space="preserve">
+    <value>重新输入</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>重新设定密码</value>
+  </data>
+  <data name="ResetPasswordComplete" xml:space="preserve">
+    <value>已成功重新设定密码</value>
+  </data>
 </root>

@@ -777,4 +777,19 @@
   <data name="YourOpinion" xml:space="preserve">
     <value>您的意見</value>
   </data>
+  <data name="InvalidAccount" xml:space="preserve">
+    <value>帳號不適用</value>
+  </data>
+  <data name="InvalidAccountText" xml:space="preserve">
+    <value>查無此帳號，請重新輸入</value>
+  </data>
+  <data name="ReEnter" xml:space="preserve">
+    <value>重新輸入</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>重新設定密碼</value>
+  </data>
+  <data name="ResetPasswordComplete" xml:space="preserve">
+    <value>已成功重新設定密碼</value>
+  </data>
 </root>

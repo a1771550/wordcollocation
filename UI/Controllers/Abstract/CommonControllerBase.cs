@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
 using System.Web;
@@ -32,7 +33,15 @@ namespace UI.Controllers.Abstract
 			return base.BeginExecuteCore(callback, state);
 		}
 
-
+		public virtual void RenderModelErrorList()
+		{
+			List<ModelError> Errors = new List<ModelError>();
+			foreach (var m in ModelState.Values)
+			{
+				Errors.AddRange(m.Errors);
+			}
+			ViewBag.ErrorList = Errors;
+		}
 
 	}
 }

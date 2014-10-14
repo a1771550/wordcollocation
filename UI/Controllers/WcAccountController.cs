@@ -47,12 +47,7 @@ namespace UI.Controllers
 		{
 			if (!ModelState.IsValid)
 			{
-				List<ModelError> Errors = new List<ModelError>();
-				foreach (var m in ModelState.Values)
-				{
-					Errors.AddRange(m.Errors);
-				}
-				ViewBag.ErrorList = Errors;
+				RenderModelErrorList();
 				return View(model);
 			}
 
@@ -86,21 +81,23 @@ namespace UI.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				var user = new WcUser { Name = model.UserName, Email = model.Email, Password = model.Password, RoleId = (int)RoleType.Members };
+				var user = new WcUser
+				{
+					Name = model.UserName,
+					Email = model.Email,
+					Password = TextHelper.Encrypt(model.Password,true),
+					RoleId = (int)RoleType.Members
+				};
 
 				bool[] result = repo.Add(user);
 
-				if (result[1])
-				{
-					return View("SuccessfullRegister");
-				}
-
-				return View(model);
+				return result[1] ? View("SuccessfullRegister") : View(model);
 			}
-
-			// If we got this far, something failed, redisplay form
+			RenderModelErrorList();
 			return View(model);
 		}
+
+
 
 		bool PasswordSignIn(WcLoginViewModel model)
 		{
@@ -132,8 +129,11 @@ namespace UI.Controllers
 
 		private bool CheckPassword(WcUser user)
 		{
-			//List<WcUser> users = (List<WcUser>)Session["UserRepo"];
-			return Users.Any(x => x.Name == user.Name && x.Password == user.Password);
+			var pwd = TextHelper.Encrypt(user.Password, true);
+			bool pass= Users.Any(x => x.Name == user.Name && x.Password == pwd);
+			if (!pass)
+				pass = Users.Any(x => x.Name == user.Name && x.Password == user.Password);
+			return pass;
 		}
 
 		private WcUser FindByName(string name)
@@ -151,17 +151,58 @@ namespace UI.Controllers
 		}
 
 		[HttpGet]
+		[AllowAnonymous]
 		public ActionResult ForgetPassword()
 		{
-			WcLoginViewModel model =new WcLoginViewModel();
+			WcLoginViewModel model = new WcLoginViewModel();
 			return View(model);
 		}
 
 		[HttpPost]
-		public ActionResult ForgetPassword(string email)
+		[AllowAnonymous]
+		public ActionResult ForgetPassword(string userNameEmail)
 		{
+			var currentEmail = repo.CheckIfDuplicatedEmail(userNameEmail);
+			WcRegisterViewModel model;
+			if (currentEmail)
+			{
+				model = new WcRegisterViewModel();
+				Session["UserEmail"] = userNameEmail;
+				return View("ResetPassword", model);
+			}
+			var currentName = repo.CheckIfDuplicatedUserName(userNameEmail);
+			if (currentName)
+			{
+				model = new WcRegisterViewModel();
+				Session["UserName"] = userNameEmail;
+				return View("ResetPassword", model);
+			}
+			return View("InvalidAccount");
+		}
 
-			return View();
+		[HttpPost]
+		[AllowAnonymous]
+		public ActionResult ResetPassword(WcResetPasswordViewModel model)
+		{
+			if (!ModelState.IsValid)
+			{
+				RenderModelErrorList();
+				return View(model);
+			}
+			var pwd = TextHelper.Encrypt(model.Password, true);
+			if (Session["UserEmail"] != null){ 
+				string email = (string) Session["UserEmail"];
+				Session["UserEmail"] = null;
+				repo.ResetPasswordByEmail(email, pwd);
+			}
+			if (Session["UserName"] != null)
+			{
+				string name = (string) Session["UserName"];
+				Session["UserName"] = null;
+				repo.ResetPasswordByName(name, pwd);
+			}
+			
+			return View("ResetPasswordComplete");
 		}
 
 		public ActionResult LogOff()

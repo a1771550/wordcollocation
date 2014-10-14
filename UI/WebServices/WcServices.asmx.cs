@@ -67,6 +67,13 @@ namespace UI.WebServices
 			return repo.CheckIfDuplicatedUserName(name);
 		}
 
+		[WebMethod]
+		public bool CheckIfDuplicatedEmail(string email)
+		{
+			var repo = new WcUserRepository();
+			return repo.CheckIfDuplicatedEmail(email);
+		}
+
 		[WebMethod(EnableSession = true)]
 		public string SearchCollocation(string word, string id)
 		{

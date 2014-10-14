@@ -42,23 +42,13 @@ namespace BLL
 
 		public override List<WcUser> GetList()
 		{
-			var user = GetUserRoles();
-			return (from UsersRolesDS.WcUsersRow row in user
-					select new WcUser
-					{
-						Id = row.Id,
-						Name = row.Name,
-						Password = row.Password,
-						Email = row.Email,
-						RowVersion = row.RowVersion,
-						RoleId = row.RoleId,
-						RoleName = row.RoleName
-					}
-				).ToList();
+			var table = GetUserRoles();
+			return ConvertTableToList(table);
 		}
 		public override WcUser GetObjectById(int id)
 		{
-			return GetUserRolesList().SingleOrDefault(x => x.Id == id);
+			UsersRolesDS.WcUsersDataTable table = Adapter.GetObjectById(id);
+			return ConvertTableToList(table)[0];
 		}
 
 		public UsersRolesDS.WcUsersDataTable GetUserRoles()
@@ -73,19 +63,8 @@ namespace BLL
 
 		public List<WcUser> GetUserRolesList()
 		{
-			var user = GetUserRoles();
-			return (from UsersRolesDS.WcUsersRow row in user
-					select new WcUser
-					{
-						Id = row.Id,
-						Name = row.Name,
-						Password = row.Password,
-						Email = row.Email,
-						RowVersion = row.RowVersion,
-						RoleId = row.RoleId,
-						RoleName = row.RoleName
-					}
-				).ToList();
+			var table = GetUserRoles();
+			return ConvertTableToList(table);
 		}
 
 		public bool CheckIfDuplicatedEmail(string email)
@@ -98,6 +77,39 @@ namespace BLL
 			return Convert.ToBoolean(Adapter.CheckIfDuplicatedUserName(name));
 		}
 
+		public WcUser GetObjectByEmail(string email)
+		{
+			UsersRolesDS.WcUsersDataTable table= Adapter.GetObjectByEmail(email);
+			return ConvertTableToList(table)[0];
+		}
+
+		private List<WcUser> ConvertTableToList(UsersRolesDS.WcUsersDataTable table)
+		{
+			return (from UsersRolesDS.WcUsersRow row in table.Rows
+				select new WcUser
+				{
+					Id = row.Id,
+					Name = row.Name,
+					Password = row.Password,
+					Email = row.Email,
+					RowVersion = row.RowVersion,
+					RoleId = row.RoleId,
+					RoleName = row.RoleName
+				}).ToList();
+		}
+		public int ResetPasswordByEmail(string email, string password)
+		{
+			var table = Adapter.GetObjectByEmail(email);
+			var user = ConvertTableToList(table)[0];
+			return Adapter.ResetPassword(password, user.Id, user.RowVersion);
+		}
+
+		public int ResetPasswordByName(string name, string password)
+		{
+			var table = Adapter.GetObjectByName(name);
+			var user = ConvertTableToList(table)[0];
+			return Adapter.ResetPassword(password, user.Id, user.RowVersion);
+		}
 		public bool[] Add(WcUser user)
 		{
 			bool[] bRet = new bool[2];

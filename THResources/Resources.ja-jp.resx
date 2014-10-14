@@ -720,4 +720,19 @@
   <data name="YourOpinion" xml:space="preserve">
     <value>あなたのご意見</value>
   </data>
+  <data name="InvalidAccount" xml:space="preserve">
+    <value>無効なアカウント</value>
+  </data>
+  <data name="InvalidAccountText" xml:space="preserve">
+    <value>チャールズはそのようなアカウントがない、再入力して下さい</value>
+  </data>
+  <data name="ReEnter" xml:space="preserve">
+    <value>もう一度入力してください</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>パスワードを再設定する</value>
+  </data>
+  <data name="ResetPasswordComplete" xml:space="preserve">
+    <value>成功したパスワードをリセットしたことがあります</value>
+  </data>
 </root>

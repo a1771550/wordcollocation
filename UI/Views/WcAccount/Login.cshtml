@@ -21,15 +21,6 @@
 	}
 
 	<section id="loginForm">
-		@*<div id="modelStateErrors">
-				@if (ViewData.ModelState.Values.Any())
-				{
-					foreach (ModelError error in ViewData.ModelState.Values.SelectMany(modelState => modelState.Errors))
-					{
-						@Html.Raw(string.Format("<span>Model Errors: {0}</span><br/>", error));
-					}
-				}
-			</div>*@
 
 		@using (Html.BeginForm("Login", "WcAccount", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login-form", role = "form", id = "login-form" }))
 		{

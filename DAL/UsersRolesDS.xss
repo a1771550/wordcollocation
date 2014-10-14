@@ -7,28 +7,12 @@
 <DiagramLayout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ex:showrelationlabel="False" ViewPortX="155" ViewPortY="205" xmlns:ex="urn:schemas-microsoft-com:xml-msdatasource-layout-extended" xmlns="urn:schemas-microsoft-com:xml-msdatasource-layout">
   <Shapes>
     <Shape ID="DesignTable:WcRoles" ZOrder="6" X="354" Y="219" Height="210" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="102" />
-    <Shape ID="DesignTable:WcUsers" ZOrder="5" X="763" Y="215" Height="305" Width="251" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
-    <Shape ID="DesignTable:Forum_Members" ZOrder="4" X="1006" Y="570" Height="210" Width="242" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
-    <Shape ID="DesignTable:Profiles" ZOrder="3" X="556" Y="571" Height="305" Width="188" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
+    <Shape ID="DesignTable:WcUsers" ZOrder="1" X="763" Y="215" Height="362" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
+    <Shape ID="DesignTable:Forum_Members" ZOrder="2" X="1038" Y="618" Height="210" Width="242" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
+    <Shape ID="DesignTable:Profiles" ZOrder="5" X="556" Y="571" Height="305" Width="188" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
   </Shapes>
   <Connectors>
-    <Connector ID="DesignRelation:FK_Forum_Members_WcUsers" ZOrder="1" LineWidth="11">
-      <RoutePoints>
-        <Point>
-          <X>1006</X>
-          <Y>596</Y>
-        </Point>
-        <Point>
-          <X>772</X>
-          <Y>596</Y>
-        </Point>
-        <Point>
-          <X>772</X>
-          <Y>520</Y>
-        </Point>
-      </RoutePoints>
-    </Connector>
-    <Connector ID="DesignRelation:FK_Profiles_WcUsers" ZOrder="2" LineWidth="11">
+    <Connector ID="DesignRelation:FK_Profiles_WcUsers" ZOrder="4" LineWidth="11">
       <RoutePoints>
         <Point>
           <X>727</X>
@@ -41,6 +25,22 @@
         <Point>
           <X>763</X>
           <Y>484</Y>
+        </Point>
+      </RoutePoints>
+    </Connector>
+    <Connector ID="DesignRelation:FK_Forum_Members_WcUsers" ZOrder="3" LineWidth="11">
+      <RoutePoints>
+        <Point>
+          <X>1038</X>
+          <Y>644</Y>
+        </Point>
+        <Point>
+          <X>772</X>
+          <Y>644</Y>
+        </Point>
+        <Point>
+          <X>772</X>
+          <Y>577</Y>
         </Point>
       </RoutePoints>
     </Connector>

@@ -19,55 +19,72 @@ var confirmPwdError;
 	$("#pwdOk").hide();
 	$("#confirmOk").hide();
 
-	duplicateEmail = $("#duplicateEmail").val();
-	duplicateName = $("#duplicateName").val();
-	invalid = $("#invalid").val();
-	pwdlength = $("#pwdlength").val();
-	confirmPwdError = $("#confirmPwdError").val();
+	duplicateEmail = $("#duplicateEmail").length ? $("#duplicateEmail").val() : null;
+	duplicateName = $("#duplicateName").length ? $("#duplicateName").val() : null;
+	invalid = $("#invalid").length ? $("#invalid").val() : null;
+	pwdlength = $("#pwdlength").length ? $("#pwdlength").val() : null;
+	confirmPwdError = $("#confirmPwdError").length ? $("#confirmPwdError").val():null;
 
-	$("#Email").bind("keyup keydown keypress", function (e)
-	{
-		$("#alert").hide();
-		$("#emailOk").hide();
-	});
-
-	$("#UserName").bind("keyup keydown keypress", function (e)
-	{
-		$("#alert").hide();
-		$("#nameOk").hide();
-	});
-
-	$("#Password").bind("keyup keydown keypress", function (e)
-	{
-		$("#alert").hide();
-		$("#pwdOk").hide();
-	});
-
-	$("#ConfirmPassword").bind("keyup keydown keypress", function (e)
-	{
-		$("#alert").hide();
-		$("#confirmOk").hide();
-	});
-
-	$("#Email").bind("change", function (e)
-	{
-		checkMail();
-	});
-
-	$("#UserName").bind("change", function (e)
-	{
-		checkUserName();
-	});
-
-	$("#Password").bind("change", function (e)
-	{
-		checkPassword();
-	});
-
-	$("#ConfirmPassword").bind("change", function (e)
-	{
-		checkConfirmPassword();
-	});
+	if ($("#Email").length) {
+		$("#Email").bind("keyup keydown keypress", function (e)
+		{
+			$("#alert").hide();
+			$("#emailOk").hide();
+		});
+	}
+	
+	if ($("#UserName").length) {
+		$("#UserName").bind("keyup keydown keypress", function (e)
+		{
+			$("#alert").hide();
+			$("#nameOk").hide();
+		});
+	}
+	
+	if ($("#Password").length) {
+		$("#Password").bind("keyup keydown keypress", function (e)
+		{
+			$("#alert").hide();
+			$("#pwdOk").hide();
+		});
+	}
+	
+	if ($("#ConfirmPassword").length) {
+		$("#ConfirmPassword").bind("keyup keydown keypress", function (e)
+		{
+			$("#alert").hide();
+			$("#confirmOk").hide();
+		});
+	}
+	
+	if ($("#Email").length) {
+		$("#Email").bind("change", function (e)
+		{
+			checkMail();
+		});
+	}
+	
+	if ($("#UserName").length) {
+		$("#UserName").bind("change", function (e)
+		{
+			checkUserName();
+		});
+	}
+	
+	if ($("#Password").length) {
+		$("#Password").bind("change", function (e)
+		{
+			checkPassword();
+		});
+	}
+	
+	if ($("#ConfirmPassword").length) {
+		$("#ConfirmPassword").bind("change", function (e)
+		{
+			checkConfirmPassword();
+		});
+	}
+	
 
 })(jQuery);
 
@@ -159,9 +176,7 @@ function checkPassword()
 		dataType: 'json',
 		contentType: "application/json; charset=utf-8",
 		data: JSON.stringify({ "package": pwd }),
-		success: function (data)
-		{
-			//console.log(data.d);
+		success: function (data) {
 			var bRet = data.d;
 			if (!bRet)
 			{

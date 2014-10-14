@@ -345,3 +345,7 @@ table#WordList {
 .pagination {
 	margin: 1em 0 !important;
 }
+
+#register-form input, #resetPwd-form input {
+		width: 80%;
+	}

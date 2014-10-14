@@ -943,6 +943,24 @@ namespace THResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 帳號不適用.
+        /// </summary>
+        public static string InvalidAccount {
+            get {
+                return ResourceManager.GetString("InvalidAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 查無此帳號，請重新輸入.
+        /// </summary>
+        public static string InvalidAccountText {
+            get {
+                return ResourceManager.GetString("InvalidAccountText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 登錄失敗.
         /// </summary>
         public static string InvalidLoginAttempt {
@@ -1447,6 +1465,15 @@ namespace THResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 重新輸入.
+        /// </summary>
+        public static string ReEnter {
+            get {
+                return ResourceManager.GetString("ReEnter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 敬上.
         /// </summary>
         public static string Regards {
@@ -1524,6 +1551,24 @@ namespace THResources {
         public static string RequestTimeOut {
             get {
                 return ResourceManager.GetString("RequestTimeOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 重新設定密碼.
+        /// </summary>
+        public static string ResetPassword {
+            get {
+                return ResourceManager.GetString("ResetPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 已成功重新設定密碼.
+        /// </summary>
+        public static string ResetPasswordComplete {
+            get {
+                return ResourceManager.GetString("ResetPasswordComplete", resourceCulture);
             }
         }
         
