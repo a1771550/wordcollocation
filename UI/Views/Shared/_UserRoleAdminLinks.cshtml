@@ -1,5 +1,0 @@
-﻿@if (Request.IsAuthenticated && User.IsInRole("Admin"))
-{
-	<li>@Html.ActionLink("Roles", "Index", "WcRole")</li>
-	<li>@Html.ActionLink("Users", "Index", "WcUser")</li>
-}
