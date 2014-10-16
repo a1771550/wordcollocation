@@ -36,5 +36,7 @@ UI/UI.csproj.user
 UI/Logs/*
 UI/Comics/*
 UI/*\.zip
+UI/fonts/
+UI_backup/
 WordCollocation/
 

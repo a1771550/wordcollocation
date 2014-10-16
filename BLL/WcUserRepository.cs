@@ -43,24 +43,42 @@ namespace BLL
 		public override List<WcUser> GetList()
 		{
 			var table = GetUserRoles();
-			return ConvertTableToList(table);
+			return table.Rows.Count > 0 ? ConvertTableToList(table) : null;
 		}
 		public override WcUser GetObjectById(int id)
 		{
 			UsersRolesDS.WcUsersDataTable table = Adapter.GetObjectById(id);
-			return ConvertTableToList(table)[0];
+			return table.Rows.Count > 0 ? ConvertTableToList(table)[0] : null;
 		}
-
+		public WcUser GetObjectByEmail(string email)
+		{
+			UsersRolesDS.WcUsersDataTable table = Adapter.GetObjectByEmail(email);
+			return table.Rows.Count > 0 ? ConvertTableToList(table)[0] : null;
+		}
+		public WcUser GetObjectByName(string name)
+		{
+			UsersRolesDS.WcUsersDataTable table = Adapter.GetObjectByName(name);
+			return table.Rows.Count > 0 ? ConvertTableToList(table)[0] : null;
+		}
+		public WcUser GetObjectByNamePassword(string name, string password)
+		{
+			var table = Adapter.GetObjectByNamePassword(name, password);
+			return table.Rows.Count > 0 ? ConvertTableToList(table)[0] : null;
+		}
 		public UsersRolesDS.WcUsersDataTable GetUserRoles()
 		{
 			return Adapter.GetUsersWithRole();
 		}
 
-		public bool ValidateUser(int id, string password)
+		public bool ValidateUserByIdPwd(int id, string password)
 		{
-			return (Adapter.GetUserByIdPwd(id, password))==1;
+			return (Adapter.GetUserByIdPwd(id, password)) == 1;
 		}
 
+		public bool ValidateUserByNamePwd(string name, string password)
+		{
+			return Convert.ToBoolean(Adapter.ValidateByNamePwd(name, password));
+		}
 		public List<WcUser> GetUserRolesList()
 		{
 			var table = GetUserRoles();
@@ -77,25 +95,19 @@ namespace BLL
 			return Convert.ToBoolean(Adapter.CheckIfDuplicatedUserName(name));
 		}
 
-		public WcUser GetObjectByEmail(string email)
-		{
-			UsersRolesDS.WcUsersDataTable table= Adapter.GetObjectByEmail(email);
-			return ConvertTableToList(table)[0];
-		}
-
 		private List<WcUser> ConvertTableToList(UsersRolesDS.WcUsersDataTable table)
 		{
 			return (from UsersRolesDS.WcUsersRow row in table.Rows
-				select new WcUser
-				{
-					Id = row.Id,
-					Name = row.Name,
-					Password = row.Password,
-					Email = row.Email,
-					RowVersion = row.RowVersion,
-					RoleId = row.RoleId,
-					RoleName = row.RoleName
-				}).ToList();
+					select new WcUser
+					{
+						Id = row.Id,
+						Name = row.Name,
+						Password = row.Password,
+						Email = row.Email,
+						RowVersion = row.RowVersion,
+						RoleId = row.RoleId,
+						RoleName = row.RoleName
+					}).ToList();
 		}
 		public int ResetPasswordByEmail(string email, string password)
 		{
@@ -113,7 +125,7 @@ namespace BLL
 		public bool[] Add(WcUser user)
 		{
 			bool[] bRet = new bool[2];
-			
+
 			bRet[0] = CheckIfDuplicatedEmail(user.Name);
 
 			if (bRet[0])

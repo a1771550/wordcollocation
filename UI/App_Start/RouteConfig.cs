@@ -8,11 +8,11 @@ namespace UI
 		public static void RegisterRoutes(RouteCollection routes)
 		{
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-			
+
 			//routes.MapRoute("Catchall", "{*anything}", new { controller = "Error", action = "UrlErrors" });
 
 			//routes.MapRoute("")
-			
+
 
 			routes.MapRoute("UnderConstruction", "{controller}/{action}", new { controller = "Home", action = "UnderConstruction" });
 
@@ -27,7 +27,7 @@ namespace UI
 				defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
 			);
 
-			routes.MapRoute("elmah", "{controller}/{action}", new { controller = "WcAccount", action = "elmah" });
+			routes.MapRoute("elmah", "{controller}/{action}", new { controller = "Account", action = "elmah" });
 
 
 			routes.MapRoute("CommonList", "{controller}/{action}/{page}",
@@ -40,7 +40,7 @@ namespace UI
 				new { controller = "Word", action = "IndexForEditor", page = UrlParameter.Optional }, new { page = @"\d+" });
 
 			routes.MapRoute("Login", "{controller}/{action}/{id}",
-				new { controller = "WcAccount", action = "Login", id = UrlParameter.Optional }, new { id = @"\d+" });
+				new { controller = "Account", action = "Login", id = UrlParameter.Optional }, new { id = @"\d+" });
 
 			routes.MapRoute("CollocationEdit", "{controller}/{action}/{id}",
 				new { controller = "Collocation", action = "Edit", id = UrlParameter.Optional }, new { id = @"\d+" });
@@ -60,5 +60,6 @@ namespace UI
 				new { page = @"\d+" }
 			);
 		}
+
 	}
 }

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace BLL.Abstract
+﻿namespace BLL.Abstract
 {
 	public interface IUserRoleRepository<in T> where T:UserRoleBase
 	{

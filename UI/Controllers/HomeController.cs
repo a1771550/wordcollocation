@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Services;
 using BLL;
 using BLL.Helpers;
 using UI.Classes;
@@ -116,7 +115,7 @@ namespace UI.Controllers
 
 		public ViewResult UnderConstruction()
 		{
-			return View("_SiteUnderConstruction");
+			return View();
 		}
 
 		/// <summary>

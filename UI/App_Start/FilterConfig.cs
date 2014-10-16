@@ -7,15 +7,8 @@ namespace UI
 	{
 		public static void RegisterGlobalFilters(GlobalFilterCollection filters)
 		{
-			filters.Add(new ElmahHandleErrorAttribute(),1);
-			//filters.Add(new ElmahMVCErrorAttribute(),1);
-			filters.Add(new HandleErrorAttribute(),2);
+			filters.Add(new ElmahHandleErrorAttribute(), 1);
+			filters.Add(new HandleErrorAttribute());
 		}
-
-		// the following method should belong to web api, so comment it
-		//public static void RegisterHttpFilters(System.Web.Http.Filters.HttpFilterCollection filters)
-		//{
-		//	filters.Add(new ElmahHTTPErrorAttribute());
-		//}
 	}
 }

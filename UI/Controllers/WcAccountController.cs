@@ -1,8 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 using BLL;
 using THResources;
 using UI.Controllers.Abstract;
@@ -29,7 +34,6 @@ namespace UI.Controllers
 	public class WcAccountController : UserRoleControllerBase
 	{
 		private readonly WcUserRepository repo = new WcUserRepository();
-		private List<WcUser> Users;
 		//
 		// GET: /Account/Login
 		[AllowAnonymous]
@@ -97,57 +101,46 @@ namespace UI.Controllers
 			return View(model);
 		}
 
-
-
 		bool PasswordSignIn(WcLoginViewModel model)
 		{
 			// login uses email as username
-			WcUser user = FindByEmail(model.UserNameEmail);
+			WcUser user = repo.GetObjectByEmail(model.UserNameEmail);
 			if (user == null)
 			{
 				// login uses username
-				user = FindByName(model.UserNameEmail);
+				user = repo.GetObjectByName(model.UserNameEmail);
 				if (user == null) return false;
-				Session["UserName"] = model.UserNameEmail;
-				CookieHelper.SetCookie(UserCookie, model.UserNameEmail, DateTime.Now.AddDays(1));
+				if (CheckPassword(user))
+				{
+					FormsAuthentication.SetAuthCookie(model.UserNameEmail, model.RememberMe);
+					//Session["UserName"] = model.UserNameEmail;
+					CookieHelper.SetCookie(UserCookie, model.UserNameEmail, DateTime.Now.AddDays(1));
+					GreetingsHelper.SetGreetings(model.UserNameEmail, GreetingsCookie);
+					return true;
+				}
 			}
 
+			// login uses email as username
 			if (CheckPassword(user))
 			{
 				FormsAuthentication.SetAuthCookie(model.UserNameEmail, model.RememberMe);
-				// login uses email as username
-				string name = repo.GetList().Single(x => x.Email == model.UserNameEmail).Name;
-				Session["UserName"] = name;
-				CookieHelper.SetCookie(UserCookie, name, DateTime.Now.AddDays(1));
-				GreetingsHelper.SetGreetings(name, GreetingsCookie);
+				//string name = repo.GetObjectByEmail(model.UserNameEmail).Name;
+				//Session["UserName"] = name;
+				CookieHelper.SetCookie(UserCookie, user.Name, DateTime.Now.AddDays(1));
+				GreetingsHelper.SetGreetings(user.Name, GreetingsCookie);
 				return true;
 			}
 
 			return false;
 		}
 
-
 		private bool CheckPassword(WcUser user)
 		{
 			var pwd = TextHelper.Encrypt(user.Password, true);
-			bool pass= Users.Any(x => x.Name == user.Name && x.Password == pwd);
+			bool pass = repo.ValidateUserByNamePwd(user.Name, pwd);
 			if (!pass)
-				pass = Users.Any(x => x.Name == user.Name && x.Password == user.Password);
+				pass = repo.ValidateUserByNamePwd(user.Name, user.Password);
 			return pass;
-		}
-
-		private WcUser FindByName(string name)
-		{
-			//List<WcUser> users = (List<WcUser>) Session["UserRepo"];
-			return Users.SingleOrDefault(x => x.Name == name);
-		}
-
-		private WcUser FindByEmail(string email)
-		{
-			//List<WcUser> users;
-			//Session["UserRepo"] = users =  repo.GetUserRolesList();
-			Users = repo.GetUserRolesList();
-			return Users.SingleOrDefault(x => x.Email == email);
 		}
 
 		[HttpGet]
@@ -213,6 +206,175 @@ namespace UI.Controllers
 			Session.Abandon();
 			return RedirectToAction("Index", "Home");
 		}
+
+		[AllowAnonymous]
+		[ChildActionOnly]
+		public ActionResult ExternalLoginsList(string returnUrl)
+		{
+			ViewBag.ReturnUrl = returnUrl;
+			return PartialView("_ExternalLoginsListPartial", OAuthWebSecurity.RegisteredClientData);
+		}
+
+		[HttpPost]
+		[AllowAnonymous]
+		[ValidateAntiForgeryToken]
+		public ActionResult ExternalLogin(string provider, string returnUrl)
+		{
+			return new ExternalLoginResult(provider, Url.Action("ExternalLoginCallback", new { ReturnUrl = returnUrl }));
+		}
+
+		[AllowAnonymous]
+		public ActionResult ExternalLoginCallback(string returnUrl)
+		{
+			var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
+			if (loginInfo == null)
+			{
+				return RedirectToAction("Login");
+			}
+
+			// Sign in the user with this external login provider if the user already has a login
+			var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
+			switch (result)
+			{
+				case SignInStatus.Success:
+					return RedirectToLocal(returnUrl);
+				case SignInStatus.LockedOut:
+					return View("Lockout");
+				case SignInStatus.RequiresVerification:
+					return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
+				case SignInStatus.Failure:
+				default:
+					// If the user does not have an account, then prompt the user to create an account
+					ViewBag.ReturnUrl = returnUrl;
+					ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
+					return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
+			}
+		}
+
+		//[HttpPost]
+		//[AllowAnonymous]
+		//[ValidateAntiForgeryToken]
+		//public ActionResult ExternalLoginConfirmation(RegisterExternalLoginModel model, string returnUrl)
+		//{
+		//	string provider = null;
+		//	string providerUserId = null;
+
+		//	if (User.Identity.IsAuthenticated || !OAuthWebSecurity.TryDeserializeProviderUserId(model.ExternalLoginData, out provider, out providerUserId))
+		//	{
+		//		return RedirectToAction("Manage");
+		//	}
+
+		//	if (ModelState.IsValid)
+		//	{
+		//		// Insert a new user into the database
+		//		//using (UsersContext db = new UsersContext())
+		//		//{
+		//		//	UserProfile user = db.UserProfiles.FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
+		//		//	// Check if user already exists
+		//		//	if (user == null)
+		//		//	{
+		//		//		// Insert name into the profile table
+		//		//		db.UserProfiles.Add(new UserProfile { UserName = model.UserName });
+		//		//		db.SaveChanges();
+
+		//		//		OAuthWebSecurity.CreateOrUpdateAccount(provider, providerUserId, model.UserName);
+		//		//		OAuthWebSecurity.Login(provider, providerUserId, createPersistentCookie: false);
+
+		//		//		return RedirectToLocal(returnUrl);
+		//		//	}
+		//		//	else
+		//		//	{
+		//		//		ModelState.AddModelError("UserName", "User name already exists. Please enter a different user name.");
+		//		//	}
+		//		//}
+		//	}
+
+		//	ViewBag.ProviderDisplayName = OAuthWebSecurity.GetOAuthClientData(provider).DisplayName;
+		//	ViewBag.ReturnUrl = returnUrl;
+		//	return View(model);
+		//}
+
+
+		[AllowAnonymous]
+		public ActionResult ExternalLoginFailure()
+		{
+			return View();
+		}
+		#region Helpers
+		private ActionResult RedirectToLocal(string returnUrl)
+		{
+			if (Url.IsLocalUrl(returnUrl))
+			{
+				return Redirect(returnUrl);
+			}
+			else
+			{
+				return RedirectToAction("Index", "Home");
+			}
+		}
+
+		public enum ManageMessageId
+		{
+			ChangePasswordSuccess,
+			SetPasswordSuccess,
+			RemoveLoginSuccess,
+		}
+
+		internal class ExternalLoginResult : ActionResult
+		{
+			public ExternalLoginResult(string provider, string returnUrl)
+			{
+				Provider = provider;
+				ReturnUrl = returnUrl;
+			}
+
+			public string Provider { get; private set; }
+			public string ReturnUrl { get; private set; }
+
+			public override void ExecuteResult(ControllerContext context)
+			{
+				OAuthWebSecurity.RequestAuthentication(Provider, ReturnUrl);
+			}
+		}
+
+		private static string ErrorCodeToString(MembershipCreateStatus createStatus)
+		{
+			// See http://go.microsoft.com/fwlink/?LinkID=177550 for
+			// a full list of status codes.
+			switch (createStatus)
+			{
+				case MembershipCreateStatus.DuplicateUserName:
+					return "User name already exists. Please enter a different user name.";
+
+				case MembershipCreateStatus.DuplicateEmail:
+					return "A user name for that e-mail address already exists. Please enter a different e-mail address.";
+
+				case MembershipCreateStatus.InvalidPassword:
+					return "The password provided is invalid. Please enter a valid password value.";
+
+				case MembershipCreateStatus.InvalidEmail:
+					return "The e-mail address provided is invalid. Please check the value and try again.";
+
+				case MembershipCreateStatus.InvalidAnswer:
+					return "The password retrieval answer provided is invalid. Please check the value and try again.";
+
+				case MembershipCreateStatus.InvalidQuestion:
+					return "The password retrieval question provided is invalid. Please check the value and try again.";
+
+				case MembershipCreateStatus.InvalidUserName:
+					return "The user name provided is invalid. Please check the value and try again.";
+
+				case MembershipCreateStatus.ProviderError:
+					return "The authentication provider returned an error. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
+
+				case MembershipCreateStatus.UserRejected:
+					return "The user creation request has been canceled. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
+
+				default:
+					return "An unknown error occurred. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
+			}
+		}
+		#endregion
 
 		/// <summary>
 		/// specially for elmah use only

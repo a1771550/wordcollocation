@@ -7,9 +7,9 @@ namespace UI
 		// For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
 		public static void RegisterBundles(BundleCollection bundles)
 		{
-			bundles.Add(new ScriptBundle("~/bundles/layout").Include("~/js/jquery-{version}.js").Include("~/js/bootstrap.js").Include("~/js/tinynav.js").Include("~/js/template.js").Include("~/js/socialLinks.js").Include("~/js/jquery-cookie-plugin.js").Include("~/js/timezone.js").Include("~/js/jquery-ui.custom/jquery-ui.js").Include("~/js/suggestion.js").Include("~/js/searchbox_submit.js"));
+			bundles.Add(new ScriptBundle("~/bundles/layout").Include("~/Scripts/jquery-{version}.js").Include("~/Scripts/bootstrap.js").Include("~/Scripts/tinynav.js").Include("~/Scripts/template.js").Include("~/Scripts/socialLinks.js").Include("~/Scripts/jquery-cookie-plugin.js").Include("~/Scripts/timezone.js").Include("~/Scripts/jquery-ui.custom/jquery-ui.js").Include("~/Scripts/suggestion.js").Include("~/Scripts/searchbox_submit.js"));
 
-			//bundles.Add(new ScriptBundle("~/bundles/modernizr").Include("~/js/modernizr.js"));
+			//bundles.Add(new ScriptBundle("~/bundles/modernizr").Include("~/Scripts/modernizr.js"));
 
 			bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
 						"~/Scripts/jquery-{version}.js"));
@@ -20,7 +20,7 @@ namespace UI
 			// Use the development version of Modernizr to develop with and learn from. Then, when you're
 			// ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
 			bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-						"~/js/modernizr.js"));
+						"~/Scripts/modernizr.js"));
 
 			bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
 					  "~/Scripts/bootstrap.js",
@@ -36,7 +36,7 @@ namespace UI
 			//@import url("/css/wisewords/halflings.css");
 			//@import url("/css/wisewords/template.css");
 			//@import url("/css/wisewords/colors/color-classic.css");
-			bundles.Add(new StyleBundle("~/bundles/css").Include("~/css/wisewords/magic-bootstrap.css").Include("~/css/wisewords/bootstrap.css").Include("~/css/wisewords/bootstrap-responsive.css").Include("~/css/wisewords/socialicons.css").Include("~/css/wisewords/glyphicons.css").Include("~/css/wisewords/halflings.css").Include("~/css/wisewords/template.css").Include("~/css/wisewords/colors/color-classic.css").Include("~/css/site.css").Include("~/css/adminLinks.css").Include("~/css/jquery-ui.css").Include("~/css/jquery-ui.structure.css").Include("~/css/jquery-ui.theme.css").Include("~/css/suggestion.css").Include("~/css/progress.css"));
+			bundles.Add(new StyleBundle("~/bundles/css").Include("~/Content/wisewords/magic-bootstrap.css").Include("~/Content/wisewords/bootstrap.css").Include("~/Content/wisewords/bootstrap-responsive.css").Include("~/Content/wisewords/socialicons.css").Include("~/Content/wisewords/glyphicons.css").Include("~/Content/wisewords/halflings.css").Include("~/Content/wisewords/template.css").Include("~/Content/wisewords/colors/color-classic.css").Include("~/Content/site.css").Include("~/Content/adminLinks.css").Include("~/Content/jquery-ui.css").Include("~/Content/jquery-ui.structure.css").Include("~/Content/jquery-ui.theme.css").Include("~/Content/suggestion.css").Include("~/Content/progress.css"));
 
 			// Set EnableOptimizations to false for debugging. For more information,
 			// visit http://go.microsoft.com/fwlink/?LinkId=301862

@@ -5,8 +5,8 @@ using System.Web.Mvc;
 using BLL;
 using THResources;
 using UI.Classes;
+using UI.Controllers.Abstract;
 using UI.Models.Abstract;
-using CreateMode = UI.Controllers.Abstract.CreateMode;
 
 namespace UI.Models
 {

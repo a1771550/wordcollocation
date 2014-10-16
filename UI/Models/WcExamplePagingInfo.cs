@@ -1,6 +1,5 @@
 ﻿using System;
 using UI.Classes.Abstract;
-using UI.Models.Abstract;
 
 namespace UI.Models
 {

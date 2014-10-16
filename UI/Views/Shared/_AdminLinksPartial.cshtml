@@ -5,7 +5,7 @@
 		@if (User.IsInRole("Admin"))
 		{
 			@Html.ActionLink("Pos", "Index", "Pos")
-			@Html.Raw(" | ") 
+			@Html.Raw(" | ")
 			@Html.ActionLink("ColPos", "Index", "ColPos")@Html.Raw(" | ")
 		}
 

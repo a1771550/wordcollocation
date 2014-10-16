@@ -1,0 +1,55 @@
+﻿@model UI.Models.WcUserRoleModelView
+
+@{
+	ViewBag.Title = "User List";
+	const string spanClass = "span5";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+	@Html.ActionLink("Create", "Edit", "WcUser", new { id = "0" }, null)
+</p>
+
+<div class="@spanClass">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>
+					Name
+				</th>
+				
+					<th>Password</th>
+					<th>Email</th>
+					<th>
+						Role
+					</th>
+				
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+					@foreach (var item in Model.UserList)
+					{
+						<tr>
+							<td>
+								@Html.DisplayFor(modelItem => item.Name)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Password)
+							</td>
+							<td>@Html.DisplayFor(modelItem => item.Email)</td>
+							<td>@Html.DisplayFor(modelItem => item.RoleName)</td>
+
+							<td>
+								@Html.ActionLink("Edit", "Edit", "WcUser", new { id = item.Id }, null)
+							</td>
+							<td>@Html.ActionLink("Delete", "Delete", "WcUser", new { id = item.Id }, new { id = item.Id, returnUrl = Request.Url, onclick = string.Format("return confirm('{0}');", Resources.ConfirmDelete) })</td>
+						</tr>
+					}
+
+		</tbody>
+	</table>
+
+</div>

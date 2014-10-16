@@ -1,0 +1,50 @@
+﻿@model UI.Models.WcUserRoleModelView
+
+@{
+	ViewBag.Title = "Role List";
+	const string spanClass = "span3";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+	@Html.ActionLink("Create", "Edit","WcRole", new { id = "0" }, null)
+</p>
+
+<div class="@spanClass">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>
+					Name
+				</th>
+				
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+					@foreach (var item in Model.RoleList)
+					{
+						<tr>
+							<td>
+								@Html.DisplayFor(modelItem => item.Name)
+
+							</td>
+
+							<td>
+								@Html.ActionLink("Edit", "Edit", "WcRole", new { id = item.Id }, null)
+							</td>
+							<td>
+								@if (item.CanDel)
+								{
+									@Html.ActionLink("Delete", "Delete", "WcRole", new { id = item.Id }, new { id = item.Id, returnUrl = Request.Url, onclick = string.Format("return confirm('{0}');", Resources.ConfirmDelete) })
+								}
+							</td>
+						</tr>
+					}
+
+		</tbody>
+	</table>
+
+</div>

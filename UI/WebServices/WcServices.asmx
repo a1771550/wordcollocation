@@ -1,1 +1,1 @@
-﻿<%@ WebService Language="C#" CodeBehind="WcServices.asmx.cs" Class="UI.WebServices.WcServices" %>
+﻿<%@ WebService Language="C#" CodeBehind="WcServices.asmx.cs" Class="UImvc5.WebServices.WcServices" %>

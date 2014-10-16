@@ -10,7 +10,7 @@
 }
 @if (Request.IsAuthenticated)
 {
-	using (Html.BeginForm("LogOff", "WcAccount", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+	using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
 	{
 		@Html.AntiForgeryToken()
 
@@ -26,7 +26,7 @@ else
 		<li>
 			@if (Request.Url != null)
 			{
-				@Html.ActionLink(Resources.LogOn, "Login", "WcAccount", null, new { id = "loginLink", returnUrl = Request.Url.PathAndQuery })
+				@Html.ActionLink(Resources.LogOn, "Login", "Account", null, new { id = "loginLink", returnUrl = Request.Url.PathAndQuery })
 			}
 	</li>
 </ul>
