@@ -349,3 +349,7 @@ table#WordList {
 #register-form input, #resetPwd-form input {
 		width: 75%;
 	}
+
+div#progress {
+	text-align:center;padding:.5em 0 0 0;margin:0;min-height: 0 !important;
+}
